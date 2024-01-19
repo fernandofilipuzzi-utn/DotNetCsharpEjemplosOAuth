@@ -52,7 +52,7 @@ namespace Auth2._0Service.Controllers
 
             var token = new JwtSecurityToken(
                 issuer: "http://localhost:7777/api/token",
-                audience: "https://localhost:44386/api/Ej/MiServicioProtegido",
+                audience: "http://localhost:7778/api/Ej/MiServicioProtegido",
                 expires: DateTime.Now.AddDays(199),
                 signingCredentials: credentials
             );

@@ -69,7 +69,7 @@ namespace AuthenticatedAPIEjService
         {
             // Configuración para consumir el token en la API protegida
             var issuer = "http://localhost:7777/api/token";
-            var audience = "https://localhost:44386/api/Ej/MiServicioProtegido";
+            var audience = "http://localhost:7778/api/Ej/MiServicioProtegido";
             var secretKey = "clave_secreta_mas_larga_y_fuerte";
 
             app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
