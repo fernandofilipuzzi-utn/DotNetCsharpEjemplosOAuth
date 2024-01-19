@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIEjService", "APIEjServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth2.0Service", "Auth2.0Service\Auth2.0Service.csproj", "{661FC864-FBE1-4472-B385-2DC05BC34C23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication3", "WebApplication3\WebApplication3.csproj", "{C7C7E68A-BEF9-4B8A-AEE2-7789422D6537}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{661FC864-FBE1-4472-B385-2DC05BC34C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{661FC864-FBE1-4472-B385-2DC05BC34C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{661FC864-FBE1-4472-B385-2DC05BC34C23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C7E68A-BEF9-4B8A-AEE2-7789422D6537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C7E68A-BEF9-4B8A-AEE2-7789422D6537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C7E68A-BEF9-4B8A-AEE2-7789422D6537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C7E68A-BEF9-4B8A-AEE2-7789422D6537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

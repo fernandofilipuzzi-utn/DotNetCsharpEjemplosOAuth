@@ -9,8 +9,10 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 [assembly: OwinStartupAttribute(typeof(AuthenticatedAPIEjService.Startup))]
+//[assembly: OwinStartup("ProductionConfiguration", AuthenticatedAPIEjService.Startup)]
 namespace AuthenticatedAPIEjService
 {
     public partial class Startup
@@ -20,10 +22,12 @@ namespace AuthenticatedAPIEjService
             ConfigureAuth(app);
         }
 
+        /*
+         este me falla , context.Ticket viene nulo
         private void ConfigureAuth(IAppBuilder app)
         {
-            string issuer = "http://localhost:7777/api/token";
-            string audience = "http://localhost:7778/api/Ej/MiServicioProtegido";
+            var issuer = "http://localhost:7777/api/token";
+            var audience = "https://localhost:44386/api/Ej/MiServicioProtegido";
             string secretKey = "clave_secreta_mas_larga_y_fuerte";
 
             var tokenValidationParameters = new TokenValidationParameters
@@ -57,6 +61,37 @@ namespace AuthenticatedAPIEjService
                 }
             });
 
+        }
+        */
+
+        //este me funciona
+        private void ConfigureAuth(IAppBuilder app)
+        {
+            // Configuración para consumir el token en la API protegida
+            var issuer = "http://localhost:7777/api/token";
+            var audience = "https://localhost:44386/api/Ej/MiServicioProtegido";
+            var secretKey = "clave_secreta_mas_larga_y_fuerte";
+
+            app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
+            {
+                AuthenticationMode = AuthenticationMode.Active,
+                TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = issuer,
+                    ValidateAudience = true,
+                    ValidAudience = audience,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.Default.GetBytes(secretKey)),
+                    ClockSkew = TimeSpan.FromMinutes(5)
+                }
+            });
+
+            // Configuración de Web API
+            HttpConfiguration config = new HttpConfiguration();
+            config.MapHttpAttributeRoutes();
+
+            app.UseWebApi(config);
         }
     }
 }
