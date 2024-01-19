@@ -7,7 +7,7 @@ AppDemoCliente, consume ambos servicios.
 
 # para revisar el token 
 https://jwt.io/
-
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDU2NzM0MzQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6Nzc3Ny9hcGkvdG9rZW4iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzgvYXBpL0VqL01pU2VydmljaW9Qcm90ZWdpZG8ifQ.gmQPz3zhCKgmMH3OCiNcDZV7YfXNQ8bOsxfSXEwSzqE
 # Pruebas con curl
 
 ## para conseguir el token

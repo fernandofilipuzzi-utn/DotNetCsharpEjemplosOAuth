@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,14 +13,19 @@ namespace APIEjService.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
-        public IHttpActionResult ServicioNoProtegido()
+        public IHttpActionResult MiServicioNoProtegido()
         {
+            
+
             return Ok("¡Bienvenido al servicio no protegido!");
         }
 
         [HttpGet]
         public IHttpActionResult MiServicioProtegido()
         {
+            var user = User.Identity.Name;
+            Debug.WriteLine($"Usuario actual: {user}");
+
             return Ok("¡Bienvenido al servicio protegido!");
         }
     }
