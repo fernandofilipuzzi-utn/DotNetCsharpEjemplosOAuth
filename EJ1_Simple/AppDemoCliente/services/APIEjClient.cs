@@ -65,7 +65,7 @@ namespace AppDemoCliente.services
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                var servicioProtegidoEndpoint = "http://localhost:7778";
+                var servicioProtegidoEndpoint = "http://localhost:7778/api/Ej/MiServicioProtegido";
 
                 var response = client.GetAsync(servicioProtegidoEndpoint).Result;
                 if (response.IsSuccessStatusCode)

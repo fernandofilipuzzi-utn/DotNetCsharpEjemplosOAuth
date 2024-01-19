@@ -26,8 +26,8 @@ namespace APIEjService.Controllers
         {
             var user = User.Identity.Name;
             Debug.WriteLine($"Usuario actual: {user}");
-
-            return Ok("¡Bienvenido al servicio protegido!");
+            var userName = this.RequestContext.Principal.Identity.Name;
+            return Ok($"¡Bienvenido al servicio protegido! {userName}");
         }
     }
 }
