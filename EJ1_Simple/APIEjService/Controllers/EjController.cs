@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APIEjService.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,19 +9,19 @@ using System.Web.Http;
 
 namespace APIEjService.Controllers
 {
-    [Authorize]
     public class EjController : ApiController
     {
         [HttpGet]
         [AllowAnonymous]
         public IHttpActionResult MiServicioNoProtegido()
         {
-            
+            var userName = this.RequestContext.Principal.Identity.Name;
 
-            return Ok("¡Bienvenido al servicio no protegido!");
+            return Ok($"¡Bienvenido al servicio no protegido! {userName}");
         }
 
         [HttpGet]
+        [CustomAuthorize]
         public IHttpActionResult MiServicioProtegido()
         {
             var user = User.Identity.Name;

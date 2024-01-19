@@ -46,19 +46,14 @@ namespace Auth2._0Service.Controllers
 
         private string GenerarToken()
         {
-
-            //var securityKey = new SymmetricSecurityKey(Encoding.Default.GetBytes("clave_secreta_mas_larga_y_fuerte"));
-
-            //var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            string _secret = "clave_secreta_mas_larga_y_fuerte";
-            var securityKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.Default.GetBytes(_secret));
+            string secretKey = "clave_secreta_mas_larga_y_fuerte"; ;
+            var securityKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.Default.GetBytes(secretKey));
             var credentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(securityKey, Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature);
 
             var token = new JwtSecurityToken(
                 issuer: "http://localhost:7777/api/token",
-                audience: "https://localhost:44386/api/Ej/MiServicioProtegido",
-                expires: DateTime.Now.AddMinutes(30),
+                audience: "http://localhost:7778/api/Ej/MiServicioProtegido",
+                expires: DateTime.Now.AddDays(199),
                 signingCredentials: credentials
             );
 
