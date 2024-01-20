@@ -30,11 +30,12 @@
         {
             this.btnSolicitar = new System.Windows.Forms.Button();
             this.tbRespuesta = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSolicitar
             // 
-            this.btnSolicitar.Location = new System.Drawing.Point(168, 137);
+            this.btnSolicitar.Location = new System.Drawing.Point(63, 137);
             this.btnSolicitar.Name = "btnSolicitar";
             this.btnSolicitar.Size = new System.Drawing.Size(274, 82);
             this.btnSolicitar.TabIndex = 0;
@@ -47,14 +48,25 @@
             this.tbRespuesta.Location = new System.Drawing.Point(25, 34);
             this.tbRespuesta.Multiline = true;
             this.tbRespuesta.Name = "tbRespuesta";
-            this.tbRespuesta.Size = new System.Drawing.Size(569, 86);
+            this.tbRespuesta.Size = new System.Drawing.Size(608, 86);
             this.tbRespuesta.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(359, 137);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(274, 82);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Consumir API (RestSharp Implementación)";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 231);
+            this.ClientSize = new System.Drawing.Size(674, 231);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbRespuesta);
             this.Controls.Add(this.btnSolicitar);
             this.Name = "FormPrincipal";
@@ -68,6 +80,7 @@
 
         private System.Windows.Forms.Button btnSolicitar;
         private System.Windows.Forms.TextBox tbRespuesta;
+        private System.Windows.Forms.Button button1;
     }
 }
 

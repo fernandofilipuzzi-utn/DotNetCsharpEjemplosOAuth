@@ -23,5 +23,12 @@ namespace AppDemoCliente
             APIEjClient servicio = new APIEjClient();
             tbRespuesta.Text= servicio.GetDato().Result;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            APIEjClientRestSharp servicio = new APIEjClientRestSharp();
+            tbRespuesta.Text = servicio.GetDato();
+        }
     }
 }
