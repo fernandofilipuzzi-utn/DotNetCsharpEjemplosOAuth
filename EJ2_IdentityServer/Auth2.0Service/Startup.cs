@@ -7,8 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-//[assembly: OwinStartup(typeof(Auth2._0Service.Startup))]
-[assembly: OwinStartupAttribute(typeof(Auth2._0Service.Startup))]
+[assembly: OwinStartup(typeof(Auth2._0Service.Startup))]
+//[assembly: OwinStartupAttribute(typeof(Auth2._0Service.Startup))]
 namespace Auth2._0Service
 {
     
@@ -22,6 +22,7 @@ namespace Auth2._0Service
                .UseInMemoryClients(Clients.Get())
                .UseInMemoryScopes(Scopes.Get())
                .UseInMemoryUsers(Users.Get());
+                //.AddDeveloperSigningCredential(); 
 
             var options = new IdentityServerOptions
             {

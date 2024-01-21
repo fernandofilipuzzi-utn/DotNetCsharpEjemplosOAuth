@@ -37,7 +37,7 @@ $ curl -H "Authorization: Bearer iyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOj
 
 ### Creando el certificado
 
-fernando@debiandev:~$ openssl req -newkey rsa:2048 -nodes -keyout private-key.pem -x509 -days 365 -out certificate.pem
+fernando@dev:~$ openssl req -newkey rsa:2048 -nodes -keyout private-key.pem -x509 -days 365 -out certificate.pem
 Generating a RSA private key
 ......+++++
 ............................................+++++
@@ -57,11 +57,13 @@ Organization Name (eg, company) [Internet Widgits Pty Ltd]:fernando
 Organizational Unit Name (eg, section) []:develop and research
 Common Name (e.g. server FQDN or YOUR name) []:fernando
 Email Address []:fernandofilipuzzi.utn@gmail.com
-fernando@debiandev:~$ openssl pkcs12 -export -out certificate.pfx -inkey private-key.pem -in certificate.pem
+
+fernando@dev:~$ openssl pkcs12 -export -out certificate.pfx -inkey private-key.pem -in certificate.pem
 Enter Export Password:
 Verifying - Enter Export Password:
 
-$ curl -X POST -d "grant_type=password&username=usuario1&password=clave123&client_id=tuClienteId&client_secret=clave_secreta_mas_larga_y_fuerte&scope=apiScope1" https://localhost:44316/connect/token
+fernando@dev:~$ curl -X POST -d "grant_type=password&username=usuario1&password=clave123&client_id=tuClienteId&client_secret=clave_secreta_mas_larga_y_fuerte&scope=apiScope1" https://localhost:44316/connect/token
 
 
 https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/Simplest%20OAuth2%20Walkthrough/Apis/Startup.cs
+https://stackoverflow.com/questions/61588752/identityserver4-client-for-password-flow-not-including-testuser-claims-in-access

@@ -23,8 +23,10 @@ namespace Auth2._0Service.Models
                     Enabled=true,
                     Claims = new List<Claim>
                     {
-                        new Claim("role", "admin"), // Puedes asignar roles al usuario
-                        new Claim("scope", "apiScope1") // Puedes asignar ámbitos al usuario
+                        new Claim("role", "admin"), 
+                        new Claim("scope", "apiScope1"),
+                        new Claim("email", "john@example.org"),
+                        new Claim("x-domain", "foo") 
                     }
                 },
                 new InMemoryUser
@@ -32,9 +34,12 @@ namespace Auth2._0Service.Models
                     Username = "usuario2",
                     Password = "clave123",
                     Subject = "2",
-                    Enabled=true
+                    Enabled=true,
+                    Claims = new List<Claim>
+                    {
+                    }
                 }
-                // Agrega más usuarios según sea necesario
+                // Agrega más usuarios
             };
         }
     
