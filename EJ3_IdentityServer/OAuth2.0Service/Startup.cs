@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using Microsoft.Owin.Security.OAuth;
+using System.Web.Http;
 
 [assembly: OwinStartup(typeof(OAuth2._0Service.Startup))]
 //[assembly: OwinStartupAttribute(typeof(OAuth2._0Service.Startup))]
@@ -31,11 +33,13 @@ namespace OAuth2._0Service
                 RequireSsl = false
             };
 
+          
+
             app.UseIdentityServer(options);
-            */
+         */
             //app.UseCors(CorsOptions.AllowAll);
 
-            
+
             var factory = new IdentityServerServiceFactory()
                        .UseInMemoryClients(Clients.Get())
                        .UseInMemoryScopes(Scopes.Get())
@@ -60,7 +64,38 @@ namespace OAuth2._0Service
                 });
 
             });
- 
+        
+
         }
+        /*
+        public void ConfigureOAuth(IAppBuilder app)
+        {
+            Console.WriteLine("owin");
+            app.CreatePerOwinContext<OwinAuthDbContext>(() => new OwinAuthDbContext());
+            app.CreatePerOwinContext<UserManager<IdentityUser>>(CreateManager);
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
+            var provider = new MyAuthorizationServerProvider();
+            OAuthAuthorizationServerOptions option = new OAuthAuthorizationServerOptions
+            {
+                AllowInsecureHttp = false, //have also tried with true here
+                TokenEndpointPath = new PathString("/token"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                Provider = provider
+            };
+            app.UseOAuthAuthorizationServer(option);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
+            HttpConfiguration config = new HttpConfiguration();
+            WebApiConfig.Register(config);
+        }
+
+        private static UserManager<IdentityUser> CreateManager(IdentityFactoryOptions<UserManager<IdentityUser>> options, IOwinContext context)
+        {
+            var userStore = new UserStore<IdentityUser>(context.Get<OwinAuthDbContext>());
+            var owinManager = new UserManager<IdentityUser>(userStore);
+            return owinManager;
+        }
+        */
     }
 }
