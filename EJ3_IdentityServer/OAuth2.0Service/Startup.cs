@@ -17,36 +17,50 @@ namespace OAuth2._0Service
     {
         public void Configuration(IAppBuilder app)
         {
-            
-            var factory = new IdentityServerServiceFactory()
-                       .UseInMemoryClients(Clients.Get())
-                       .UseInMemoryScopes(Scopes.Get())
-                       .UseInMemoryUsers(Users.Get());
-
-            //.AddDeveloperSigningCredential(); 
             /*
+            var factory = new IdentityServerServiceFactory()
+               .UseInMemoryClients(Clients.Get())
+               .UseInMemoryScopes(Scopes.Get())
+               .UseInMemoryUsers(Users.Get());
+
             var options = new IdentityServerOptions
             {
+                SiteName = "Demo Identity Server",
+                SigningCertificate = Cert.Load(),
                 Factory = factory,
-               // SigningCertificate = Cert.Load(),
                 RequireSsl = false
             };
 
             app.UseIdentityServer(options);
             */
+            //app.UseCors(CorsOptions.AllowAll);
 
-            //string connectionString = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+            
+            var factory = new IdentityServerServiceFactory()
+                       .UseInMemoryClients(Clients.Get())
+                       .UseInMemoryScopes(Scopes.Get())
+                       .UseInMemoryUsers(Users.Get());
+                       
+
+            //.AddDeveloperSigningCredential(); 
+            
 
             app.Map("/identity", id => {
                 id.UseIdentityServer(new IdentityServerOptions
                 {
+                    
+                    AuthenticationOptions = new AuthenticationOptions {
+                        
+                    },
+                    
                     SiteName = "Demo Identity Server",
-                    // SigningCertificate = LoadCertificate()
                     SigningCertificate = Cert.Load(),
-                    Factory = factory //new IdentityServerServiceFactory().Configure(connectionString),
+                    Factory = factory,
+                    RequireSsl = false
                 });
 
             });
+ 
         }
     }
 }

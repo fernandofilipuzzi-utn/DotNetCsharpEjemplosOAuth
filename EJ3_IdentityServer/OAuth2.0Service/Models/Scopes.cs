@@ -16,7 +16,8 @@ namespace OAuth2._0Service.Models
                 {
                     Name = "api1",
                     DisplayName = "My API"
-                }
+                },
+                //otros alcances
             };
         }
     }

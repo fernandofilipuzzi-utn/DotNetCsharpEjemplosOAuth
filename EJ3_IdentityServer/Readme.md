@@ -1,5 +1,32 @@
 
 
+
+
+
+
+>curl -X POST -d "client_id=client&client_secret=secret&username=usuario1&password=clave123"  https://localhost:44316/identity/connect/token
+{"error":"invalid_client"}
+
+
+>curl -X POST -d "client_id=client&client_secret=secret&username=usuario1&password=clave123"  https://localhost:44316/identity/connect/token
+{"error":"unsupported_grant_type"}
+
+>curl -X POST -d "grant_type=password&client_id=client&client_secret=secret&username=usuario1&password=clave123"  https://localhost:44316/identity/connect/token
+{"error":"unauthorized_client"}
+
+curl -X POST -d "grant_type=password&client_id=client1&client_secret=secret&username=usuario1&password=clave123&scope=api1" https://localhost:44316/identity/connect/token
+curl -X POST -d "grant_type=client_credentials&client_id=client1&client_secret=secret&username=usuario1&password=clave123&scope=api1" https://localhost:44316/identity/connect/token
+
+
+
+&"K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols="
+
+
+
+
+
+
+
 https://localhost:44316/connect/token
 
 #montaje, 

@@ -11,16 +11,26 @@ namespace OAuth2._0Service.Models
     {
         public static IEnumerable<Client> Get()
         {
+         
             return new List<Client>
                     {
                         new Client
                         {
-                            ClientId = "client",
+                            ClientId = "client1",
+                            ClientSecrets = {new Secret("secret".Sha256()) },
+                            AllowedCustomGrantTypes  =  { GrantTypes.Password,GrantTypes.ClientCredentials },
+                            Enabled=true,
+                            AccessTokenType=AccessTokenType.Jwt,
+                            AllowAccessToAllScopes= true,
+                        },
+                        new Client
+                        {
+                            ClientId = "client2",
                             ClientSecrets = { new Secret("secret".Sha256()) },
-                            AllowedCustomGrantTypes  = new List<string> { GrantTypes.Password,GrantTypes.ClientCredentials },
+                            AllowedCustomGrantTypes  =  { GrantTypes.Password,GrantTypes.ClientCredentials },
                             AllowedScopes = { "api1" }
-                        }
-                        // Agrega más clientes según sea necesario
+                        },
+                        //otros clientes
                     };
         }
     }
