@@ -107,3 +107,43 @@ https://johanbostrom.se/blog/identityserver-3-starter-kit-part-1-installing-iden
 https://github.com/IdentityServer/IdentityServer4/issues/4188
 
 roles,
+
+
+
+https://www.codementor.io/@himanshudewangan/jwt-authentication-and-authorization-on-web-api-using-owin-pipeline-and-oauth-grant-16s0za6tqu
+https://stackoverflow.com/questions/54722236/how-do-i-implement-a-authentication-and-authorization-webapi-2-net-appication
+ese
+https://odetocode.com/blogs/scott/archive/2015/01/15/using-json-web-tokens-with-katana-and-webapi.aspx
+https://developers.google.com/identity/protocols/oauth2#serviceaccount
+
+
+providers
+https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/AspNetIdentity/WebHost/Startup.cs
+
+
+curl -X POST -d "grant_type=password&username=usuario1&password=clave123&client_id=client1&client_secret=secret&scope=api1" https://localhost:44316/identity/connect/token
+
+$ curl -X POST -d "grant_type=password&username=usuario1&password=clave123&client_id=client1&client_secret=secret&scope=api1" https://localhost:44316/identity/connect/token
+{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkhGbEtWUVlyRnExNl83aWVjNUNYaTE2LTVLcyIsImtpZCI6IkhGbEtWUVlyRnExNl83aWVjNUNYaTE2LTVLcyJ9.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMxNi9pZGVudGl0eSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzE2L2lkZW50aXR5L3Jlc291cmNlcyIsImV4cCI6MTcwNTk3MDA2MywibmJmIjoxNzA1OTY2NDYzLCJjbGllbnRfaWQiOiJjbGllbnQxIiwic2NvcGUiOiJhcGkxIiwic3ViIjoiMSIsImF1dGhfdGltZSI6MTcwNTk2NjQ2MywiaWRwIjoiaWRzcnYiLCJhbXIiOlsicGFzc3dvcmQiXX0.W2w-kZWh19NWVSgfdncEzwdKHZOPNzIcgj0TPLV8c5dUrX18e59NqNfeKH3divrl2zBCRfWZltMEc1dNcgOACqL4dxoUVR51nVe-E-nB-MC98Qd3M3aFVNgGtb5P2HxqLxAnGCnoMlOGmcKRvLerkKZuAkhau7LBpicOA2HLNhFqMhBK8EMjT9QrLzwALadszb5uNKPvaFxpQYyYWNrGTckezy1twiCCMPLdKnEk_yS3urQ7QtOJ4CtVjIORTGi3o6JyZJ2PwdC_7lNtigwspsvQ6HXsUeejKruWOdevCb1f1kFkQD_z-sH_bV3xUKiZSPANykf4oPa5AHfxWl5Avg","expires_in":3600,"token_type":"Bearer"}
+
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "x5t": "HFlKVQYrFq16_7iec5CXi16-5Ks",
+  "kid": "HFlKVQYrFq16_7iec5CXi16-5Ks"
+}
+
+{
+  "iss": "https://localhost:44316/identity",
+  "aud": "https://localhost:44316/identity/resources",
+  "exp": 1705970063,
+  "nbf": 1705966463,
+  "client_id": "client1",
+  "scope": "api1",
+  "sub": "1",
+  "auth_time": 1705966463,
+  "idp": "idsrv",
+  "amr": [
+    "password"
+  ]
+}

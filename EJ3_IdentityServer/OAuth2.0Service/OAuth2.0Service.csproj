@@ -344,6 +344,7 @@
     </Compile>
     <Compile Include="Models\Cert.cs" />
     <Compile Include="Models\Clients.cs" />
+    <Compile Include="Models\CustomGrantValidator.cs" />
     <Compile Include="Models\Scopes.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

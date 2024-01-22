@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.Owin.Security.OAuth;
 using System.Web.Http;
+using IdentityServer3.Core.Services;
 
 [assembly: OwinStartup(typeof(OAuth2._0Service.Startup))]
 //[assembly: OwinStartupAttribute(typeof(OAuth2._0Service.Startup))]
@@ -30,72 +31,37 @@ namespace OAuth2._0Service
                 SiteName = "Demo Identity Server",
                 SigningCertificate = Cert.Load(),
                 Factory = factory,
-                RequireSsl = false
+                RequireSsl = false,
             };
-
-          
+                     
 
             app.UseIdentityServer(options);
-         */
+            */
             //app.UseCors(CorsOptions.AllowAll);
 
+            
+                 
+            app.Map("/identity", identity => {
 
-            var factory = new IdentityServerServiceFactory()
+                var factory = new IdentityServerServiceFactory()
                        .UseInMemoryClients(Clients.Get())
                        .UseInMemoryScopes(Scopes.Get())
                        .UseInMemoryUsers(Users.Get());
-                       
 
-            //.AddDeveloperSigningCredential(); 
-            
+                //factory.CustomGrantValidators.Add(new Registration<ICustomGrantValidator>(typeof(CustomGrantValidator)));
 
-            app.Map("/identity", id => {
-                id.UseIdentityServer(new IdentityServerOptions
+                identity.UseIdentityServer(new IdentityServerOptions
                 {
-                    
-                    AuthenticationOptions = new AuthenticationOptions {
-                        
-                    },
-                    
                     SiteName = "Demo Identity Server",
                     SigningCertificate = Cert.Load(),
                     Factory = factory,
-                    RequireSsl = false
+                    RequireSsl = false,
                 });
 
             });
-        
-
-        }
-        /*
-        public void ConfigureOAuth(IAppBuilder app)
-        {
-            Console.WriteLine("owin");
-            app.CreatePerOwinContext<OwinAuthDbContext>(() => new OwinAuthDbContext());
-            app.CreatePerOwinContext<UserManager<IdentityUser>>(CreateManager);
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-
-            var provider = new MyAuthorizationServerProvider();
-            OAuthAuthorizationServerOptions option = new OAuthAuthorizationServerOptions
-            {
-                AllowInsecureHttp = false, //have also tried with true here
-                TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                Provider = provider
-            };
-            app.UseOAuthAuthorizationServer(option);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
-            HttpConfiguration config = new HttpConfiguration();
-            WebApiConfig.Register(config);
+            // app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
         }
 
-        private static UserManager<IdentityUser> CreateManager(IdentityFactoryOptions<UserManager<IdentityUser>> options, IOwinContext context)
-        {
-            var userStore = new UserStore<IdentityUser>(context.Get<OwinAuthDbContext>());
-            var owinManager = new UserManager<IdentityUser>(userStore);
-            return owinManager;
-        }
-        */
+     
     }
 }
