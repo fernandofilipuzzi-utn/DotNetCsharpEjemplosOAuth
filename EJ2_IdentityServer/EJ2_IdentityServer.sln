@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{ACF12170-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIEjService", "APIEjService\APIEjService.csproj", "{2799BEC7-44A9-4CF2-B950-1C3FD50967E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth2.0Service", "Auth2.0Service\Auth2.0Service.csproj", "{661FC864-FBE1-4472-B385-2DC05BC34C23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2.0Service", "OAuth2.0Service\OAuth2.0Service.csproj", "{661FC864-FBE1-4472-B385-2DC05BC34C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
