@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h3 class="display-4">Servicio ejemplo</h3>
-        <p class="lead">APIs.</p>
+        <h3 class="display-4">Ejemplo de API "TOKENIZADA"</h3>
+        <p class="lead"></p>
     </div>
 
     <div class="container row text-center m-2">
