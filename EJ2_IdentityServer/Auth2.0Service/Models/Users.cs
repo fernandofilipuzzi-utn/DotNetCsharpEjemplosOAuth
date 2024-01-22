@@ -24,7 +24,7 @@ namespace Auth2._0Service.Models
                     Claims = new List<Claim>
                     {
                         new Claim("role", "admin"), 
-                        new Claim("scope", "apiScope1"),
+                        new Claim("scope", "api1"),
                         new Claim("email", "john@example.org"),
                         new Claim("x-domain", "foo") 
                     }

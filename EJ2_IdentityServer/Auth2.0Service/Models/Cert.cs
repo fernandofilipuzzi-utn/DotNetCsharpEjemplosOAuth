@@ -15,7 +15,7 @@ namespace Auth2._0Service.Models
             // Asegúrate de ajustar esta parte según tu configuración específica.
 
             // Ejemplo de carga desde un archivo PFX (asegúrate de ajustar la ruta y la contraseña)
-            string certPath = @"F:\repos\repos_utn_dotnet\seguridad\DotNetCsharpEjemplosOAuth\EJ2_roles_permisos\Auth2.0Service\certificados\certificate.pfx";
+            string certPath = @"F:\repos\repos_utn_dotnet\seguridad\DotNetCsharpEjemplosOAuth\EJ2_IdentityServer\Auth2.0Service\certificados\certificate.pfx";
             string certPassword = "they live";
 
             return new X509Certificate2(certPath, certPassword);

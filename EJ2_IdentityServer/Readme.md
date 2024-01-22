@@ -64,6 +64,19 @@ Verifying - Enter Export Password:
 
 fernando@dev:~$ curl -X POST -d "grant_type=password&username=usuario1&password=clave123&client_id=tuClienteId&client_secret=clave_secreta_mas_larga_y_fuerte&scope=apiScope1" https://localhost:44316/connect/token
 
+curl -X POST -d "grant_type=password&username=usuario1&password=clave123&client_id=tuClienteId&client=secret&scope=api1" https://localhost:44316/identity/connect/token
 
 https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/Simplest%20OAuth2%20Walkthrough/Apis/Startup.cs
 https://stackoverflow.com/questions/61588752/identityserver4-client-for-password-flow-not-including-testuser-claims-in-access
+
+
+https://www.scottbrady91.com/identity-server/identity-server-3-using-aspnet-identity
+https://github.com/IdentityServer/IdentityServer3.Samples
+https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/CustomViewService/CustomViewService/Startup.cs
+
+
+revisar este
+https://johanbostrom.se/blog/identityserver-3-starter-kit-part-1-installing-identityserver-3-aspnet-identity-and-entity-framework/
+https://github.com/IdentityServer/IdentityServer4/issues/4188
+
+roles,

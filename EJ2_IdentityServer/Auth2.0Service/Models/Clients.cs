@@ -15,12 +15,10 @@ namespace Auth2._0Service.Models
                     {
                         new Client
                         {
-                            ClientId = "tuClienteId",
-                            AccessTokenType = AccessTokenType.Reference,
-                            Flow = Flows.ClientCredentials,
-                            ClientSecrets = new List<Secret> { new Secret("clave_secreta_mas_larga_y_fuerte".Sha256()) },
-                            AllowedCustomGrantTypes  = new List<string> { GrantTypes.Password },//GrantTypes.Password
-                            AllowedScopes = new List<string> { "apiScope1", "apiScope2" }
+                            ClientId = "client",
+                            ClientSecrets = { new Secret("secret".Sha256()) },
+                            AllowedCustomGrantTypes  = new List<string> { GrantTypes.Password,GrantTypes.ClientCredentials },
+                            AllowedScopes = { "api1" }
                         }
                         // Agrega más clientes según sea necesario
                     };

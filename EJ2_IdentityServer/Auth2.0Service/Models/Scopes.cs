@@ -14,15 +14,9 @@ namespace Auth2._0Service.Models
             {
                 new Scope
                 {
-                    Name = "apiScope1",
-                    DisplayName = "API Scope 1"
-                },
-                new Scope
-                {
-                    Name = "apiScope2",
-                    DisplayName = "API Scope 2"
+                    Name = "api1",
+                    DisplayName = "My API"
                 }
-                // Agrega más ámbitos según sea necesario
             };
         }
     }

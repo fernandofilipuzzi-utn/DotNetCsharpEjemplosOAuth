@@ -4,6 +4,7 @@ using Microsoft.Owin;
 using Owin;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -18,12 +19,13 @@ namespace Auth2._0Service
         
         public void Configuration(IAppBuilder app)
         {
+            
             var factory = new IdentityServerServiceFactory()
                .UseInMemoryClients(Clients.Get())
                .UseInMemoryScopes(Scopes.Get())
                .UseInMemoryUsers(Users.Get());
                 //.AddDeveloperSigningCredential(); 
-
+            /*
             var options = new IdentityServerOptions
             {
                 Factory = factory,
@@ -32,6 +34,20 @@ namespace Auth2._0Service
             };
 
             app.UseIdentityServer(options);
+            */
+
+            //string connectionString = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+
+            app.Map("/identity", id => {
+                id.UseIdentityServer(new IdentityServerOptions
+                {
+                    SiteName = "Demo Identity Server",
+                    // SigningCertificate = LoadCertificate()
+                    SigningCertificate = Cert.Load(),
+                    Factory = factory //new IdentityServerServiceFactory().Configure(connectionString),
+                });
+
+            });
         }
 
     }
