@@ -25,9 +25,10 @@ namespace OAuth2_0AuthorizationServer._0Service.Models
                             AllowedCustomGrantTypes  =  { GrantTypes.Password,GrantTypes.ClientCredentials },
                             Enabled=true,
                             AccessTokenType=AccessTokenType.Jwt,
-                            AllowAccessToAllScopes= true,
+                            //AllowAccessToAllScopes= true,
                             Flow=Flows.ResourceOwner,//ResourceOwner,//Flow=Flows.Custom
                             AccessTokenLifetime=accessTokenLifetimeInSeconds,
+                            AllowedScopes = { "openid", "api1" },
                         },
                         new Client
                         {
@@ -47,12 +48,12 @@ namespace OAuth2_0AuthorizationServer._0Service.Models
                             ClientName="chicholina",
                             ClientId = "client3",
                             ClientSecrets = { new Secret("secret".Sha256()) },
-                            AllowedCustomGrantTypes  =  { GrantTypes.Password,GrantTypes.ClientCredentials },
+                            AllowedCustomGrantTypes  = { GrantTypes.AuthorizationCode },  // Cambia aquí el tipo de concesión
+                            RedirectUris = { "http://localhost:7777/identity/callback" },   // Agrega las URI de redirección adecuadas
+                            PostLogoutRedirectUris = { "http://localhost:7777/identity/logout" },  // Agrega las URI de redirección adecuadas
                             Enabled=true,
                             AccessTokenType=AccessTokenType.Jwt,
-                            AllowedScopes = { "api2" },
-                            //Flow=Flows.Custom
-                            Flow=Flows.ResourceOwner,
+                            AllowedScopes = { "api1", "openid" },
                             AccessTokenLifetime=accessTokenLifetimeInSeconds,
                         },
                         //otros clientes

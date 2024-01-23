@@ -1,4 +1,4 @@
-﻿using AppDemoCliente.services;
+﻿using ResourceAPIServer.ClientServices.services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +21,7 @@ namespace AppDemoCliente
         private void btnSolicitar_Click(object sender, EventArgs e)
         {
             APIEjClient servicio = new APIEjClient();
-            tbRespuesta.Text= servicio.GetDato().Result;
+            tbRespuesta.Text= servicio.GetDato();
         }
 
         private void button1_Click(object sender, EventArgs e)

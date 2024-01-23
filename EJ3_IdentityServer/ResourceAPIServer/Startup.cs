@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Security.Claims;
 
 [assembly: OwinStartup(typeof(AuthenticatedAPIEjService.Startup))]
 namespace AuthenticatedAPIEjService
@@ -55,9 +56,53 @@ namespace AuthenticatedAPIEjService
 
                         return new[] { key };
                     },
-                    ClockSkew = TimeSpan.FromMinutes(5)
+                    ClockSkew = TimeSpan.FromMinutes(5),
+                    ValidateLifetime = true // Asegura que el token no haya expirado
+                },
+                /*
+                // Hook para la validación del id_token
+                Provider = new OAuthBearerAuthenticationProvider
+                {
+                    OnValidateIdentity = context =>
+                    {
+                        // Verificar el id_token aquí
+                        ValidateIdToken(context);
+
+                        return Task.CompletedTask;
+                    }
                 }
+                */
             });
+
+            
         }
+        /*
+        private void ValidateIdToken(OAuthValidateIdentityContext context)
+        {
+            var idToken = context.Ticket.Identity.FindFirst(c => c.Type == "id_token")?.Value;
+
+            if (string.IsNullOrEmpty(idToken))
+            {
+                context.Rejected();//falta el id_token
+                return;
+            }
+
+            // Verificar firma y validar claims específicos del id_token aquí
+
+            // si verifica lee los claims
+            var subClaim = context.Ticket.Identity.FindFirst("sub");
+            if (subClaim != null)
+            {
+                // Accede al subject (sub) del id_token
+                var subValue = subClaim.Value;
+                // Realiza acciones según el sub, por ejemplo, identificar al usuario
+            }
+
+            // más validacionesdes
+
+            // si pasan las validades se aprueba la identidad
+            context.Validated();
+        }
+        */
     }
 }

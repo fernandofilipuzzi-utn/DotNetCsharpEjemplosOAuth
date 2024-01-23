@@ -24,8 +24,9 @@ namespace ResourceAPIServer.Controllers
         }
 
         [HttpGet]
-        [CustomAuthorize]
+        //[CustomAuthorize]
         //[Authorize(Roles ="api1")]
+        [CustomScopeAuthorizeAttribute("api1")]
         public IHttpActionResult MiServicioProtegido()
         {
             var user = User.Identity.Name;

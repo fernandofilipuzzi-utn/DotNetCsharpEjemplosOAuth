@@ -25,7 +25,7 @@ namespace OAuth2_0AuthorizationServer._0Service.Models
                     Claims = new List<Claim>
                     {
                         new Claim("role", "admin"), 
-                        new Claim("scope", "api1"),
+                        new Claim("scope", "openid api1"),
                         new Claim("email", "john@example.org"),
                         new Claim("x-domain", "foo") 
                     }

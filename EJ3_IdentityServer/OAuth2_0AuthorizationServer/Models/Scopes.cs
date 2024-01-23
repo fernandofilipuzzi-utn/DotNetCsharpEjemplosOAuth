@@ -17,6 +17,11 @@ namespace OAuth2_0AuthorizationServer._0Service.Models
                     Name = "api1",
                     DisplayName = "My API"
                 },
+                 new Scope
+                {
+                    Name = "openid",
+                    DisplayName = "OPEN ID"
+                },
                 //otros alcances
             };
         }

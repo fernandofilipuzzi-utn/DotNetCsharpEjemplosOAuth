@@ -30,7 +30,7 @@ namespace OAuth2_0AuthorizationServer
                     SiteName = "Demo Identity Server",
                     SigningCertificate = Cert.Load(),
                     Factory = factory,
-                    RequireSsl = false,
+                    RequireSsl = false
                 });
 
             });
