@@ -29,19 +29,21 @@ namespace AppDemoCliente.services
         {
             using (var client = new HttpClient())
             {
-                var tokenEndpoint = "http://localhost:7777/api/token";
-                var clientId = "client_id";
-                var clientSecret = "mi_secreto";
-                var username = "user";
-                var password = "123";
+                var tokenEndpoint = "http://localhost:7777/identity/connect/token";
+                var clientId = "client2";
+                var clientSecret = "secret";
+                var username = "usuario2";
+                var password = "clave123";
 
+                //grant_type=password&username=usuario2&password=clave123&client_id=client2&client_secret=secret&scope=api1
                 var tokenRequest = new Dictionary<string, string>
                 {
                     { "grant_type", "password" },
                     { "username", username },
                     { "password", password },
                     { "client_id", clientId },
-                    { "client_secret", clientSecret }
+                    { "client_secret", clientSecret },
+                    { "scope", "api1" },
                 };
 
                 var response =  client.PostAsync(tokenEndpoint, new FormUrlEncodedContent(tokenRequest)).Result;

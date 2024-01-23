@@ -11,7 +11,10 @@ namespace OAuth2._0Service.Models
     {
         public static IEnumerable<Client> Get()
         {
-         
+            var now = DateTime.Now;
+            var expirationTime = now.AddMinutes(20); // Ajusta el tiempo de expiración según tus necesidades
+            var accessTokenLifetimeInSeconds = (int)(expirationTime - now).TotalSeconds;
+
             return new List<Client>
                     {
                         new Client
@@ -23,7 +26,8 @@ namespace OAuth2._0Service.Models
                             Enabled=true,
                             AccessTokenType=AccessTokenType.Jwt,
                             AllowAccessToAllScopes= true,
-                            Flow=Flows.ResourceOwner//ResourceOwner,//Flow=Flows.Custom
+                            Flow=Flows.ResourceOwner,//ResourceOwner,//Flow=Flows.Custom
+                            AccessTokenLifetime=accessTokenLifetimeInSeconds,
                         },
                         new Client
                         {
@@ -31,9 +35,12 @@ namespace OAuth2._0Service.Models
                             ClientId = "client2",
                             ClientSecrets = { new Secret("secret".Sha256()) },
                             AllowedCustomGrantTypes  =  { GrantTypes.Password,GrantTypes.ClientCredentials },
+                            Enabled=true,
+                            AccessTokenType=AccessTokenType.Jwt,
                             AllowedScopes = { "api1" },
                             //Flow=Flows.Custom
-                            Flow=Flows.ResourceOwner
+                            Flow=Flows.ResourceOwner,
+                            AccessTokenLifetime=accessTokenLifetimeInSeconds,
                         },
                         //otros clientes
                     };

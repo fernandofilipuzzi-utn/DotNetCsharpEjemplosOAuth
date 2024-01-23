@@ -13,7 +13,8 @@ namespace OAuth2._0Service.Models
     {
         public static List<InMemoryUser> Get()
         {
-            return new List<InMemoryUser>
+          
+                        return new List<InMemoryUser>
             {
                 new InMemoryUser
                 {
@@ -37,6 +38,10 @@ namespace OAuth2._0Service.Models
                     Enabled=true,
                     Claims = new List<Claim>
                     {
+                        new Claim("role", "admin"),
+                        new Claim("scope", "api1"),
+                        new Claim("email", "john@example.org"),
+                        new Claim("x-domain", "foo")
                     }
                 }
                 // Agrega más usuarios

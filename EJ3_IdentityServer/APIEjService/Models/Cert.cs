@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 
-namespace OAuth2._0Service.Models
+namespace APIEjService.Models
 {
     public class Cert
     {
@@ -17,7 +17,7 @@ namespace OAuth2._0Service.Models
             string certPath = Path.Combine(directorioBase, @"certificados\certificate.pfx");
             string certPassword = "they live";
 
-            X509Certificate2 certificado= new X509Certificate2(certPath, certPassword, X509KeyStorageFlags.MachineKeySet);
+            X509Certificate2 certificado = new X509Certificate2(certPath, certPassword, X509KeyStorageFlags.MachineKeySet);
             return certificado;
         }
     }

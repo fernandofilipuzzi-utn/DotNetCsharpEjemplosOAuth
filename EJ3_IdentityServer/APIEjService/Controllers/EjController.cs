@@ -6,11 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.Identity.Web;
 
 namespace APIEjService.Controllers
 {
     public class EjController : ApiController
     {
+        const string scopeRequiredByApi = "access_as_user";
+
         [HttpGet]
         [AllowAnonymous]
         public IHttpActionResult MiServicioNoProtegido()
@@ -22,6 +25,7 @@ namespace APIEjService.Controllers
 
         [HttpGet]
         [CustomAuthorize]
+        //[Authorize(Roles ="api1")]
         public IHttpActionResult MiServicioProtegido()
         {
             var user = User.Identity.Name;

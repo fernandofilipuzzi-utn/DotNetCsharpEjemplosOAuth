@@ -22,8 +22,7 @@ namespace OAuth2._0Service.Models
             var param = request.Raw.Get("some_custom_parameter");
             if (string.IsNullOrWhiteSpace(param))
             {
-                return Task.FromResult<CustomGrantValidationResult>(
-                    new CustomGrantValidationResult("Missing parameters."));
+                return Task.FromResult<CustomGrantValidationResult>(new CustomGrantValidationResult("Missing parameters."));
             }
 
             return Task.FromResult(new CustomGrantValidationResult("bob", "customGrant"));
