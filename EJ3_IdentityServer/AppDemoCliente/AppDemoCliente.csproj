@@ -126,7 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ResourceAPIServer.ClientServices\ResourceAPIServer.ClientServices.csproj">
-      <Project>{cc60ae2d-adc2-402a-9cbe-47edab18559e}</Project>
+      <Project>{14510ff1-7c95-4f67-913d-a88cd90af7fe}</Project>
       <Name>ResourceAPIServer.ClientServices</Name>
     </ProjectReference>
   </ItemGroup>
