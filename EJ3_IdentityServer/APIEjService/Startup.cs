@@ -1,4 +1,5 @@
-﻿using APIEjService.Models;
+﻿using APIEjService;
+using APIEjService.Models;
 using IdentityServer3.AccessTokenValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -17,19 +18,25 @@ using System.Web.Http;
 [assembly: OwinStartup(typeof(AuthenticatedAPIEjService.Startup))]
 namespace AuthenticatedAPIEjService
 {
+    
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
-        }
+            HttpConfiguration config = new HttpConfiguration();
 
-        private void ConfigureAuth(IAppBuilder app)
+            ConfigureOAuth(app);
+
+            WebApiConfig.Register(config);
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            app.UseWebApi(config);
+
+        }
+                
+        private void ConfigureOAuth(IAppBuilder app)
         {
-            // Configuración para consumir el token en la API protegida
             var issuer = "http://localhost:7777/identity";
             var audience = "http://localhost:7777/identity/resources";
-            var secretKey = "secret";
 
             app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
             {
@@ -41,71 +48,16 @@ namespace AuthenticatedAPIEjService
                     ValidateAudience = true,
                     ValidAudience = audience,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.Default.GetBytes(secretKey)),
+                    IssuerSigningKeyResolver = (token, securityToken, identifier, parameters) =>
+                    {
+                        var cert = Cert.Load();
+                        var key = new X509SecurityKey(cert);
+
+                        return new[] { key };
+                    },
                     ClockSkew = TimeSpan.FromMinutes(5)
                 }
             });
-
-            // Configuración de Web API
-            HttpConfiguration config = new HttpConfiguration();
-            config.MapHttpAttributeRoutes();
-
-            app.UseWebApi(config);
-
-            app.Use(async (context, next) =>
-            {
-                await next.Invoke();
-               // LogToEventViewer("Authentication Type: " + context.Authentication.AuthenticationResponseGrant?.Identity?.AuthenticationType);
-            });
-
-            /*
-            app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
-            {
-                Authority = "http://localhost:7777/identity",
-                ValidationMode = ValidationMode.ValidationEndpoint,
-                RequiredScopes = new[] { "api1" },
-                AuthenticationType = "Bearer",
-                ClientId = "client1",
-                ClientSecret = "secret",
-               // IssuerName = "http://localhost:7777/identity",
-               SigningCertificate = Cert.Load(),
-                TokenProvider = new OAuthBearerAuthenticationProvider
-                {
-                    OnValidateIdentity = async context =>
-                    {
-                        LogToEventViewer("Fallo en la autenticación.");
-                        if (context.Ticket != null && context.Ticket.Identity != null && context.Ticket.Identity.IsAuthenticated)
-                        {
-                            // La identidad ha sido validada exitosamente. Puedes escribir un evento de log aquí.
-                            LogToEventViewer("Autenticación exitosa para el usuario: " + context.Ticket.Identity.Name);
-                        }
-                        else
-                        {
-                            // La identidad no ha sido validada. Puedes escribir un evento de log aquí.
-                            LogToEventViewer("Fallo en la autenticación.");
-                        }
-                    }
-                }
-
-            }) ;
-            */
-
-        }
-
-        private void LogToEventViewer(string message)
-        {
-            const string logName = "kkLog"; // Puedes cambiar esto según tus necesidades
-            /*
-            if (!EventLog.SourceExists(logName))
-            {
-                EventLog.CreateEventSource(logName, "Application");
-            }
-            */
-            using (EventLog eventLog = new EventLog("Application"))
-            {
-                eventLog.Source = logName;
-                eventLog.WriteEntry(message, EventLogEntryType.Information);
-            }
         }
     }
 }

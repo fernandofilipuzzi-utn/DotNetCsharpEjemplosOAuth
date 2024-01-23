@@ -44,6 +44,14 @@ namespace OAuth2._0Service.Models
                         new Claim("x-domain", "foo")
                     }
                 }
+                ,
+                new InMemoryUser
+                {
+                    Username = "usuario3",
+                    Password = "clave123",
+                    Subject = "3",
+                    Enabled=true,
+                }
                 // Agrega más usuarios
             };
         }

@@ -42,6 +42,19 @@ namespace OAuth2._0Service.Models
                             Flow=Flows.ResourceOwner,
                             AccessTokenLifetime=accessTokenLifetimeInSeconds,
                         },
+                        new Client
+                        {
+                            ClientName="chicholina",
+                            ClientId = "client3",
+                            ClientSecrets = { new Secret("secret".Sha256()) },
+                            AllowedCustomGrantTypes  =  { GrantTypes.Password,GrantTypes.ClientCredentials },
+                            Enabled=true,
+                            AccessTokenType=AccessTokenType.Jwt,
+                            AllowedScopes = { "api2" },
+                            //Flow=Flows.Custom
+                            Flow=Flows.ResourceOwner,
+                            AccessTokenLifetime=accessTokenLifetimeInSeconds,
+                        },
                         //otros clientes
                     };
         }
