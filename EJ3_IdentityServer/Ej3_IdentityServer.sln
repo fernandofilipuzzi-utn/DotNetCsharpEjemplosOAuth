@@ -7,14 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDemoCliente", "AppDemoCl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{ACF12170-283B-40C3-AEA6-C9A8B8ADD2DF}"
 	ProjectSection(SolutionItems) = preProject
-		\\192.168.1.129\compartida\certificate.pem = \\192.168.1.129\compartida\certificate.pem
-		\\192.168.1.129\compartida\certificate.pfx = \\192.168.1.129\compartida\certificate.pfx
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIEjService", "APIEjService\APIEjService.csproj", "{2799BEC7-44A9-4CF2-B950-1C3FD50967E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceAPIServer", "ResourceAPIServer\ResourceAPIServer.csproj", "{2799BEC7-44A9-4CF2-B950-1C3FD50967E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2.0Service", "OAuth2.0Service\OAuth2.0Service.csproj", "{661FC864-FBE1-4472-B385-2DC05BC34C23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2_0AuthorizationServer", "OAuth2_0AuthorizationServer\OAuth2_0AuthorizationServer.csproj", "{661FC864-FBE1-4472-B385-2DC05BC34C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
