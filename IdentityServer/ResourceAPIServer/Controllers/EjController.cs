@@ -24,6 +24,7 @@ namespace ResourceAPIServer.Controllers
         }
 
         [HttpGet]
+        //[Authorize]
         //[CustomAuthorize]
         //[Authorize(Roles ="api1")]
         [CustomScopeAuthorizeAttribute("api1")]

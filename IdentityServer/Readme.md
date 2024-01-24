@@ -1,6 +1,12 @@
 # NUGET
 clientservices: Newtonsoft.Json, RestSharp, System.IdentityModel.Tokens.Jwt
-resource api:
+
+resource api: 
+                Microsoft.AspNet.WebApi.Owin,
+                Microsoft.Owin.Security.Jwt.es,
+                Microsoft.Owin.Cors
+                Microsoft.Owin.Host.SystemWeb.es 
+
 authorization: Microsoft.Owin.Cors
 
 

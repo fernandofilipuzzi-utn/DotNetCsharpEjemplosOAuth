@@ -554,10 +554,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Configuration\Cert.cs" />
-    <Compile Include="Models\CustomAuthorizeAttribute.cs" />
-    <Compile Include="Models\CustomScopeAuthorizeAttribute.cs" />
-    <Compile Include="Models\MiProveedorDeToken.cs" />
-    <Compile Include="Models\SecurityKeyHelper.cs" />
+    <Compile Include="Utils\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Utils\CustomScopeAuthorizeAttribute.cs" />
+    <Compile Include="Utils\MiProveedorDeToken.cs" />
+    <Compile Include="Utils\SecurityKeyHelper.cs" />
     <Compile Include="Utils\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -571,6 +571,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
