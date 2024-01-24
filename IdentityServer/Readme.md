@@ -1,7 +1,8 @@
 # NUGET
 clientservices: Newtonsoft.Json, RestSharp, System.IdentityModel.Tokens.Jwt
 resource api:
-authorization:
+authorization: Microsoft.Owin.Cors
+
 
 # IMPLEMENTACIÓN PARA PRUEBAS
 APIEjService corre en el IIS como http://localhost:7778
@@ -127,3 +128,9 @@ Email Address []:fernandofilipuzzi.utn@gmail.com
 $ openssl pkcs12 -export -out certificate.pfx -inkey private-key.pem -in certificate.pem
 Enter Export Password:
 Verifying - Enter Export Password:
+
+
+# EJEMPLOS
+##sobre el certificado
+https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/WebHost%20(Windows%20Auth)/WindowsAuthWebHost/Configuration/Cert.cs
+     

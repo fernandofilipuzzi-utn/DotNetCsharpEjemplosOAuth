@@ -16,11 +16,11 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Security.Claims;
 using ResourceAPIServer.Utils;
+using ResourceAPIServer.Configuration;
 
 [assembly: OwinStartup(typeof(AuthenticatedAPIEjService.Startup))]
 namespace AuthenticatedAPIEjService
 {
-    
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
@@ -49,6 +49,7 @@ namespace AuthenticatedAPIEjService
                     ValidIssuer = issuer,
                     ValidateAudience = true,
                     ValidAudience = audience,
+                    //
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKeyResolver = (token, securityToken, identifier, parameters) =>
                     {
@@ -74,8 +75,6 @@ namespace AuthenticatedAPIEjService
                 }
                 */
             });
-
-            
         }
         /*
         private void ValidateIdToken(OAuthValidateIdentityContext context)

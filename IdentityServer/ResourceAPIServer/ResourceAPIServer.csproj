@@ -425,8 +425,8 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="certificados\certificate.pem" />
-    <Content Include="certificados\certificate.pfx" />
+    <Content Include="Configuration\certificate.pem" />
+    <Content Include="Configuration\certificate.pfx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -544,6 +544,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Configuration\Cert 2.cs" />
     <Compile Include="Controllers\EjController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -555,7 +556,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Cert.cs" />
+    <Compile Include="Configuration\Cert.cs" />
     <Compile Include="Models\CustomAuthorizeAttribute.cs" />
     <Compile Include="Models\CustomScopeAuthorizeAttribute.cs" />
     <Compile Include="Models\MiProveedorDeToken.cs" />
