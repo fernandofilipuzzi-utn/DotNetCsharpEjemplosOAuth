@@ -102,7 +102,7 @@ your-256-bit-secret
 
 ) secret base64 encoded
 
-### CREANDO CERTIFICADO
+### CREANDO CERTIFICADO - REVISAR CARPETA Configuration
 
 $ openssl req -newkey rsa:2048 -nodes -keyout private-key.pem -x509 -days 365 -out certificate.pem
 Generating a RSA private key
