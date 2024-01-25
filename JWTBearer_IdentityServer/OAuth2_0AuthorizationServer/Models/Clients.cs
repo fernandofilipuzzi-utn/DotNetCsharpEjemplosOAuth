@@ -45,16 +45,19 @@ namespace OAuth2_0AuthorizationServer.Models
                         },
                         new Client
                         {
-                            ClientName="chicholina",
+                            ClientName = "chicholina",
                             ClientId = "client3",
                             ClientSecrets = { new Secret("secret".Sha256()) },
-                            AllowedCustomGrantTypes  = { GrantTypes.AuthorizationCode },  // Cambia aquí el tipo de concesión
-                            RedirectUris = { "http://localhost:7777/identity/callback" },   // Agrega las URI de redirección adecuadas
-                            PostLogoutRedirectUris = { "http://localhost:7777/identity/logout" },  // Agrega las URI de redirección adecuadas
-                            Enabled=true,
-                            AccessTokenType=AccessTokenType.Jwt,
+                            AllowedCustomGrantTypes  = { GrantTypes.AuthorizationCode },//authorization_code
+                            RedirectUris = { "http://localhost:7777/identity/callback" },
+                            PostLogoutRedirectUris = { "http://localhost:7777/identity/logout" },
+                            Enabled = true,
+                            AccessTokenType = AccessTokenType.Jwt,
                             AllowedScopes = { "api1", "openid" },
-                            AccessTokenLifetime=accessTokenLifetimeInSeconds,
+                            AccessTokenLifetime = accessTokenLifetimeInSeconds,
+                            RequireConsent = false, // 
+                           // AllowOfflineAccess = true, //
+                            //AlwaysIncludeUserClaimsInIdToken = true // 
                         },
                         //otros clientes
                     };

@@ -13,8 +13,7 @@ namespace OAuth2_0AuthorizationServer.Models
     {
         public static List<InMemoryUser> Get()
         {
-          
-                        return new List<InMemoryUser>
+            return new List<InMemoryUser>
             {
                 new InMemoryUser
                 {
@@ -24,10 +23,10 @@ namespace OAuth2_0AuthorizationServer.Models
                     Enabled=true,
                     Claims = new List<Claim>
                     {
-                        new Claim("role", "admin"), 
+                        new Claim("role", "admin"),
                         new Claim("scope", "openid api1"),
                         new Claim("email", "john@example.org"),
-                        new Claim("x-domain", "foo") 
+                        new Claim("x-domain", "foo")
                     }
                 },
                 new InMemoryUser
@@ -55,7 +54,7 @@ namespace OAuth2_0AuthorizationServer.Models
                 // Agrega más usuarios
             };
         }
-    
+
     }
 
 }

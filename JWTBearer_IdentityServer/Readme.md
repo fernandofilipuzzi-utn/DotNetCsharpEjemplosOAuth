@@ -1,3 +1,10 @@
+# DOCUMENTACIÓN
+https://identityserver.github.io/Documentation/
+
+##sobre el certificado
+https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/WebHost%20(Windows%20Auth)/WindowsAuthWebHost/Configuration/Cert.cs
+
+
 # NUGET
 clientservices: Newtonsoft.Json, RestSharp, System.IdentityModel.Tokens.Jwt
 
@@ -19,10 +26,14 @@ AppDemoCliente, consume ambos servicios.
 # RESUMEN LLAMADAS 
 
 ## SOLICITUD DE TOKEN
+```bash
 curl -X POST -d "grant_type=password&client_id=client1&client_secret=secret&username=usuario1&password=clave123&scope=api1" http://localhost:7777/identity/connect/token
+```
 
 ## CONSUMIENDO SERVICIO
+```bash
 curl -H "Authorization: Bearer <token_generado>" http://localhost:7778/api/Ej/MiServicioProtegido
+```
 
 # PARA VERIFICAR LA ESTRUCTURA DEL TOKEN
 https://jwt.io/
@@ -136,7 +147,4 @@ Enter Export Password:
 Verifying - Enter Export Password:
 
 
-# EJEMPLOS
-##sobre el certificado
-https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/WebHost%20(Windows%20Auth)/WindowsAuthWebHost/Configuration/Cert.cs
      
