@@ -17,10 +17,21 @@ namespace OAuth2_0AuthorizationServer.Models
                     Name = "api1",
                     DisplayName = "My API"
                 },
-                 new Scope
+                new Scope
                 {
                     Name = "openid",
                     DisplayName = "OPEN ID"
+                },
+                new Scope
+                {
+                    Name = "api2",
+                    Type=ScopeType.Resource,
+                    DisplayName = "My API2",
+                    Claims = new List<ScopeClaim>
+                    {
+                        new ScopeClaim("name"),
+                        new ScopeClaim("role")
+                    }
                 },
                 //otros alcances
             };

@@ -28,7 +28,7 @@ namespace OAuth2_0AuthorizationServer.Models
                             //AllowAccessToAllScopes= true,
                             Flow=Flows.ResourceOwner,//ResourceOwner,//Flow=Flows.Custom
                             AccessTokenLifetime=accessTokenLifetimeInSeconds,
-                            AllowedScopes = { "openid", "api1" },
+                            AllowedScopes = { "openid", "api1", "api2" },
                         },
                         new Client
                         {
@@ -56,6 +56,7 @@ namespace OAuth2_0AuthorizationServer.Models
                             AllowedScopes = { "api1", "openid" },
                             AccessTokenLifetime=accessTokenLifetimeInSeconds,
                         },
+
                         //otros clientes
                     };
         }

@@ -1,28 +1,35 @@
 # DOCUMENTACIÓN
 https://identityserver.github.io/Documentation/
 
-
-
-##sobre el certificado 
+##EJEMPLOS - sobre el certificado
 https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/WebHost%20(Windows%20Auth)/WindowsAuthWebHost/Configuration/Cert.cs
-
+     
 
 # NUGET
-clientservices: Newtonsoft.Json, RestSharp, System.IdentityModel.Tokens.Jwt
+clientservices:
+```
+    Newtonsoft.Json, 
+    RestSharp, 
+    System.IdentityModel.Tokens.Jwt
+```
 
 resource api: 
-                Microsoft.AspNet.WebApi.Owin,
-                Microsoft.Owin.Security.Jwt.es,
-                Microsoft.Owin.Cors
-                Microsoft.Owin.Host.SystemWeb.es 
+```
+    Microsoft.AspNet.WebApi.Owin,
+    Microsoft.Owin.Security.Jwt.es,
+    Microsoft.Owin.Cors
+    Microsoft.Owin.Host.SystemWeb.es 
+```
 
-authorization: Microsoft.Owin.Cors
+authorization: 
+```
+    Microsoft.Owin.Cors
 
 
 # IMPLEMENTACIÓN PARA PRUEBAS
+
 APIEjService corre en el IIS como http://localhost:7778
 Auth2.0Service corre en el IIS como http://locahost:7777
-
 AppDemoCliente, consume ambos servicios.
 
 # RESUMEN LLAMADAS 
@@ -39,8 +46,10 @@ curl -H "Authorization: Bearer <token_generado>" http://localhost:7778/api/Ej/Mi
 
 # PARA VERIFICAR LA ESTRUCTURA DEL TOKEN
 https://jwt.io/
+Ejemplo:
+```
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDU2NzM0MzQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6Nzc3Ny9hcGkvdG9rZW4iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzgvYXBpL0VqL01pU2VydmljaW9Qcm90ZWdpZG8ifQ.gmQPz3zhCKgmMH3OCiNcDZV7YfXNQ8bOsxfSXEwSzqE
-
+```
 # EJEMPLO DE LLAMADAS AL SERVER AUTORIZATION
 
 #### EJEMPLO 1 - CLIENTE NO VALIDO
@@ -103,7 +112,7 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ikh
 PARA: grant_type=password&client_id=client1&client_secret=secret&username=usuario1&password=clave123&scope=api
 TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkhGbEtWUVlyRnExNl83aWVjNUNYaTE2LTVLcyIsImtpZCI6IkhGbEtWUVlyRnExNl83aWVjNUNYaTE2LTVLcyJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzcvaWRlbnRpdHkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzcvaWRlbnRpdHkvcmVzb3VyY2VzIiwiZXhwIjoxNzA2MTA1MDE0LCJuYmYiOjE3MDYxMDM4MTQsImNsaWVudF9pZCI6ImNsaWVudDEiLCJzY29wZSI6ImFwaTEiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNzA2MTAzODE0LCJpZHAiOiJpZHNydiIsImFtciI6WyJwYXNzd29yZCJdfQ.RnpbZtrLKUREET0nT9snV0emvrP2_ErD2JQL1ZbNPjUJp8axPbbC1n1wxKylXWesZcHKUE0fjNqNrIM67ONi99zIbZNipMMDI1S-Z5dUgt5iAGmPH4-4R-IJ_A9O4WVlqEdmv_6_-Xqulu2V7C5eTqzB7wyPRsLYu1TJQSIFj_zKCJNc24J0SHOZM0bGAIqe7CZK9BzWwU7si3xH8xuK9q1oeEPvZu4qgppmSaeWrvobTk9jf4QLyN87bm0RBSl_USi3Vh737IJLx8eeIdkvenuj11W8_8L-f8ykZLgm8_mBf2T9xpi0SwaDILf3X7B1YSZLKAyMc0DvDdyr_com5g
 
-```
+```plaintext
 HEADER:ALGORITHM & TOKEN TYPE
 {
   "typ": "JWT",
@@ -142,6 +151,7 @@ your-256-bit-secret
 
 ```bash
 $ openssl req -newkey rsa:2048 -nodes -keyout private-key.pem -x509 -days 365 -out certificate.pem
+
 Generating a RSA private key
 ......+++++
 ............................................+++++
@@ -163,11 +173,8 @@ Common Name (e.g. server FQDN or YOUR name) []:fernando
 Email Address []:fernandofilipuzzi.utn@gmail.com
 
 $ openssl pkcs12 -export -out certificate.pfx -inkey private-key.pem -in certificate.pem
+
 Enter Export Password:
 Verifying - Enter Export Password:
 ```
 
-# EJEMPLOS
-##sobre el certificado
-https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/WebHost%20(Windows%20Auth)/WindowsAuthWebHost/Configuration/Cert.cs
-     
