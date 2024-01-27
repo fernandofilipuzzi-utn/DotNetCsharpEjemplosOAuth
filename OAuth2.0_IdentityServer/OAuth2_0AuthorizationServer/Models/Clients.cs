@@ -19,14 +19,15 @@ namespace OAuth2_0AuthorizationServer.Models
                     {
                         new Client
                         {
+                            /*no requiere username y pasword*/
                             ClientName="melania trump",
                             ClientId = "client1",
                             ClientSecrets = {new Secret("secret".Sha256()) },
-                            AllowedCustomGrantTypes  =  { GrantTypes.Password,GrantTypes.ClientCredentials },
+                            AllowedCustomGrantTypes  =  { GrantTypes.Password,GrantTypes.ClientCredentials/*client_credentials*/ },
                             Enabled=true,
                             AccessTokenType=AccessTokenType.Jwt,
                             //AllowAccessToAllScopes= true,
-                            Flow=Flows.ResourceOwner,//ResourceOwner,//Flow=Flows.Custom
+                            Flow=Flows.ClientCredentials,//ResourceOwner,//ResourceOwner,//Flow=Flows.Custom
                             AccessTokenLifetime=accessTokenLifetimeInSeconds,
                             AllowedScopes = { "openid", "api1", "api2" },
                         },
@@ -41,6 +42,21 @@ namespace OAuth2_0AuthorizationServer.Models
                             AllowedScopes = { "api1" },
                             //Flow=Flows.Custom
                             Flow=Flows.ResourceOwner,
+                            AccessTokenLifetime=accessTokenLifetimeInSeconds,
+                        },
+                        new Client
+                        {
+                            ClientName="john nada",
+                            ClientId = "client4",
+                            ClientSecrets = { new Secret("secret".Sha256()) },
+                            AllowedCustomGrantTypes  =  {GrantTypes.ClientCredentials },
+                            Enabled=true,
+                            AccessTokenType=AccessTokenType.Jwt,
+                            AllowedScopes = { "api1" },
+                            Flow=Flows.ClientCredentials,
+                            AlwaysSendClientClaims=true,
+                            ClientUri="http://jonh.org",
+                            IncludeJwtId=true,
                             AccessTokenLifetime=accessTokenLifetimeInSeconds,
                         },
                         new Client

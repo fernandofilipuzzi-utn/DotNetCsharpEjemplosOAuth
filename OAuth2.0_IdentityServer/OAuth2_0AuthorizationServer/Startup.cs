@@ -13,22 +13,29 @@ using OAuth2_0AuthorizationServer.Models;
 using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using OAuth2_0AuthorizationServer.Configuration;
+using Serilog;
 
 [assembly: OwinStartup(typeof(OAuth2_0AuthorizationServer.Startup))]
 namespace OAuth2_0AuthorizationServer
 {
     public class Startup
     {
-        
         public void Configuration(IAppBuilder app)
         {
+            /*
+            Log.Logger = new LoggerConfiguration()
+              .MinimumLevel.Debug()
+              .WriteTo.File(@"OAuth2_0AuthorizationServer.txt")
+              .CreateLogger();
+            */
+
             app.Map("/identity", identity => {
 
                 var factory = new IdentityServerServiceFactory()
                                    .UseInMemoryClients(Clients.Get())
                                    .UseInMemoryScopes(Scopes.Get())
                                    .UseInMemoryUsers(Users.Get());
-
+                                
                 identity.UseIdentityServer(new IdentityServerOptions
                 {
                     SiteName = "Demo Identity Server",

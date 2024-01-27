@@ -1,4 +1,5 @@
-﻿using IdentityServer3.Core.Models;
+﻿using IdentityServer3.Core;
+using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services.InMemory;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace OAuth2_0AuthorizationServer.Models
         public static List<InMemoryUser> Get()
         {
           
-                        return new List<InMemoryUser>
+            return new List<InMemoryUser>
             {
                 new InMemoryUser
                 {
@@ -24,9 +25,10 @@ namespace OAuth2_0AuthorizationServer.Models
                     Enabled=true,
                     Claims = new List<Claim>
                     {
-                        new Claim("role", "admin"), 
-                        new Claim("scope", "openid api1"),
-                        new Claim("email", "john@example.org"),
+                        new Claim(Constants.ClaimTypes.Role, "admin"), 
+                        new Claim(Constants.ClaimTypes.Scope, "openid api1"),
+                        new Claim(Constants.ClaimTypes.Email, "john@example.org"),
+                        new Claim(Constants.ClaimTypes.Audience, "http://prueba.com"),
                         new Claim("x-domain", "foo") 
                     }
                 },
