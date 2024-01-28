@@ -1,5 +1,4 @@
-﻿//using Microsoft.IdentityModel.Tokens;
-using JWTBearer_SimpleServer.Utils;
+﻿using JWTBearer_SimpleServer.Utils;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,7 @@ using System.Web.Http;
 namespace JWTBearer_SimpleServer
 {
     [RoutePrefix("identity")]
-    public class OAuth2Controller : ApiController
+    public class JWTController : ApiController
     {
         [HttpPost]
         [Route("token")]
@@ -30,9 +29,7 @@ namespace JWTBearer_SimpleServer
             if (ValidarCredenciales(guid, frase))
             {
                 string token = GenerarToken(guid);
-                var response = Request.CreateResponse(HttpStatusCode.OK);
-                response.Content = new StringContent(token, Encoding.UTF8, "application/jwt");
-                return response;
+                return Request.CreateResponse(HttpStatusCode.OK, new { access_token = token, token_type = "Bearer" });
             }
             else
             {

@@ -43,9 +43,9 @@ namespace ResourceAPIServer.Utils
                 var principal = tokenHandler.ValidateToken(tokenString, tokenValidationParameters, out validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                if (jwtToken.Payload.TryGetValue("guid", out object guid) && jwtToken.Payload.TryGetValue("frase", out object frase))
+                if (jwtToken.Payload.TryGetValue("guid", out object guid))
                 {
-                    if (guid.ToString() == expectedGuid && frase.ToString() == expectedFrase)
+                    if (guid.ToString() == expectedGuid )
                     {
                         return principal;
                     }
