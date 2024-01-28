@@ -16,13 +16,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "clientes", "clientes", "{8E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "recursos tokenizados", "recursos tokenizados", "{1EBC4E69-B082-46BF-8A9D-E6749713985F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "servicio auth2.0", "servicio auth2.0", "{4A6BEDEA-6208-402F-8EBD-37B6C254457B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "servicio jwtbearer", "servicio jwtbearer", "{4A6BEDEA-6208-402F-8EBD-37B6C254457B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceAPIServer.ClientServices", "ResourceAPIServer.ClientServices\ResourceAPIServer.ClientServices.csproj", "{A68F2A19-8F29-4C17-8E47-AE0576C1EA9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerarGUID", "..\GenerarGUID\GenerarGUID.csproj", "{6EDD0635-1FCD-4F47-B89C-7EB7DB98756E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ejemplos", "ejemplos", "{4C87E007-6146-4CDA-807A-0FCFDE98EA5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTBearer_SimpleServer", "JWTBearer_SimpleServer\JWTBearer_SimpleServer.csproj", "{661FC864-FBE1-4472-B385-2DC05BC34C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,10 @@ Global
 		{6EDD0635-1FCD-4F47-B89C-7EB7DB98756E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EDD0635-1FCD-4F47-B89C-7EB7DB98756E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EDD0635-1FCD-4F47-B89C-7EB7DB98756E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{661FC864-FBE1-4472-B385-2DC05BC34C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661FC864-FBE1-4472-B385-2DC05BC34C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661FC864-FBE1-4472-B385-2DC05BC34C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661FC864-FBE1-4472-B385-2DC05BC34C23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{2799BEC7-44A9-4CF2-B950-1C3FD50967E6} = {1EBC4E69-B082-46BF-8A9D-E6749713985F}
 		{A68F2A19-8F29-4C17-8E47-AE0576C1EA9B} = {8EBD3F35-870D-474C-AA06-F9696D95405B}
 		{6EDD0635-1FCD-4F47-B89C-7EB7DB98756E} = {4C87E007-6146-4CDA-807A-0FCFDE98EA5C}
+		{661FC864-FBE1-4472-B385-2DC05BC34C23} = {4A6BEDEA-6208-402F-8EBD-37B6C254457B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16E455FD-3AF3-43A8-A8B7-2837A0FE5B6C}
