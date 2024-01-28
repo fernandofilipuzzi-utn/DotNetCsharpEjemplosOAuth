@@ -20,10 +20,10 @@ namespace AuthenticatedAPIEjService
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            Configure(app);
         }
 
-        private void ConfigureAuth(IAppBuilder app)
+        private void Configure(IAppBuilder app)
         {
             app.Use(async (context, next) =>
             {
