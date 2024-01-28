@@ -1,5 +1,6 @@
 ﻿//using Microsoft.IdentityModel.Tokens;
 using JWTBearer_SimpleServer.Utils;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens;
@@ -7,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,20 +21,18 @@ namespace JWTBearer_SimpleServer
     public class OAuth2Controller : ApiController
     {
         [HttpPost]
-        [Route("connect/token")]
+        [Route("token")]
         public HttpResponseMessage GetToken()
         {
-            #region credenciales del cliente (aplicación cliente)
-            string clientId = HttpContext.Current.Request.Form["client_id"];
-            string clientSecret = HttpContext.Current.Request.Form["client_secret"];
-            #endregion
-            string username = HttpContext.Current.Request.Form["username"];
-            string password = HttpContext.Current.Request.Form["password"];
-            
-            if (ValidarCredenciales(username, password))
+            string guid = HttpContext.Current.Request.Form["guid"];
+            string frase = HttpContext.Current.Request.Form["frase"];
+
+            if (ValidarCredenciales(guid, frase))
             {
-                string token = GenerarToken();
-                return Request.CreateResponse(HttpStatusCode.OK, new { access_token = token, token_type = "Bearer" });
+                string token = GenerarToken(guid);
+                var response = Request.CreateResponse(HttpStatusCode.OK);
+                response.Content = new StringContent(token, Encoding.UTF8, "application/jwt");
+                return response;
             }
             else
             {
@@ -40,27 +40,29 @@ namespace JWTBearer_SimpleServer
             }
         }
 
-        private bool ValidarCredenciales(string username, string password)
+        private bool ValidarCredenciales(string guid, string frase)
         {
-            // implementar consulta a la bd
-            return username == "usuario1" && password == "clave123";
+            return guid == "guid" && frase == "frase";
         }
 
-        private string GenerarToken()
+        private string GenerarToken(string guid)
         {
-            string secretKey = "secret".Sha256();
-            var securityKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.Default.GetBytes(secretKey));
-            var credentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(securityKey, Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature);
+            string secretKey = "secret".Sha256(); 
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+                {
+                    new Claim("guid", guid)
+                };
 
             var token = new JwtSecurityToken(
-                issuer: "http://localhost:7777/identity/connect/token",
-                audience: "http://localhost:7778/api/Ej/MiServicioProtegido",
-                expires: DateTime.Now.AddDays(199),
+                claims: claims,
+                expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials
             );
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            return tokenHandler.WriteToken(token);
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

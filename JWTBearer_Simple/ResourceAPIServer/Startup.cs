@@ -11,9 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using ResourceAPIServer.Utils;
+using System.IdentityModel.Tokens.Jwt;
 
-//[assembly: OwinStartupAttribute(typeof(AuthenticatedAPIEjService.Startup))]
-//[assembly: OwinStartup("ProductionConfiguration", AuthenticatedAPIEjService.Startup)]
 [assembly: OwinStartup(typeof(AuthenticatedAPIEjService.Startup))]
 namespace AuthenticatedAPIEjService
 {
@@ -26,24 +25,31 @@ namespace AuthenticatedAPIEjService
 
         private void ConfigureAuth(IAppBuilder app)
         {
-            // Configuración para consumir el token en la API protegida
-            var issuer = "http://localhost:7777/identity/connect/token";
-            var audience = "http://localhost:7778/api/Ej/MiServicioProtegido";
-            var secretKey = "secret".Sha256();
-
-            app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
+            app.Use(async (context, next) =>
             {
-                AuthenticationMode = AuthenticationMode.Active,
-                TokenValidationParameters = new TokenValidationParameters
+                var token = context.Request.Headers.Get("Authorization");
+
+                if (!string.IsNullOrEmpty(token) && token.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
                 {
-                    ValidateIssuer = true,
-                    ValidIssuer = issuer,
-                    ValidateAudience = true,
-                    ValidAudience = audience,
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.Default.GetBytes(secretKey)),
-                    ClockSkew = TimeSpan.FromMinutes(5)
+                    var tokenString = token.Substring("Bearer ".Length).Trim();
+                    var tokenHandler = new JwtValidator("secret");
+                    
+                    try
+                    {
+                        var principal = tokenHandler.ValidateToken(tokenString, "guid", "frase");
+                        context.Request.User = principal;
+                    }
+                    catch (SecurityTokenValidationException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
                 }
+
+                await next.Invoke();
             });
         }
     }
