@@ -147,4 +147,6 @@ Enter Export Password:
 Verifying - Enter Export Password:
 
 
-     
+//https://www.codeproject.com/Questions/5166114/How-to-generate-access-token-by-using-jwt
+//https://medium.com/@susithapb/implementing-jwt-authentication-and-authorization-in-net-core-web-api-bf438d7ab9a7
+//https://thenikhilk.com/2019/09/08/restful-api-with-authentication-using-web-api-and-jwt/

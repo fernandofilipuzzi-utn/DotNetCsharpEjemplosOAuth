@@ -43,7 +43,6 @@ namespace OAuth2_0AuthorizationServer
                     Factory = factory,
                     RequireSsl = false
                 });
-
             });
             
             /*
