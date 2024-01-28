@@ -21,11 +21,11 @@ namespace OAuth2_0AuthorizationServer
             {
                 string usuario = cookie["Usuario"];
                 string expiracion = cookie["Expiracion"];
-                if (string.IsNullOrEmpty(expiracion) == false)
+                if (string.IsNullOrEmpty(expiracion) == true)
                 {
                     DateTime expire = DateTime.Parse(expiracion);
                     if (DateTime.Now > expire)
-                        Response.Redirect("login");
+                        Response.Redirect("admin/login.aspx");
                 }
             }
         }
@@ -36,10 +36,10 @@ namespace OAuth2_0AuthorizationServer
 
             if (cookie != null)
             {
-                cookie["Expiracion"] = DateTime.Now.ToString();
-                Response.Cookies.Add(cookie);
+                Request.Cookies.Clear();
+                Response.Cookies.Remove("UsuarioSettings");
             }
-            Response.Redirect("login");
+            Response.Redirect("admin/login.aspx");
         }
 
         public void ShowMessage(string titulo, string mensaje)
