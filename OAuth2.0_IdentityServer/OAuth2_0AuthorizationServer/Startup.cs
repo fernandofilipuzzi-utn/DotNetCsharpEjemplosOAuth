@@ -45,27 +45,7 @@ namespace OAuth2_0AuthorizationServer
                 });
             });
             
-            /*
-            #region restringir al identityserver
-            app.Use(async (context, next) =>
-            {
-                // verificando credenciales
-                if (UsuarioNoAutenticado(context))
-                {
-                    context.Response.StatusCode = 401; // No autorizado
-                    return;
-                }
-
-                #region  identidad de usuario
-                //string nombreUsuario = "usuario1";
-                //IEnumerable<Claim> claims = ObtenerClaimsUsuario(); 
-                //EstablecerIdentidadUsuario(HttpContext.Current.GetOwinContext(), nombreUsuario, claims);
-                #endregion
-
-                await next.Invoke();
-            });
-            #endregion
-            */
+           
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
         }
 

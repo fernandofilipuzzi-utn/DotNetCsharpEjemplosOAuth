@@ -71,6 +71,7 @@ namespace OAuth2_0AuthorizationServer.Models
                             AccessTokenType=AccessTokenType.Jwt,
                             AllowedScopes = { "api1", "openid" },
                             AccessTokenLifetime=accessTokenLifetimeInSeconds,
+                            AlwaysSendClientClaims=true,
                         },
 
                         //otros clientes

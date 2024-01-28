@@ -1,12 +1,11 @@
-﻿using System;
-using System.Web;
-using Serilog;
-using Newtonsoft.Json;
+﻿using Serilog;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Collections.Specialized;
-using System.Text;
+using System.Linq;
+using System.Web;
 
-namespace OAuth2_0AuthorizationServer.Filters
+namespace ResourceAPIServer.Filters
 {
     public class HttpTrafficLogger1 : IHttpModule
     {
@@ -43,6 +42,8 @@ namespace OAuth2_0AuthorizationServer.Filters
             var application = (HttpApplication)sender;
             var response = application.Response;
 
+
+
             // Capturar la respuesta saliente
             Log.Information("Outgoing Response: {StatusCode} {StatusDescription} {Headers}", response.StatusCode, response.StatusDescription, response.Headers);
         }
@@ -50,6 +51,5 @@ namespace OAuth2_0AuthorizationServer.Filters
         //https://stackoverflow.com/questions/43403941/how-to-read-asp-net-core-response-body
         //https://stackoverflow.com/questions/48396746/asp-net-response-filter-on-the-entire-content-full-response
         //https://weblog.west-wind.com/posts/2009/Nov/13/Capturing-and-Transforming-ASPNET-Output-with-ResponseFilter
-
     }
 }

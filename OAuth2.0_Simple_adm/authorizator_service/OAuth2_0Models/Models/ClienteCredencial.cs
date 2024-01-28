@@ -10,6 +10,8 @@ namespace OAuth2_0Models.Models
     {
         public int Id { get; set; }
         public string Client_ID { get; set; }
-        public string Client_Secret { get; set; }        
+        public string Client_Secret { get; set; }
+        public string Habilitados { get; set; }
+
     }
 }
