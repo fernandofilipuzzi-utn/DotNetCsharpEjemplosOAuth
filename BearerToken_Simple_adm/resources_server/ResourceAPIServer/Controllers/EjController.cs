@@ -1,4 +1,4 @@
-﻿using ResourceAPIServer.Models;
+﻿using ResourceAPIServer.AuthBearerToken;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,8 +9,12 @@ using System.Web.Http;
 
 namespace ResourceAPIServer.Controllers
 {
+    
+    [RoutePrefix("api")]
+    ///[CustomAuthorizationFilter]
     public class EjController : ApiController
     {
+        [Route("MiServicioNoProtegido")]
         [HttpGet]
         [AllowAnonymous]
         public IHttpActionResult MiServicioNoProtegido()
@@ -21,12 +25,16 @@ namespace ResourceAPIServer.Controllers
         }
 
         [HttpGet]
-        [CustomAuthorize]
+        //[Authorize]
+        //[CustomAuthorize]
+        [ScopeAuthorize("api1")]
+        [Route("Ejemplos/MiServicioProtegido")]
         public IHttpActionResult MiServicioProtegido()
         {
             var user = User.Identity.Name;
             Debug.WriteLine($"Usuario actual: {user}");
             var userName = this.RequestContext.Principal.Identity.Name;
+
             return Ok($"¡Bienvenido al servicio protegido! {userName}");
         }
     }

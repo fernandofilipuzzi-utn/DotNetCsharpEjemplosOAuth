@@ -38,24 +38,27 @@ namespace BearerToken_SimpleServer_adm
 
         [HttpPost]
         [Route("token")]
-        public HttpResponseMessage GetToken()
+        public IHttpActionResult GetToken()
         {
             Configure();
 
             string guid = HttpContext.Current.Request.Form["guid"];
             string frase = HttpContext.Current.Request.Form["frase"];
+            if (string.IsNullOrWhiteSpace(guid) || string.IsNullOrWhiteSpace(frase))
+            {
+                return BadRequest();
+            }
 
             if (_validador.ValidarCredenciales(guid, frase))
             {
-                string token = _generador.GenerarToken(guid);
-                return Request.CreateResponse(HttpStatusCode.OK, new { access_token = token, token_type = "Bearer" });
+
+                string token = _generador.GenerarToken(guid, "api1");
+                return Ok(new { access_token = token, token_type = "Bearer" });
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, "Credenciales inválidas");
+                return BadRequest();
             }
         }
-
-        
     }
 }

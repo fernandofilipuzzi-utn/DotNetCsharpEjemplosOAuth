@@ -11,7 +11,7 @@ namespace BearerToken_SimpleServer_adm.Utils
 {
     public class TokenGenerador
     {
-        public string GenerarToken(string guid)
+        public string GenerarToken(string guid, string scopes)
         {
             string secretKey = "secret".Sha256();
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
@@ -19,7 +19,8 @@ namespace BearerToken_SimpleServer_adm.Utils
 
             var claims = new[]
                 {
-                    new Claim("guid", guid)
+                    new Claim("guid", guid),
+                    new Claim("scope", scopes)
                 };
 
             var token = new JwtSecurityToken(
