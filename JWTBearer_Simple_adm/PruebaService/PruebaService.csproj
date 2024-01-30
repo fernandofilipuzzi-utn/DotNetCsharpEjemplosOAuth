@@ -70,19 +70,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\authorizator_service\JWTBearer_DAO\JWTBearer_DAO.csproj">
+    <ProjectReference Include="..\auth_srv\JWTBearer_DAO\JWTBearer_DAO.csproj">
       <Project>{24f04221-1406-47b4-8deb-8055f69b720a}</Project>
       <Name>JWTBearer_DAO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\authorizator_service\JWTBearer_Models\JWTBearer_Models.csproj">
+    <ProjectReference Include="..\auth_srv\JWTBearer_Models\JWTBearer_Models.csproj">
       <Project>{cf14c57a-404d-4834-8f03-2d0b6120a286}</Project>
       <Name>JWTBearer_Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\authorizator_service\JWTBearer_Services\JWTBearer_Services.csproj">
+    <ProjectReference Include="..\auth_srv\JWTBearer_Services\JWTBearer_Services.csproj">
       <Project>{55701cf7-2994-46b1-b68d-b8c623154c8d}</Project>
       <Name>JWTBearer_Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\authorizator_service\JWTBearer_SQLiteDaoImpl\JWTBearer_SQLiteDaoImpl.csproj">
+    <ProjectReference Include="..\auth_srv\JWTBearer_SQLiteDaoImpl\JWTBearer_SQLiteDaoImpl.csproj">
       <Project>{9ef2535f-a49d-41cd-b126-2614831a55fb}</Project>
       <Name>JWTBearer_SQLiteDaoImpl</Name>
     </ProjectReference>
