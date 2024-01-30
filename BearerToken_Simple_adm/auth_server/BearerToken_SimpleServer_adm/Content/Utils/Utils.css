@@ -1,0 +1,15 @@
+﻿
+
+.copy-paste {
+    position: relative;
+}
+
+.copy-paste::after {
+    content: "\1F4CB"; /* Unicode para el icono de copiar 📋 */
+    font-size: 1.2em;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
