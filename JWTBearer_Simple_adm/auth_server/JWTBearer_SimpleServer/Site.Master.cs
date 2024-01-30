@@ -15,7 +15,7 @@ namespace JWTBearer_SimpleServer
 
             if (cookie == null)
             {
-                Response.Redirect("admin/login.aspx");
+                Response.Redirect("/Admin/login.aspx");
             }
             else
             {
@@ -25,7 +25,7 @@ namespace JWTBearer_SimpleServer
                 {
                     DateTime expire = DateTime.Parse(expiracion);
                     if (DateTime.Now > expire)
-                        Response.Redirect("admin/login.aspx");
+                        Response.Redirect("/Admin/login.aspx");
                 }
             }
         }
@@ -39,7 +39,7 @@ namespace JWTBearer_SimpleServer
                 Request.Cookies.Clear();
                 Response.Cookies.Remove("UsuarioSettings");
             }
-            Response.Redirect("admin/login.aspx");
+            Response.Redirect("Admin/login.aspx");
         }
 
         public void ShowMessage(string titulo, string mensaje)

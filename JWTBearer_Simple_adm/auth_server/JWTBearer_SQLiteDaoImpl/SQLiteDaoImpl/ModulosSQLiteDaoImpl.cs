@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS modulos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     descripcion TEXT NOT NULL,
     url TEXT NOT NULL,
-    id_credencial INTEGER NOT NULL
+    id_credencial INTEGER
 )";
                 using (var query = new SQLiteCommand(sql, conn))
                 {

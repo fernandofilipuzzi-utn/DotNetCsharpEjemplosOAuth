@@ -24,15 +24,6 @@ namespace JWTBearer_SimpleServer.Admin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control uppLoginVecino.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uppLoginVecino;
-
-        /// <summary>
         /// Control tbUsuario.
         /// </summary>
         /// <remarks>

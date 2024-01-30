@@ -84,5 +84,10 @@ namespace JWTBearer_SimpleServer.Admin
         {
             
         }
+
+        protected void lbtnModificarModulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

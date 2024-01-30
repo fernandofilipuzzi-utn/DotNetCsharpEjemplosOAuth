@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="JWTBearer_SimpleServer.Admin.login" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +11,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="/Content/css" />
+    <webopt:BundleReference runat="server" Path="/Content/css" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <style>
@@ -46,8 +47,6 @@
 
         <script type="text/javascript">
 
-            //window.history.replaceState({}, '', './Default');
-
             window.addEventListener('pageshow', function (event) {
                 if (event.persisted) {
                     var cookie = document.cookie.match(/(^|;) ?UsuarioSettings=([^;]*)(;|$)/);
@@ -55,7 +54,6 @@
                         alert('no existe');
                     }
                     else {
-                        //  alert('existe');
                         window.location.href = 'Default.aspx';
                     }
                 }
@@ -63,32 +61,43 @@
 
         </script>
 
-        <asp:UpdatePanel ID="uppLoginVecino" runat="server">
-            <ContentTemplate>
+        <div class="container">
 
-                <div class="container body-content">
-                    <div class="col-md-5">
-                        <div css="form-group">
-                            <asp:Label Text="Usuario:" for="tbUsuario"  runat="server" />
-                            <asp:TextBox ID="tbUsuario" CssClass="form-control"
-                                         placeholder="Ingrese su el nombre de Usuario"  runat="server" />
+            <div class="jumbotron">
+                <h3 class="display-4">Login</h3>
+                <p class="lead">Ingres su usuario y contraseña</p>
+            </div>
+
+            <div class="row text-center p-3" style="background-color: #dcdced;">
+
+                <div class="contact-from col-2"></div>
+
+                <div class="contact-from col-8 p-3">
+                    <div class="form-group row p-3">
+                        <label class="col-sm-2 col-form-label" for="tbUsuario">Usuario</label>
+                        <div class="row-10">
+                            <asp:TextBox ID="tbUsuario" CssClass="form-control form-control-lg" placeholder="Ingrese su el nombre de Usuario" runat="server" />
+                            <small id="usuarioHelp" class="form-text text-muted">Usuario registrado</small>
                         </div>
-
-                        <div css="form-group">
-                            <asp:Label Text="Clave:" for="tbClave" runat="server" />
-                            <asp:TextBox ID="tbClave" TextMode="Password" CssClass="form-control"
-                                        placeholder="Ingrese su clave" runat="server" />
-                        </div>
-
-                        <asp:Button ID="btnAceptar" Text="Ingresar" CssClass="btn btn-primary" 
-                                    OnClick="btnAceptar_Click" runat="server" />
                     </div>
 
-                    <div><asp:Label ID="lbError" runat="server" Visible="false" /> </div>
+                    <div class="form-group row p-3">
+                        <label class="col-sm-2 col-form-label" for="tbClave">Clave</label>
+                        <div class="row-10">
+                            <asp:TextBox ID="tbClave" TextMode="Password" CssClass="form-control form-control-lg" placeholder="Ingrese su clave" runat="server" />
+                        </div>
+                    </div>
+
+                    <asp:Button ID="btnAceptar" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
+
+                    <div class="col-4 p-3">
+                        <asp:Label CssClass="alert alert-dark" role="alert" ID="lbError" runat="server" Visible="false" />
+                    </div>
                 </div>
 
-            </ContentTemplate>
-        </asp:UpdatePanel>
+                <div class="contact-from col-3"></div>
+            </div>
+        </div>
     </form>
 </body>
 </html>

@@ -34,7 +34,7 @@
                     <td><%#Eval("habilitado")%></td> 
                     <td><%#Eval("scopes")%></td>
                     <td>
-                        <asp:HyperLink ID="hlModificar" runat="server" NavigateUrl='<%# $"credenciales_edicion.aspx?Id={Eval("Id")}" %>'><i class="fas fa-pencil-alt"></i> </asp:HyperLink>
+                        <asp:HyperLink ID="hlModificar" runat="server" NavigateUrl='<%# $"credenciales_edicion.aspx?Id={Eval("Id")}" %>'><i class="fas fa-pencil-alt"></i></asp:HyperLink>
                         <asp:LinkButton ID="lbtnEliminar" OnClick="lbtnEliminar_Click" runat="server"><i class="fas fa-trash" CommandArgument="<%#$"{Eval("id")}"%>"></i></asp:LinkButton>
                     </td>
                     
