@@ -77,31 +77,28 @@
                 <ItemTemplate>
                     <tr>
                         <td>
-                            <%#Eval("id")%>
+                            <asp:TextBox ID="tbEdIdModulo" CssClass="form-control" Text='<%#Eval("id")%>' runat ="server" placeholder="descripción" />
+                            
                         </td>
                         <td>
-                            <asp:TextBox ID="tbDescripcionEd" CssClass="form-control" Text='<%#Eval("descripcion")%>' runat ="server" placeholder="descripción" />
+                            <asp:TextBox ID="tbEdDescripcionModulo" CssClass="form-control" Text='<%#Eval("descripcion")%>' runat ="server" placeholder="descripción" />
                         </td>
                         <td>
-                            <asp:TextBox ID="tbUrlEd" CssClass="form-control" Text='<%#Eval("url")%>' runat ="server" placeholder="url" />
+                            <asp:TextBox ID="tbEdUrlModulo" CssClass="form-control" Text='<%#Eval("url")%>' runat ="server" placeholder="url" />
                         </td>
                         <td>
-                            <asp:LinkButton ID="lbtnModificarModulo" OnClick="lbtnModificarModulo_Click" CommandArgument='<%#$"{Eval("id")}"%>' runat="server"><i class="fas fa-pencil-alt"></i></asp:LinkButton>
-                            <asp:LinkButton ID="lbtnEliminarModulo" OnClick="lbtnEliminarModulo_Click" CommandArgument='<%#$"{Eval("id")}"%>' runat="server"><i class="fas fa-trash"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lbtnEdModificarModulo" OnClick="lbtnEdModificarModulo_Click" CommandArgument='<%#$"{Eval("id")}"%>' runat="server"><i class="fas fa-pencil-alt"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lbtnEdEliminarModulo" OnClick="lbtnEdEliminarModulo_Click" CommandArgument='<%#$"{Eval("id")}"%>' runat="server"><i class="fas fa-trash"></i></asp:LinkButton>
                         </td>
                     </tr>
                 </ItemTemplate>
 
                 <InsertItemTemplate>
                     <tr>
-                        <td>
-                            <asp:TextBox ID="tbIdModulo" CssClass="form-control" Text="" runat="server" placeholder="Id" /></td>
-                        <td>
-                            <asp:TextBox ID="tbDescripcion" CssClass="form-control" Text="" runat="server" placeholder="Descripcion" /></td>
-                        <td>
-                            <asp:TextBox ID="tbURL" CssClass="form-control" Text="" runat="server" placeholder="URL" /></td>
-                        <td>
-                            <asp:LinkButton ID="lBtnAgregarNuevoModulo" OnClick="lBtnAgregarNuevoModulo_Click" runat="server"><i class="fas fa-plus"></i></asp:LinkButton></td>
+                        <td><asp:TextBox ID="tbIdModulo" CssClass="form-control" Text="" runat="server" placeholder="Id" /></td>
+                        <td><asp:TextBox ID="tbDescripcion" CssClass="form-control" Text="" runat="server" placeholder="Descripcion" /></td>
+                        <td><asp:TextBox ID="tbURL" CssClass="form-control" Text="" runat="server" placeholder="URL" /></td>
+                        <td><asp:LinkButton ID="lBtnAgregarNuevoModulo" OnClick="lBtnAgregarNuevoModulo_Click" runat="server"><i class="fas fa-plus"></i></asp:LinkButton></td>
                     </tr>
                 </InsertItemTemplate>
             </asp:ListView>

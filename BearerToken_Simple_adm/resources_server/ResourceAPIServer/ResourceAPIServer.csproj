@@ -385,9 +385,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AuthBearerTokenUtils\ResponseMiddleware.cs" />
     <Compile Include="AuthBearerTokenUtils\otros\CustomAuthorizationFilter.cs" />
     <Compile Include="AuthBearerTokenUtils\ScopeAuthorizeAttribute.cs" />
     <Compile Include="AuthBearerTokenUtils\otros\CustomUnauthorizedResult.cs" />
+    <Compile Include="AuthBearerTokenUtils\ScopeUtils.cs" />
     <Compile Include="AuthBearerTokenUtils\ValidatorBearerToken.cs" />
     <Compile Include="Controllers\EjController.cs" />
     <Compile Include="Default.aspx.cs">
@@ -405,7 +407,6 @@
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Filters\HttpTrafficLogger.cs" />
-    <Compile Include="Filters\HttpTrafficLogger1.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

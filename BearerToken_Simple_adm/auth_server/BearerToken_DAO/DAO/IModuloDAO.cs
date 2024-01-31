@@ -17,5 +17,6 @@ namespace BearerToken_DAO.DAO
         Modulo BuscarPorId(int id);
         DataSet BuscarTodos();
         DataSet BuscarPorIdCredencial(int idCredencial);
+        DataSet BuscarPorGuidCredencial(string guid);
     }
 }

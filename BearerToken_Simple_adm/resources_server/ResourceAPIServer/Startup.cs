@@ -12,6 +12,9 @@ using System.Web.Http;
 using ResourceAPIServer.Utils;
 using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json;
+using System.IO;
+using System.Web;
+using ResourceAPIServer.AuthBearerTokenUtils;
 
 [assembly: OwinStartup(typeof(AuthenticatedAPIEjService.Startup))]
 namespace AuthenticatedAPIEjService
@@ -20,6 +23,9 @@ namespace AuthenticatedAPIEjService
     {
         public void Configuration(IAppBuilder app)
         {
+            /*es modificar la respuesta del middleware*/
+            //app.Use(typeof(ResponseMiddleware));
+            
             Configure(app);
         }
 
@@ -59,17 +65,9 @@ namespace AuthenticatedAPIEjService
                                 var principal = tokenHandler.ValidateToken(tokenString, tokenValidationParameters, out var validatedToken);
 
                                 var jwtToken = (JwtSecurityToken)validatedToken;
-                                if (!jwtToken.Payload.TryGetValue("guid", out var guid)) //|| guid.ToString() != "expectedGuid")
+                                if (!jwtToken.Payload.TryGetValue("guid1", out var guid)) //|| guid.ToString() != "expectedGuid")
                                 {
-                                    /*
-                                    context.Response.StatusCode = 401;
-                                    context.Response.ContentType = "application/json";
-                                    var errorMessage = new { mensaje = "Unauthorized" };
-                                    var json = JsonConvert.SerializeObject(errorMessage);
-                                    await context.Response.WriteAsync("{ mensaje:'No autorizado!'}");
-                                    context.OwinContext.Response.WriteAsync("{ mensaje:'No autorizado!'}");
-                                    */
-                                    return;
+                                     return;
                                 }
                                 else
                                 {
@@ -78,19 +76,6 @@ namespace AuthenticatedAPIEjService
                             }
                             catch (Exception ex)
                             {
-                                /*
-                                context.Response.StatusCode = 401;
-                                context.Response.ContentType = "application/json";
-                                await context.Response.WriteAsync("Unauthorized");
-                                */
-                                /*
-                                context.Response.StatusCode = 401;
-                                context.Response.ContentType = "application/json";
-                                var errorMessage = new { mensaje = "Unauthorized" };
-                                */
-                                //var json = JsonConvert.SerializeObject(errorMessage);
-                                //await context.Response.cpmContext="{ mensaje:'No autorizado!'}";
-
                                 return;
                             }
                         }

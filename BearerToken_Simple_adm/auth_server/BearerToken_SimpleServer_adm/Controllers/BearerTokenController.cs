@@ -4,6 +4,7 @@ using BearerToken_SimpleServer_adm.Utils;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
@@ -41,25 +42,60 @@ namespace BearerToken_SimpleServer_adm
         [Route("token")]
         public IHttpActionResult GetToken()
         {
-            Configure();
+            try
+            {
+                Configure();
 
-            string guid = HttpContext.Current.Request.Form["guid"];
-            string frase = HttpContext.Current.Request.Form["frase"];
-            if (string.IsNullOrWhiteSpace(guid) || string.IsNullOrWhiteSpace(frase))
-            {
-                return BadRequest();
-            }
+                string guid = HttpContext.Current.Request.Form["guid"];
+                string frase = HttpContext.Current.Request.Form["frase"];
+                if (string.IsNullOrWhiteSpace(guid) || string.IsNullOrWhiteSpace(frase))
+                {
+                    return BadRequest();
+                }
 
-            CredencialClienteAPI credencial= _validador.ValidarCredenciales(guid, frase);
-            if ( credencial!=null )
-            {
-                string token = _generador.GenerarToken(guid, credencial.Scopes);
-                return Ok(new { access_token = token, token_type = "Bearer" });
+                CredencialClienteAPI credencial = _validador.ValidarCredenciales(guid, frase);
+                if (credencial != null)
+                {
+                    string token = _generador.GenerarToken(guid, credencial.Scopes);
+                    return Ok(new { access_token = token, token_type = "Bearer" });
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest();
+                return InternalServerError(ex);
             }
+        }
+
+        [HttpPost]
+        [Route("modulos/urls")]
+        public IEnumerable<Modulo> GetModulosUrls(string guid)
+        {
+            List<Modulo> modulos = new List<Modulo>();
+            try
+            {
+                Configure();
+
+                DataTable dtModulos =_validador.moduloDAO.BuscarPorGuidCredencial(guid).Tables[0];
+               
+                foreach(DataRow dc in dtModulos.Rows)
+                {
+                    modulos.Add(new Modulo
+                    {
+                        Id = Convert.ToInt32(dc["id"]),
+                        Descripcion = Convert.ToString(dc["descripcion"]),
+                        Url = Convert.ToString(dc["url"]),
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                   
+            }
+            return modulos;
         }
     }
 }

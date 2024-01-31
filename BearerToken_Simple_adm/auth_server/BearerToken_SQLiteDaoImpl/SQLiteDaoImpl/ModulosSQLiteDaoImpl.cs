@@ -95,14 +95,71 @@ RETURNING id";
             return nuevo;
         }
 
-        public void Actualizar(Modulo Nuevo)
+        public void Actualizar(Modulo modulo)
         {
-            throw new NotImplementedException();
+            SQLiteConnection conn = null;
+            try
+            {
+                conn = new SQLiteConnection(cadenaConexion);
+                conn.Open();
+
+                string sql = $@"
+UPDATE modulos SET descripcion=@Descripcion, url=@Url
+WHERE id=@IdModulo
+";
+                using (var query = new SQLiteCommand(sql, conn))
+                {
+                    query.Parameters.Add(new SQLiteParameter("Descripcion", DbType.String));
+                    query.Parameters.Add(new SQLiteParameter("Url", DbType.String));
+                    query.Parameters.Add(new SQLiteParameter("IdModulo", DbType.Int32));
+                    //
+                    query.Parameters["Descripcion"].Value = modulo.Descripcion;
+                    query.Parameters["Url"].Value = modulo.Url;
+                    query.Parameters["IdModulo"].Value = modulo.Id;
+                    //
+                    int rows = query.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
         }
         
         public void Eliminar(int id)
         {
-            throw new NotImplementedException();
+            SQLiteConnection conn = null;
+            try
+            {
+                conn = new SQLiteConnection(cadenaConexion);
+                conn.Open();
+
+                string sql = $@"
+DELETE FROM modulos
+WHERE id=@IdModulo
+";
+
+                using (var query = new SQLiteCommand(sql, conn))
+                {
+                    query.Parameters.Add(new SQLiteParameter("IdModulo", DbType.Int32));
+                    //
+                    query.Parameters["IdModulo"].Value = id;
+                    //
+                    int rows = query.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
         }
 
         public Modulo BuscarPorId(int id)
@@ -164,6 +221,47 @@ WHERE id_credencial=@IdCredencial";
                     query.Parameters.Add(new SQLiteParameter("IdCredencial", DbType.Int32));
                     //
                     query.Parameters["IdCredencial"].Value = idCredencial;
+                    //
+                    using (var adapter = new SQLiteDataAdapter(query))
+                    {
+                        adapter.Fill(ds);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
+
+            return ds;
+        }
+
+        public DataSet BuscarPorGuidCredencial(string guid)
+        {
+            DataSet ds = new DataSet();
+            SQLiteConnection conn = null;
+
+            try
+            {
+                conn = new SQLiteConnection(cadenaConexion);
+                conn.Open();
+
+                string sql = @"
+SELECT mod.id, mod.descripcion, mod.url, mod.id_credencial
+FROM modulos as mod
+JOIN credenciales_clientes as cred
+    on cred.id=mod.id_credencial
+WHERE cred.guid=@Guid";
+
+                using (var query = new SQLiteCommand(sql, conn))
+                {
+                    query.Parameters.Add(new SQLiteParameter("Guid", DbType.String));
+                    //
+                    query.Parameters["Guid"].Value = guid;
                     //
                     using (var adapter = new SQLiteDataAdapter(query))
                     {

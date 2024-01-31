@@ -38,7 +38,6 @@ namespace ResourceAPIServer.AuthBearerToken
 
             if (principal == null || !principal.Identity.IsAuthenticated)
             {
-                // actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "No autenticado");
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado2" });
                 return false;
             }
