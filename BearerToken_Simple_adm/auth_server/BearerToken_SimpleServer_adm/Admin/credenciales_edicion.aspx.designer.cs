@@ -24,40 +24,40 @@ namespace JWTBearer_SimpleServer.Admin
         protected global::System.Web.UI.WebControls.TextBox tbIdCredencial;
 
         /// <summary>
-        /// Control tbGuid.
+        /// Control tbGuidCredencial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbGuid;
+        protected global::System.Web.UI.WebControls.TextBox tbGuidCredencial;
 
         /// <summary>
-        /// Control tbClave.
+        /// Control tbClaveCredencial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbClave;
+        protected global::System.Web.UI.WebControls.TextBox tbClaveCredencial;
 
         /// <summary>
-        /// Control tbScopes.
+        /// Control tbScopesCredencial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbScopes;
+        protected global::System.Web.UI.WebControls.TextBox tbScopesCredencial;
 
         /// <summary>
-        /// Control btnConfirmarEdicionCredencial.
+        /// Control btnConfirmarOPCredencial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirmarEdicionCredencial;
+        protected global::System.Web.UI.WebControls.Button btnConfirmarOPCredencial;
 
         /// <summary>
         /// Control lvModulos.

@@ -22,7 +22,7 @@ namespace BearerToken_SQLiteDaoImpl.SQLiteDaoImpl
 
         public UsuarioSQLiteDaoImpl(string path)
         {
-            cadenaConexion = $"Data Source={path};Version=3;";
+            cadenaConexion = $"Data Source={path};Version=3; Pooling=true;";
 
             //no es recomendable llamar aquí!, necesito otra cosa
             Inicializar();

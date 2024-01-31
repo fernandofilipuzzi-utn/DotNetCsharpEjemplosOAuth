@@ -418,6 +418,7 @@
     </Compile>
     <Compile Include="Utils\CustomJwtFormat.cs" />
     <Compile Include="Utils\StringExtensions.cs" />
+    <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="Utils\TokenGenerador.cs" />
   </ItemGroup>
   <ItemGroup>

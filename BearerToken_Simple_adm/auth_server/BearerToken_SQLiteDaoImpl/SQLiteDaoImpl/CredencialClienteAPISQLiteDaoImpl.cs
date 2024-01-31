@@ -18,11 +18,11 @@ namespace BearerToken_SQLiteDaoImpl.SQLiteDaoImpl
 
         public CredencialClienteAPISQLiteDaoImpl(string path)
         {
-            cadenaConexion = $"Data Source={path};Version=3;";
+            cadenaConexion = $"Data Source={path};Version=3; Pooling=true;";
             Inicializar();
         }
 
-        public CredencialClienteAPISQLiteDaoImpl():this(Path.GetFullPath("db/db_auth_jwt_bearer.db"))
+        public CredencialClienteAPISQLiteDaoImpl() : this(Path.GetFullPath("db/db_auth_jwt_bearer.db"))
         {
         }
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS credenciales_clientes (
     clave TEXT NOT NULL,
     habilitado INTEGER CHECK (habilitado IN (0, 1)),
     scopes TEXT NOT NULL
-)";
+);";
                 using (var query = new SQLiteCommand(sql, conn))
                 {
                     query.ExecuteNonQuery();
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS credenciales_clientes (
                 string sql = $@"
 INSERT INTO credenciales_clientes (guid, clave, habilitado, scopes)
 VALUES (@Guid, @Clave, @Habilitado,@Scopes)
-RETURNING id";
+RETURNING id;";
 
                 using (var query = new SQLiteCommand(sql, conn))
                 {
@@ -98,11 +98,47 @@ RETURNING id";
             return nueva;
         }
 
-        public void Actualizar(CredencialClienteAPI Nuevo)
+        public void Actualizar(CredencialClienteAPI credencial)
         {
-            throw new NotImplementedException();
+            SQLiteConnection conn = null;
+            try
+            {
+                conn = new SQLiteConnection(cadenaConexion);
+                conn.Open();
+
+                string sql = $@"
+    UPDATE credenciales_clientes SET guid=@Guid, clave=@Clave, habilitado=@Habilitado, scopes=@Scopes
+    WHERE id=@Id" ;
+
+                using (var query = new SQLiteCommand(sql, conn))
+                {
+                    query.Parameters.Add(new SQLiteParameter("Guid", DbType.String));
+                    query.Parameters.Add(new SQLiteParameter("Clave", DbType.String));
+                    query.Parameters.Add(new SQLiteParameter("Habilitado", SqlDbType.Bit));
+                    query.Parameters.Add(new SQLiteParameter("Scopes", DbType.String));
+                    query.Parameters.Add(new SQLiteParameter("Id", DbType.Int32));
+                    //
+                    query.Parameters["Guid"].Value = credencial.Guid;
+                    query.Parameters["Clave"].Value = credencial.Clave;
+                    query.Parameters["Habilitado"].Value = credencial.Habilitado ? 1 : 0;
+                    query.Parameters["Scopes"].Value = credencial.Scopes;
+                    query.Parameters["Id"].Value = credencial.Id;
+                    //
+                    query.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                //System.Data.SQLite.SQLiteException: 'SQL logic error near ")": syntax error'
+                //System.Data.SQLite.SQLiteException: 'database is locked database is locked'
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
         }
-        
+
         public void Eliminar(int id)
         {
             SQLiteConnection conn = null;
@@ -113,7 +149,7 @@ RETURNING id";
 
                 string sql = $@"
 DELETE FROM credenciales_clientes
-WHERE id = @Id";
+WHERE id = @Id;";
 
                 using (var query = new SQLiteCommand(sql, conn))
                 {
@@ -121,7 +157,7 @@ WHERE id = @Id";
                     //
                     query.Parameters["Id"].Value = id;
                     //
-                    int rows=query.ExecuteNonQuery();
+                    int rows = query.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -147,7 +183,7 @@ WHERE id = @Id";
                 string sql = @"
 SELECT id, guid, clave, habilitado, scopes
 FROM credenciales_clientes
-WHERE id=@Id";
+WHERE id=@Id;";
 
                 using (var query = new SQLiteCommand(sql, conn))
                 {
@@ -161,13 +197,13 @@ WHERE id=@Id";
                         #region guid
                         string guid = "";
                         if (dataReader["guid"] != DBNull.Value)
-                            guid = Convert.ToString( dataReader["guid"] );
+                            guid = Convert.ToString(dataReader["guid"]);
                         #endregion
 
                         #region clave
                         string clave = "";
                         if (dataReader["clave"] != DBNull.Value)
-                            clave = Convert.ToString( dataReader["clave"] );
+                            clave = Convert.ToString(dataReader["clave"]);
                         #endregion
 
                         #region habilitado
@@ -182,7 +218,7 @@ WHERE id=@Id";
                             scopes = Convert.ToString(dataReader["scopes"]);
                         #endregion
 
-                        buscado = new CredencialClienteAPI { Id = idBuscado, Guid = guid, Clave = clave, Habilitado=habilitado, Scopes=scopes };
+                        buscado = new CredencialClienteAPI { Id = idBuscado, Guid = guid, Clave = clave, Habilitado = habilitado, Scopes = scopes };
                     }
                 }
             }
@@ -209,7 +245,7 @@ WHERE id=@Id";
 
                 string sql = @"
 SELECT id, guid, clave, habilitado, scopes
-FROM credenciales_clientes";
+FROM credenciales_clientes;";
 
                 using (var query = new SQLiteCommand(sql, conn))
                 {
@@ -244,7 +280,7 @@ FROM credenciales_clientes";
                 string sql = @"
 SELECT id, guid, clave, habilitado, scopes
 FROM credenciales_clientes
-WHERE guid=@Guid and clave=@Clave";
+WHERE guid=@Guid and clave=@Clave;";
 
                 using (var query = new SQLiteCommand(sql, conn))
                 {

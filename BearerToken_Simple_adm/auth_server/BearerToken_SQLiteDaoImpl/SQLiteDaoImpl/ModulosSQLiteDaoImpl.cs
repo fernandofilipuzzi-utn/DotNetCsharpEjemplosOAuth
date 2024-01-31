@@ -17,7 +17,7 @@ namespace BearerToken_SQLiteDaoImpl.SQLiteDaoImpl
 
         public ModuloSQLiteDaoImpl(string path)
         {
-            this.cadenaConexion = $"Data Source={path};Version=3;";
+            this.cadenaConexion = $"Data Source={path};Version=3; Pooling=true;";
             Inicializar();
         }
 

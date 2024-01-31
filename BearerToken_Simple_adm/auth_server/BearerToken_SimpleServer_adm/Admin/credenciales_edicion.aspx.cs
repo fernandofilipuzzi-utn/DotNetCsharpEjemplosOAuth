@@ -1,5 +1,6 @@
 ﻿using BearerToken_Models.Models;
 using BearerToken_Services.Services;
+using BearerToken_SimpleServer_adm.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,49 +25,72 @@ namespace JWTBearer_SimpleServer.Admin
                     CredencialClienteAPI credencial = oservice.credencialDAO.BuscarPorId(id);
 
                     tbIdCredencial.Text = credencial.Id.ToString();
-                    tbGuid.Text=credencial.Guid;
-                    tbClave.Text = credencial.Clave;
-                    tbScopes.Text = credencial.Scopes;
+                    tbGuidCredencial.Text = credencial.Guid;
+                    tbClaveCredencial.Text = credencial.Clave;
+                    tbScopesCredencial.Text = credencial.Scopes;
 
                     actualizarVistaModulos(credencial.Id);
                 }
                 else
                 {
-                    tbGuid.Text = Guid.NewGuid().ToString();
+                    tbGuidCredencial.Text = Guid.NewGuid().ToString();
+                    tbClaveCredencial.Text = StringUtils.GenerarClave(13);
                 }
             }
         }
 
-        protected void btnConfirmarEdicionCredencial_Click(object sender, EventArgs e)
+        protected void btnConfirmarOPCredencial_Click(object sender, EventArgs e)
         {
-            string guid = tbGuid.Text;
-            string clave = tbClave.Text;
-            string scopes = tbScopes.Text;
-
             string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
-            CredencialClienteAPI nuevaCredencial = new CredencialClienteAPI { Guid = guid, Clave=clave, Scopes= scopes };
             BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
 
-            oservice.AgregarCredencial(nuevaCredencial);
+            
+            string guidCredencial = tbGuidCredencial.Text;
+            string claveCredencial = tbClaveCredencial.Text;
+            string scopesCredencial = tbScopesCredencial.Text;
+
+            if (string.IsNullOrEmpty(tbIdCredencial.Text) == false)
+            {
+                int idCredencial = Convert.ToInt32(tbIdCredencial.Text);
+                CredencialClienteAPI credencial = new CredencialClienteAPI 
+                {   
+                    Id= idCredencial,
+                    Guid = guidCredencial, 
+                    Clave = claveCredencial, 
+                    Scopes = scopesCredencial
+                };
+                oservice.credencialDAO.Actualizar(credencial);
+            }
+            else 
+            {
+                CredencialClienteAPI nuevaCredencial = new CredencialClienteAPI
+                {
+                    Guid = guidCredencial,
+                    Clave = claveCredencial,
+                    Scopes = scopesCredencial
+                };
+                oservice.credencialDAO.Agregar(nuevaCredencial);
+            }
+
+            Response.Redirect("/Admin/credenciales.aspx");
         }
 
         protected void lvModulos_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
-
         }
 
-        protected void lBtnAgregarNuevoModulo_Click(object sender, EventArgs e)
+        protected void lbtnInsertNuevoModulo_Click(object sender, EventArgs e)
         {
-            TextBox tbId = lvModulos.InsertItem.FindControl("tbId") as TextBox;
-            TextBox tbDescripcion = lvModulos.InsertItem.FindControl("tbDescripcion") as TextBox;
-            TextBox tbURL = lvModulos.InsertItem.FindControl("tbURL") as TextBox;
+            TextBox tbInsertIdModulo = lvModulos.InsertItem.FindControl("tbInsertIdModulo") as TextBox;
+            TextBox tbInsertDescripcionModulo = lvModulos.InsertItem.FindControl("tbInsertDescripcionModulo") as TextBox;
+            TextBox tbInsertUrlModulo = lvModulos.InsertItem.FindControl("tbInsertUrlModulo") as TextBox;
 
             int idCredencial=Convert.ToInt32(tbIdCredencial.Text);
 
-            if (tbDescripcion != null && tbURL != null)
+            if (tbInsertDescripcionModulo != null && tbInsertUrlModulo != null)
             {
-                string descripcion = tbDescripcion.Text;
-                string url = tbURL.Text;
+                string descripcion = tbInsertDescripcionModulo.Text;
+                string url = tbInsertUrlModulo.Text;
 
                 string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
                 BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
@@ -79,39 +103,51 @@ namespace JWTBearer_SimpleServer.Admin
 
         protected void lbtnEdEliminarModulo_Click(object sender, EventArgs e)
         {
-            int idModulo =Convert.ToInt32(tbIdCredencial.Text);
+            // Obtener el ID del módulo desde el CommandArgument del botón
+            LinkButton btn = (LinkButton)(sender);
+            int idModulo = Convert.ToInt32(btn.CommandArgument);
 
-            int idCredencial = Convert.ToInt32(tbIdCredencial.Text);
+            // Obtener otros campos del ItemTemplate
+            ListViewDataItem item = (ListViewDataItem)btn.NamingContainer;
+            TextBox tbEdIdModulo = (TextBox)item.FindControl("tbEdIdModulo");
+            TextBox tbEdDescripcionModulo = (TextBox)item.FindControl("tbEdDescripcionModulo");
+            TextBox tbEdUrlModulo = (TextBox)item.FindControl("tbEdUrlModulo");
 
+            //
             string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
             BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
-                
             oservice.moduloDAO.Eliminar(idModulo);
 
+            // Actualizar la vista después de eliminar el módulo
+            int idCredencial = Convert.ToInt32(tbIdCredencial.Text);
             actualizarVistaModulos(idCredencial);
         }
 
         protected void lbtnEdModificarModulo_Click(object sender, EventArgs e)
         {
-            TextBox tbEdIdModulo = lvModulos.InsertItem.FindControl("tbEdIdModulo") as TextBox;
-            TextBox tbEdDescripcionModulo = lvModulos.InsertItem.FindControl("tbEdDescripcionModulo") as TextBox;
-            TextBox tbEdUrlModulo = lvModulos.InsertItem.FindControl("tbEdUrlModulo") as TextBox;
-
+            #region controles
+            LinkButton btn = (LinkButton)(sender);
+            //
+            ListViewDataItem item = (ListViewDataItem)btn.NamingContainer;
+            TextBox tbEdIdModulo = (TextBox)item.FindControl("tbEdIdModulo");
+            TextBox tbEdDescripcionModulo = (TextBox)item.FindControl("tbEdDescripcionModulo");
+            TextBox tbEdUrlModulo = (TextBox)item.FindControl("tbEdUrlModulo");
+            #endregion
+            //
+            #region parsing
+            int idModulo = Convert.ToInt32(tbEdIdModulo.Text.Trim());
+            string descripcionModulo = tbEdDescripcionModulo.Text.Trim();
+            string urlModulo = tbEdUrlModulo.Text.Trim();
+            #endregion
+            //
+            #region op sobre el registro
+            string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
+            BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
+            oservice.moduloDAO.Actualizar(new Modulo { Id=idModulo,Descripcion=descripcionModulo, Url=urlModulo  });
+            #endregion
+            //
             int idCredencial = Convert.ToInt32(tbIdCredencial.Text);
-
-            if (tbEdIdModulo!=null && tbEdDescripcionModulo != null && tbEdUrlModulo!=null)
-            {
-                int id = Convert.ToInt32(tbEdIdModulo.Text.Trim());
-                string descripcion = tbEdIdModulo.Text.Trim();
-                string url = tbEdIdModulo.Text.Trim();
-
-                string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
-                BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
-
-                oservice.moduloDAO.Actualizar(new Modulo { Id = id, Descripcion = descripcion, Url = url });
-
-                actualizarVistaModulos(idCredencial);
-            }
+            actualizarVistaModulos(idCredencial);
         }
 
         private void actualizarVistaModulos(int idCredencial)

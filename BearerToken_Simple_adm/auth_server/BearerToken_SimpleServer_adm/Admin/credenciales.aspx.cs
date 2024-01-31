@@ -21,7 +21,6 @@ namespace JWTBearer_SimpleServer.Admin
                 lvCredenciales.DataSource = oservice.credencialDAO.BuscarTodos().Tables[0];
                 lvCredenciales.DataBind();
             }
-
         }
 
         protected void lvCredenciales_ItemCreated(object sender, ListViewItemEventArgs e)
@@ -44,15 +43,31 @@ namespace JWTBearer_SimpleServer.Admin
             */
         }
 
-        protected void lbtnEliminar_Click(object sender, EventArgs e)
+        protected void lbtnEliminarCredencial_Click(object sender, EventArgs e)
         {
-            LinkButton btnEliminar = (LinkButton)sender;
-            //int id = Convert.ToInt32(btnEliminar.CommandArgument);
-            int id = 1;
+            LinkButton btnEliminar = sender as LinkButton;
+            ListViewDataItem item = btnEliminar.NamingContainer as ListViewDataItem;
+            Label lbIdCredencial = item.FindControl("lbIdCredencial") as Label;
 
+            if (lbIdCredencial != null)
+            {
+                string idString = lbIdCredencial.Text.Trim();
+
+                
+                int idCredencial = Convert.ToInt32(idString);
+
+                string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
+                BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
+                oservice.credencialDAO.Eliminar(idCredencial); 
+            }
+
+            actualizarListadoCredenciales();
+        }
+
+        private void actualizarListadoCredenciales() 
+        {
             string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
             BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
-            oservice.credencialDAO.Eliminar(id);
 
             lvCredenciales.DataSource = oservice.credencialDAO.BuscarTodos().Tables[0];
             lvCredenciales.DataBind();
