@@ -37,5 +37,19 @@ namespace ResourceAPIServer.Controllers
 
             return Ok($"¡Bienvenido al servicio protegido! {userName}");
         }
+
+        [HttpGet]
+        //[Authorize]
+        //[CustomAuthorize]
+        [ScopeAuthorize("api2")]
+        [Route("Ejemplos/MiServicioProtegido2")]
+        public IHttpActionResult MiServicioProtegido2()
+        {
+            var user = User.Identity.Name;
+            Debug.WriteLine($"Usuario actual: {user}");
+            var userName = this.RequestContext.Principal.Identity.Name;
+
+            return Ok($"¡Bienvenido al servicio protegido! {userName}");
+        }
     }
 }

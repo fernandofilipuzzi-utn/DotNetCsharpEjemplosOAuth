@@ -22,11 +22,13 @@ namespace ResourceAPIServer.AuthBearerToken
         {
             if (!actionContext.RequestContext.Principal.Identity.IsAuthenticated)
             {
-                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "No autenticado");
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado" });
+                //actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "No autenticado");
             }
             else
             {
-                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Forbidden, "No autorizado");
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Forbidden, new { mensaje = "No autorizado" });
+                //actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Forbidden, "No autorizado");
             }
         }
 
@@ -36,7 +38,8 @@ namespace ResourceAPIServer.AuthBearerToken
 
             if (principal == null || !principal.Identity.IsAuthenticated)
             {
-               // actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "No autenticado");
+                // actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "No autenticado");
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado2" });
                 return false;
             }
             
@@ -47,6 +50,7 @@ namespace ResourceAPIServer.AuthBearerToken
                 return true;
             }
 
+            actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No tiene nada2!" });
             return false;
         }
     }

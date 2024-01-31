@@ -1,4 +1,5 @@
-﻿using BearerToken_Services.Services;
+﻿using BearerToken_Models.Models;
+using BearerToken_Services.Services;
 using BearerToken_SimpleServer_adm.Utils;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -49,10 +50,10 @@ namespace BearerToken_SimpleServer_adm
                 return BadRequest();
             }
 
-            if (_validador.ValidarCredenciales(guid, frase))
+            CredencialClienteAPI credencial= _validador.ValidarCredenciales(guid, frase);
+            if ( credencial!=null )
             {
-
-                string token = _generador.GenerarToken(guid, "api1");
+                string token = _generador.GenerarToken(guid, credencial.Scopes);
                 return Ok(new { access_token = token, token_type = "Bearer" });
             }
             else

@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ResourceAPIServer
+namespace ResourceAPIServer.modo_autorizacion_2
 {
 
 

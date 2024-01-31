@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using ResourceAPIServer.Utils;
 using System.IdentityModel.Tokens.Jwt;
+using Newtonsoft.Json;
 
 [assembly: OwinStartup(typeof(AuthenticatedAPIEjService.Startup))]
 namespace AuthenticatedAPIEjService
@@ -60,9 +61,14 @@ namespace AuthenticatedAPIEjService
                                 var jwtToken = (JwtSecurityToken)validatedToken;
                                 if (!jwtToken.Payload.TryGetValue("guid", out var guid)) //|| guid.ToString() != "expectedGuid")
                                 {
+                                    /*
                                     context.Response.StatusCode = 401;
                                     context.Response.ContentType = "application/json";
-                                    await context.Response.WriteAsync("Unauthorized");
+                                    var errorMessage = new { mensaje = "Unauthorized" };
+                                    var json = JsonConvert.SerializeObject(errorMessage);
+                                    await context.Response.WriteAsync("{ mensaje:'No autorizado!'}");
+                                    context.OwinContext.Response.WriteAsync("{ mensaje:'No autorizado!'}");
+                                    */
                                     return;
                                 }
                                 else
@@ -72,9 +78,19 @@ namespace AuthenticatedAPIEjService
                             }
                             catch (Exception ex)
                             {
+                                /*
                                 context.Response.StatusCode = 401;
                                 context.Response.ContentType = "application/json";
                                 await context.Response.WriteAsync("Unauthorized");
+                                */
+                                /*
+                                context.Response.StatusCode = 401;
+                                context.Response.ContentType = "application/json";
+                                var errorMessage = new { mensaje = "Unauthorized" };
+                                */
+                                //var json = JsonConvert.SerializeObject(errorMessage);
+                                //await context.Response.cpmContext="{ mensaje:'No autorizado!'}";
+
                                 return;
                             }
                         }

@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioPrueba.aspx.cs" Inherits="ResourceAPIServer.FormularioPrueba" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/modo_autorizacion_1/Site.Master" AutoEventWireup="true" CodeBehind="FormularioPrueba.aspx.cs" Inherits="ResourceAPIServer.modo_autorizacion_1.FormularioPrueba" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">

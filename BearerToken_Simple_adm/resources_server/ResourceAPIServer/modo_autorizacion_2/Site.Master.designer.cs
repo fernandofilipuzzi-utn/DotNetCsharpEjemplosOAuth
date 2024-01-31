@@ -7,29 +7,20 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ResourceAPIServer
+namespace ResourceAPIServer.modo_autorizacion_2
 {
 
 
-    public partial class _Default
+    public partial class Site
     {
 
         /// <summary>
-        /// Control btnModo1.
+        /// Control MainContent.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModo1;
-
-        /// <summary>
-        /// Control btnModo2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModo2;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }

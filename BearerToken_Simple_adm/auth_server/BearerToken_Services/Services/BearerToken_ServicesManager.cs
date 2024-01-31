@@ -35,10 +35,21 @@ namespace BearerToken_Services.Services
             credencialDAO.Agregar(nuevaCredencia);
         }
 
-        public bool ValidarCredenciales(string guid, string frase)
+        public CredencialClienteAPI ValidarCredenciales(string guid, string frase)
         {
             DataTable dtCredenciales = credencialDAO.BuscarPorGuid(guid, frase).Tables[0];
-            return dtCredenciales.Rows.Count==1;
+
+            CredencialClienteAPI credencial = new CredencialClienteAPI();
+            if (dtCredenciales.Rows.Count == 1) //id, guid, clave, habilitado, scopes
+            {
+                credencial.Id = Convert.ToInt32(dtCredenciales.Rows[0]["id"]);
+                credencial.Guid = Convert.ToString(dtCredenciales.Rows[0]["guid"]);
+                credencial.Clave = Convert.ToString(dtCredenciales.Rows[0]["clave"]);
+                credencial.Habilitado = Convert.ToBoolean(dtCredenciales.Rows[0]["habilitado"]);
+                credencial.Scopes = Convert.ToString(dtCredenciales.Rows[0]["scopes"]);
+            }
+
+            return credencial;
         }
     }
 }
