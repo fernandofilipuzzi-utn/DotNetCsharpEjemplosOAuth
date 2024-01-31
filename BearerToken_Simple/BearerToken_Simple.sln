@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "clientes", "clientes", "{8E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "recursos tokenizados", "recursos tokenizados", "{1EBC4E69-B082-46BF-8A9D-E6749713985F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "servicio jwtbearer", "servicio jwtbearer", "{4A6BEDEA-6208-402F-8EBD-37B6C254457B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "servicio autorizacion bearer token", "servicio autorizacion bearer token", "{4A6BEDEA-6208-402F-8EBD-37B6C254457B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceAPIServer.ClientServices", "clientes\ResourceAPIServer.ClientServices\ResourceAPIServer.ClientServices.csproj", "{A68F2A19-8F29-4C17-8E47-AE0576C1EA9B}"
 EndProject

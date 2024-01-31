@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada a un ensamblado.
-[assembly: AssemblyTitle("JWTBearer_SimpleServer")]
+[assembly: AssemblyTitle("BearerToken_SimpleServer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JWTBearer_SimpleServer")]
+[assembly: AssemblyProduct("BearerToken_SimpleServer")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID es para el Id. typelib cuando este proyecto esté expuesto a COM
-[assembly: Guid("661fc864-fbe1-4472-b385-2dc05bc34c23")]
+[assembly: Guid("661FC864-FBE1-4472-B385-2DC05BC34C23")]
 
 // La información de versión de un ensamblado consta de los siguientes cuatro valores:
 //
