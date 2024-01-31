@@ -15,17 +15,12 @@ namespace JWTBearer_SimpleServer.Admin
         {
             if (IsPostBack==false)
             {
-                string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
-                BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
-               
-                lvCredenciales.DataSource = oservice.credencialDAO.BuscarTodos().Tables[0];
-                lvCredenciales.DataBind();
+                actualizarListadoCredenciales();
             }
         }
 
         protected void lvCredenciales_ItemCreated(object sender, ListViewItemEventArgs e)
         {
-
         }
 
         protected void lvCredenciales_ItemDataBound(object sender, ListViewItemEventArgs e)
