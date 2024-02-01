@@ -7,17 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - OAUTH2.0</title>
+    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="~/Content/css/Utils.css">
 
     <style>
         @media (max-width: 767px) {
@@ -27,15 +28,16 @@
         }
     </style>
 </head>
-<body  style="background-color: #f1f5f8; min-width: 340px;">
+<body style="background-color: #f1f5f8; min-width: 340px;">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
+                <asp:ScriptReference Path="https://code.jquery.com/jquery-3.5.1.slim.min.js" />
+                <asp:ScriptReference Path="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" />
+                <asp:ScriptReference Path="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" />
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="bootstrap" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
                 <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
@@ -43,7 +45,7 @@
                 <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
                 <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />                
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
                 <%--Site Scripts--%>
             </Scripts>
@@ -51,7 +53,7 @@
 
         <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">App</a>
+            <a class="navbar-brand" href="/">App</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNavbar"
                 aria-controls="MainNavbar" aria-expanded="false" aria-label="Toggle Navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,7 +63,15 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/Default">Home<span class="sr-only">(current)</span></a>
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ver</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <a class="dropdown-item" href="/Admin/credenciales.aspx">Credenciales</a>
+                        </div>
+                    </li>
                 </ul>
+
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nombre de Usuario
@@ -69,7 +79,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">                     
                             <div class="dropdown-divider">
                             </div>
-                            <asp:LinkButton ID="LinkButton1" OnClick="hlkCerrar_Click" CssClass="dropdown-item" runat="server">Cerrar</asp:LinkButton>
+                            <asp:LinkButton ID="lbtnCerrar" OnClick="lbtnCerrar_Click" CssClass="dropdown-item" runat="server">Cerrar</asp:LinkButton>
                          </div>
                     </li>
                 </ul>
@@ -85,8 +95,7 @@
             </footer>
         </div>
 
-
-        <!-- Modal -->
+         <!-- Modal -->
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
 

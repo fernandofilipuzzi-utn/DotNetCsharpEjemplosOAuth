@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -20,24 +21,22 @@ namespace BearerToken_SimpleServer_adm
             else
             {
                 string usuario = cookie["Usuario"];
-                string expiracion = cookie["Expiracion"];
-                if (string.IsNullOrEmpty(expiracion) == false)
+                DateTime expire = cookie.Expires;
+                if (DateTime.Now < expire)
                 {
-                    DateTime expire = DateTime.Parse(expiracion);
-                    if (DateTime.Now > expire)
-                        Response.Redirect("/Admin/login.aspx");
+                    Response.Redirect("/Admin/login.aspx");
                 }
             }
         }
 
-        protected void hlkCerrar_Click(object sender, EventArgs e)
+        protected void lbtnCerrar_Click(object sender, EventArgs e)
         {
             HttpCookie cookie = Request.Cookies["UsuarioSettings"];
 
             if (cookie != null)
             {
-                Request.Cookies.Clear();
-                Response.Cookies.Remove("UsuarioSettings");
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(cookie);
             }
             Response.Redirect("Admin/login.aspx");
         }

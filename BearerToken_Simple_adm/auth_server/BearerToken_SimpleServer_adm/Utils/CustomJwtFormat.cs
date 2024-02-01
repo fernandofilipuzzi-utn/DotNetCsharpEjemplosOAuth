@@ -14,7 +14,6 @@ namespace BearerToken_SimpleServer_adm.Utils
         private byte[] _secret;
         private readonly string _guid;
         
-
         public CustomJwtFormat(string guid, string secret)
         {
             _guid = guid;

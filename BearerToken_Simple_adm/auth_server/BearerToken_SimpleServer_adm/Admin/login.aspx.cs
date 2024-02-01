@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -14,6 +15,9 @@ namespace JWTBearer_SimpleServer.Admin
             HttpCookie cookie = HttpContext.Current.Request.Cookies["UsuarioSettings"];
             if (cookie != null)
             {
+                cookie.Expires = DateTime.Now.AddMinutes(3);
+                HttpContext.Current.Response.Cookies.Add(cookie);
+
                 Response.Redirect("../Default.aspx");
             }
         }
@@ -32,8 +36,8 @@ namespace JWTBearer_SimpleServer.Admin
             {
                 #region cookie
                 HttpCookie cookie = new HttpCookie("UsuarioSettings");
-                cookie.Value = "MiValor";
-                cookie.Expires = DateTime.Now.AddYears(1);
+                cookie["Usuario"]=usuario;
+                cookie.Expires = DateTime.Now.AddMinutes(3);
                 HttpContext.Current.Response.Cookies.Add(cookie);
                 #endregion
 
