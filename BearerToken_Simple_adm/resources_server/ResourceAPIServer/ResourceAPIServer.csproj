@@ -389,8 +389,6 @@
     <Compile Include="AuthBearerTokenUtils\otros\CustomAuthorizationFilter.cs" />
     <Compile Include="AuthBearerTokenUtils\ScopeAuthorizeAttribute.cs" />
     <Compile Include="AuthBearerTokenUtils\otros\CustomUnauthorizedResult.cs" />
-    <Compile Include="AuthBearerTokenUtils\ScopeUtils.cs" />
-    <Compile Include="AuthBearerTokenUtils\ValidatorBearerToken.cs" />
     <Compile Include="Controllers\EjController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -484,6 +482,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BearerToken.Utilities\BearerToken.Utilities.csproj">
+      <Project>{82d1ea22-ea63-4c14-a8ee-87f09d6d4dd1}</Project>
+      <Name>BearerToken.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

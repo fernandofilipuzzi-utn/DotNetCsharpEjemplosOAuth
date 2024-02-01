@@ -22,13 +22,11 @@ namespace ResourceAPIServer.AuthBearerToken
         {
             if (!actionContext.RequestContext.Principal.Identity.IsAuthenticated)
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado" });
-                //actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "No autenticado");
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado" });               
             }
             else
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Forbidden, new { mensaje = "No autorizado" });
-                //actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Forbidden, "No autorizado");
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Forbidden, new { mensaje = "No autorizado" });               
             }
         }
 
@@ -36,10 +34,9 @@ namespace ResourceAPIServer.AuthBearerToken
         {
             var principal = actionContext.RequestContext.Principal as ClaimsPrincipal;
 
-            if (principal == null || !principal.Identity.IsAuthenticated)
+            if (principal == null || principal.Identity.IsAuthenticated==false)
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado2" });
-                return false;
+                 return false;
             }
             
             var scopeClaim = principal.FindFirst("scope");
@@ -48,8 +45,6 @@ namespace ResourceAPIServer.AuthBearerToken
             {
                 return true;
             }
-
-            actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No tiene nada2!" });
             return false;
         }
     }

@@ -32,8 +32,7 @@ namespace ResourceAPIServer.AuthBearerTokenUtils
                 await Next.Invoke(context);
             }
             */
-
-            
+                        
             if (context.Request.Path.StartsWithSegments(new PathString("/api")) && context.Response.StatusCode != 200)
             {
                 var newContext = new OwinContext(context.Environment);

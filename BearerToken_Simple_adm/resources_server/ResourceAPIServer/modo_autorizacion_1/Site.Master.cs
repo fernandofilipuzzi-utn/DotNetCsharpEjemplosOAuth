@@ -1,4 +1,5 @@
-﻿using ResourceAPIServer.AuthBearerTokenUtils;
+﻿using BearerToken.Utilities.Jwt;
+using ResourceAPIServer.AuthBearerTokenUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace ResourceAPIServer.modo_autorizacion_1
 
                 string token = Request["embedToken"].Trim();
 
-                ValidatorBearerToken validator = new ValidatorBearerToken();
-                if (validator.Validar(token) == false)
+                BearerTokenUtil validator = new BearerTokenUtil(token,"secret");
+                if (validator.ValidarToken()== false)
                 {
                     Response.Redirect("Error");
                 }

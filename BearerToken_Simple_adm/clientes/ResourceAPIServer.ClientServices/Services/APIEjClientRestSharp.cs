@@ -13,6 +13,7 @@ using RestSharp.Authenticators.OAuth2;
 
 using Newtonsoft.Json;
 using ResourceAPIServer.ClientServices.Models;
+using BearerToken.Utilities.Jwt;
 //using IdentityModel.Client; este no
 
 namespace ResourceAPIServer.ClientServices.services
@@ -21,11 +22,9 @@ namespace ResourceAPIServer.ClientServices.services
     {
         #region al athorizations server
         private readonly string tokenUrl = "http://localhost:7777";
-        private readonly string pathToken = "/identity/connect/token";
-        private readonly string clientId = "client1";
-        private readonly string clientSecret = "secret";
-        private readonly string username = "usuario1";
-        private readonly string password = "clave123";
+        private readonly string pathToken = "/auth/token";
+        private readonly string guid = "cbf25e40-b0da-4aa2-8a51-e2d701390ba1";
+        private readonly string frase = "pFb2MKucltUts";
         public string tokenEndpoint
         {
             get
@@ -53,6 +52,9 @@ namespace ResourceAPIServer.ClientServices.services
             string respuesta = "sin respuesta";
 
             TokenResponse token = ObtenerToken();// "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkhGbEtWUVlyRnExNl83aWVjNUNYaTE2LTVLcyIsImtpZCI6IkhGbEtWUVlyRnExNl83aWVjNUNYaTE2LTVLcyJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzcvaWRlbnRpdHkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzcvaWRlbnRpdHkvcmVzb3VyY2VzIiwiZXhwIjoxNzA2MDM2NzgyLCJuYmYiOjE3MDYwMzU1ODIsImNsaWVudF9pZCI6ImNsaWVudDIiLCJzY29wZSI6ImFwaTEiLCJzdWIiOiIyIiwiYXV0aF90aW1lIjoxNzA2MDM1NTgyLCJpZHAiOiJpZHNydiIsImFtciI6WyJwYXNzd29yZCJdfQ.lCiZ62Dn-0gM7pmYLaNHH6j6UxZyM1QaCbCIIh_1L2YGRgYeVZauFbm2RYt_ZeIG73975bwbvkoriKwXZerWXnsXEpKXEARIrgrkiezsxLjUQk1rBusyBgSaCpO2wO3xNtcIg0e9WrGJ6E2FxNNORv3pQx3pR4dyc_iTpyivNV5zUbVIKJBLNMKYc474CR-PgP-IoPUWX18DYCizUfozbDpNWDj4BtenQdxI2BNEln0OHiumQamB4S87P3kKg-dIn8KFnt_zQAENDQnk-7pVPzmAsj2EAp4SJeeOgbjfu8Ur3YpHbl72XLkyF36Wz2TRrql3SWAFYD9PLiDl1pGQbA";
+
+            BearerTokenUtil tokenUtils = new BearerTokenUtil(token.access_token, "secret");
+
             if (token?.IsValid()==true)
             { 
                 respuesta = AccederAlServicioProtegido(token.access_token);
@@ -71,12 +73,11 @@ namespace ResourceAPIServer.ClientServices.services
             var request = new RestRequest(resource: pathToken, method: Method.Post) ;
             var client = new RestClient(tokenUrl);
             //
-            request.AddParameter("grant_type", "password");
-            request.AddParameter("client_id", clientId);
-            request.AddParameter("client_secret", clientSecret);
-            request.AddParameter("username", username);
-            request.AddParameter("password", password);
-            request.AddParameter("scope", scope);
+            var tokenRequest = new Dictionary<string, string>
+            {
+                { "guid", guid },
+                { "frase", frase }
+            };
             //
             var response = client.ExecuteAsync(request).Result;
             token = TokenResponse.Parse(response.Content);
