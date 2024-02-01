@@ -40,7 +40,10 @@
                     <label class="col-form-label col-3 text-right" for="tbGuidCredencial">GUID Cliente(client id):</label>
                     <div class="col-9">
                         <div class="row">
-                            <asp:TextBox ID="tbGuidCredencial" MaxLength="150" CssClass="form-control col-12" Text="" runat="server" placeholder="GUID Generado" />
+                            <div class="col">
+                            <asp:TextBox ID="tbGuidCredencial" MaxLength="50" CssClass="form-control col-12" Text="" runat="server" placeholder="GUID Generado" />
+                            <small class="form-text text-muted">Máximo 50 caracteres</small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -49,11 +52,14 @@
                     <label class="col-form-label col-3 text-right" for="tbClaveCredencial">Clave secreta:</label>
                     <div class="col-9">
                         <div class="row">
-                            <asp:TextBox ID="tbClaveCredencial" MaxLength="150"  CssClass="form-control col-12" Text="" runat="server" placeholder="Clave" />
+                            <asp:TextBox ID="tbClaveCredencial" MaxLength="50"  CssClass="form-control col-12" Text="" runat="server" placeholder="Clave" />
                         </div>
                         <div class="row">
-                            <small id="smClave" class="form-text text-muted col-12">clave alfanumérica</small>
-                        </div>
+                            <div class="col">
+                                <small class="form-text text-muted">Máximo 50 caracteres</small>
+                                <small id="smClave" class="form-text text-muted col-12">clave alfanumérica</small>
+                        
+                                </div></div>
                     </div>
                 </div>
 
@@ -61,11 +67,12 @@
                     <label class="col-form-label col-3 text-right" for="tbDescripcionCredencial">Breve descripción:</label>
                     <div class="col-9">
                         <div class="row">
-                            <asp:TextBox ID="tbDescripcionCredencial" MaxLength="20" CssClass="form-control col-12" Text="" runat="server" placeholder="Breve descripción" />
+                            <asp:TextBox ID="tbDescripcionCredencial" MaxLength="50" CssClass="form-control col-12" Text="" runat="server" placeholder="Breve descripción" />
                         </div>
                         <div class="row">
                             <div class="col">
                                 <asp:RequiredFieldValidator ID="rfvDescripcionCredencial" runat="server" ControlToValidate="tbDescripcionCredencial" InitialValue="" ErrorMessage="Campo requerido." ForeColor="Red" Display="Dynamic" />
+                                <small class="form-text text-muted">Máximo 50 caracteres</small>
                                 <small id="smDescripcionCredencial" class="form-text text-muted col-12">Etiqueta para identificar la credencial - (nombre municipalidad)</small>
                             </div>
                         </div>
@@ -76,7 +83,7 @@
                     <label class="col-form-label col-3 text-right" for="tbScopesCredencial">Scopes:</label>
                     <div class="col-9">
                         <div class="row">
-                            <asp:TextBox ID="tbScopesCredencial" MaxLength="100" CssClass="form-control col-12" Text="" runat="server" placeholder="Scopes" />
+                            <asp:TextBox ID="tbScopesCredencial" MaxLength="50" CssClass="form-control col-12" Text="" runat="server" placeholder="Scopes" />
                         </div>
                         <div class="row">
                             <small id="smScope" class="form-text text-muted col-12">Scopes separados por espacios (ejemplo 1: api1), (ejemplo 2: api1 api2)</small>
@@ -150,21 +157,25 @@
                                     <td class="col-2">
                                         <div class="row">
                                             <div class="col-12">
-                                                <asp:TextBox ID="tbInsertDescripcionModulo" CssClass="form-control col-12" Text="" runat="server" placeholder="Descripcion" />
+                                                <asp:TextBox ID="tbInsertDescripcionModulo" MaxLength="50" CssClass="form-control col-12" Text="" runat="server" placeholder="Descripcion" />
+                                                 <small class="form-text text-muted">Máximo 50 caracteres</small>
                                             </div>
+                                            
                                         </div>
                                     </td>
                                     <td class="col-7">
                                         <div class="row">
                                             <div class="col-12">
-                                                <asp:TextBox ID="tbInsertUrlModulo" CssClass="form-control col-12" Text="" runat="server" placeholder="URL" />
+                                                <asp:TextBox ID="tbInsertUrlModulo" MaxLength="50"  CssClass="form-control col-12" Text="" runat="server" placeholder="URL" />
                                             </div>
+                                            <small class="form-text text-muted">Máximo 50 caracteres</small>
                                         </div>
                                     </td>
                                     <td class="col-1">
                                         <div class="col-12">
                                             <asp:LinkButton ID="lBtnAgregarNuevoModulo" OnClick="lbtnInsertNuevoModulo_Click" runat="server"><i class="fas fa-plus"></i></asp:LinkButton>
                                         </div>
+                                        
                                     </td>
                                 </tr>
 
