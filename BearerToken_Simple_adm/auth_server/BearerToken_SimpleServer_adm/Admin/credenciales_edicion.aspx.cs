@@ -31,6 +31,8 @@ namespace JWTBearer_SimpleServer.Admin
                     tbScopesCredencial.Text = credencial.Scopes;
 
                     actualizarVistaModulos(credencial.Id);
+
+                    btnConfirmarOPCredencial.Text = "Modificar Credencial";
                 }
                 else
                 {
@@ -45,10 +47,10 @@ namespace JWTBearer_SimpleServer.Admin
             string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
             BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
             //
-            string guidCredencial = tbGuidCredencial.Text;
-            string claveCredencial = tbClaveCredencial.Text;
-            string descripcionCredencial = tbDescripcionCredencial.Text;
-            string scopesCredencial = tbScopesCredencial.Text;
+            string guidCredencial = tbGuidCredencial.Text.Trim();
+            string claveCredencial = tbClaveCredencial.Text.Trim();
+            string descripcionCredencial = tbDescripcionCredencial.Text.Trim().ToLower();
+            string scopesCredencial = tbScopesCredencial.Text.Trim().ToLower();
             //
             CredencialClienteAPI credencial = new CredencialClienteAPI
             {

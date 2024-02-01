@@ -40,7 +40,7 @@
                     <label class="col-form-label col-3 text-right" for="tbGuidCredencial">GUID Cliente(client id):</label>
                     <div class="col-9">
                         <div class="row">
-                            <asp:TextBox ID="tbGuidCredencial" CssClass="form-control col-12" Text="" runat="server" placeholder="GUID Generado" />
+                            <asp:TextBox ID="tbGuidCredencial" MaxLength="150" CssClass="form-control col-12" Text="" runat="server" placeholder="GUID Generado" />
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <label class="col-form-label col-3 text-right" for="tbClaveCredencial">Clave secreta:</label>
                     <div class="col-9">
                         <div class="row">
-                            <asp:TextBox ID="tbClaveCredencial" CssClass="form-control col-12" Text="" runat="server" placeholder="Clave" />
+                            <asp:TextBox ID="tbClaveCredencial" MaxLength="150"  CssClass="form-control col-12" Text="" runat="server" placeholder="Clave" />
                         </div>
                         <div class="row">
                             <small id="smClave" class="form-text text-muted col-12">clave alfanumérica</small>
@@ -61,12 +61,12 @@
                     <label class="col-form-label col-3 text-right" for="tbDescripcionCredencial">Breve descripción:</label>
                     <div class="col-9">
                         <div class="row">
-                            <asp:TextBox ID="tbDescripcionCredencial" CssClass="form-control col-12" Text="" runat="server" placeholder="Breve descripción" />
+                            <asp:TextBox ID="tbDescripcionCredencial" MaxLength="20" CssClass="form-control col-12" Text="" runat="server" placeholder="Breve descripción" />
                         </div>
                         <div class="row">
                             <div class="col">
                                 <asp:RequiredFieldValidator ID="rfvDescripcionCredencial" runat="server" ControlToValidate="tbDescripcionCredencial" InitialValue="" ErrorMessage="Campo requerido." ForeColor="Red" Display="Dynamic" />
-                                <small id="smDescripcion" class="form-text text-muted col-12">Etiqueta para identificar la credencial - (nombre municipalidad)</small>
+                                <small id="smDescripcionCredencial" class="form-text text-muted col-12">Etiqueta para identificar la credencial - (nombre municipalidad)</small>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                     <label class="col-form-label col-3 text-right" for="tbScopesCredencial">Scopes:</label>
                     <div class="col-9">
                         <div class="row">
-                            <asp:TextBox ID="tbScopesCredencial" CssClass="form-control col-12" Text="" runat="server" placeholder="Scopes" />
+                            <asp:TextBox ID="tbScopesCredencial" MaxLength="100" CssClass="form-control col-12" Text="" runat="server" placeholder="Scopes" />
                         </div>
                         <div class="row">
                             <small id="smScope" class="form-text text-muted col-12">Scopes separados por espacios (ejemplo 1: api1), (ejemplo 2: api1 api2)</small>
@@ -118,15 +118,15 @@
                             <td class="col-2">
                                 <div class="row">
                                     <div class="col-12">
-                                        <asp:TextBox ID="tbEdIdModulo" Enabled="false" CssClass="form-control text-muted col-12" Text='<%#Eval("id")%>' runat="server" placeholder="descripción" />
+                                        <asp:TextBox ID="tbEdIdModulo"  Enabled="false" CssClass="form-control text-muted col-12" Text='<%#Eval("id")%>' runat="server" placeholder="descripción" />
                                     </div>
                                 </div>
                             </td>
                             <td class="col-2">
-                                <asp:TextBox ID="tbEdDescripcionModulo" Enabled="false" CssClass="form-control text-muted col-12" Text='<%#Eval("descripcion")%>' runat="server" placeholder="descripción" />
+                                <asp:TextBox ID="tbEdDescripcionModulo" MaxLength="50" Enabled="false" CssClass="form-control text-muted col-12" Text='<%#Eval("descripcion")%>' runat="server" placeholder="descripción" />
                             </td>
                             <td class="col-7">
-                                <asp:TextBox ID="tbEdUrlModulo" CssClass="form-control col-12" Text='<%#Eval("url")%>' runat="server" placeholder="url" /></td>
+                                <asp:TextBox ID="tbEdUrlModulo" MaxLength="200" CssClass="form-control col-12" Text='<%#Eval("url")%>' runat="server" placeholder="url" /></td>
                             <td class="col-1">
                                 <asp:LinkButton ID="lbtnEdModificarModulo" OnClick="lbtnEdModificarModulo_Click" runat="server"><i class="fas fa-pencil-alt"></i></asp:LinkButton>
                                 <asp:LinkButton ID="lbtnEdEliminarModulo" OnClick="lbtnEdEliminarModulo_Click" runat="server"><i class="fas fa-trash"></i></asp:LinkButton>

@@ -29,26 +29,21 @@ namespace JWTBearer_SimpleServer.Admin
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {
                 HyperLink hlModificar= e.Item.FindControl("hlModificar") as HyperLink;
-
                 int? Id = DataBinder.Eval(e.Item.DataItem, "id") as int?;
-               
                 hlModificar.NavigateUrl = $"credenciales_edicion.aspx?Id={Id}";
-
             }
             */
         }
 
         protected void lbtnEliminarCredencial_Click(object sender, EventArgs e)
         {
-            LinkButton btnEliminar = sender as LinkButton;
-            ListViewDataItem item = btnEliminar.NamingContainer as ListViewDataItem;
+            LinkButton btnEliminarCredencial = sender as LinkButton;
+            ListViewDataItem item = btnEliminarCredencial.NamingContainer as ListViewDataItem;
             Label lbIdCredencial = item.FindControl("lbIdCredencial") as Label;
 
             if (lbIdCredencial != null)
             {
                 string idString = lbIdCredencial.Text.Trim();
-
-                
                 int idCredencial = Convert.ToInt32(idString);
 
                 string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");

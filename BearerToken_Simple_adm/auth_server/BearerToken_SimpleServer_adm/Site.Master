@@ -97,7 +97,7 @@
         </div>
 
          <!-- Modal -->
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <asp:UpdatePanel ID="UpdatePanelModal" runat="server">
             <ContentTemplate>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
