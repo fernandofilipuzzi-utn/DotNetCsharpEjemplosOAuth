@@ -3,13 +3,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h3 class="display-4">Alta/Modificación de credenciales</h3>
-        <p class="lead">Alta de credenciales.</p>
-    </div>
+    <div class="container m-3">
 
-    <div class="container">
-        <div class="col-12" style="background-color: #dcdced;">
+        <div class="jumbotron m-3 p-3" style="background-color: #dcdced;">
+            <h3 class="display-4">Alta/Modificación de credenciales</h3>
+            <p class="lead">Alta de credenciales.</p>
+        </div>
+
+        <div class="col-12 m-3" style="background-color: #dcdced;">
+
+            <div class="row text-center">
+                <h4>Credencial de acceso del módulo</h4>
+            </div>
 
             <div class="form-group row p-2">
                 <label class="col-form-label col-3 text-right" for="tbIdCredencial">Id:</label>
@@ -33,7 +38,7 @@
                 <label class="col-form-label col-3 text-right" for="tbClave">Clave secreta:</label>
                 <div class="col-8">
                     <div class="row">
-                        <asp:TextBox ID="tbClaveCredencial" CssClass="form-control col-9 copy-paste" Text="" runat="server" placeholder="Clave" />                    
+                        <asp:TextBox ID="tbClaveCredencial" CssClass="form-control col-9 copy-paste" Text="" runat="server" placeholder="Clave" />
                     </div>
                     <div class="row">
                         <small id="smClave" class="form-text text-muted">clave alfanumérica</small>
@@ -42,8 +47,20 @@
             </div>
 
             <div class="form-group row p-2">
+                <label class="col-form-label col-3 text-right" for="tbScopes">Breve descripción:</label>
+                <div class="col-8">
+                    <div class="row">
+                        <asp:TextBox ID="tbDescripcionCredencial" CssClass="form-control copy-paste" Text="" runat="server" placeholder="Breve descripción" />
+                    </div>
+                    <div class="row">
+                        <small id="smDescripcion" class="form-text text-muted">Etiqueta para identificar la credencial - (nombre municipalidad)</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row p-2">
                 <label class="col-form-label col-3 text-right" for="tbScopes">Scopes:</label>
-                <div class="col-8">                    
+                <div class="col-8">
                     <div class="row">
                         <asp:TextBox ID="tbScopesCredencial" CssClass="form-control copy-paste" Text="" runat="server" placeholder="Scopes" />
                     </div>
@@ -59,27 +76,34 @@
         </div>
 
 
-        <div class="col-12 p-2" style="background-color: #dcdced;">
+        <div class="col-12 p-2 m-3 text-center" style="background-color: #dcdced;">
 
             <asp:ListView ID="lvModulos" InsertItemPosition="LastItem" OnItemDataBound="lvModulos_ItemDataBound" runat="server">
+
                 <LayoutTemplate>
-                    <table class="table">
-                        <thead>
-                            <th>Id</th>
-                            <th>descripcion</th>
-                            <th>Url</th>
-                            <th>Op</th>
+                    <table class="table table-condensed table-borderless table-hover text-center">
+                        <thead class="table-dark">
+                            <th class="col-2">Id</th>
+                            <th class="col-2">Descripción</th>
+                            <th class="col-7">URL</th>
+                            <th class="col-2"></th>
                         </thead>
-                        <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                        <tbody>
+                            <asp:PlaceHolder runat="server" ID="itemPlaceholder" />
+                        </tbody>
                     </table>
                 </LayoutTemplate>
 
                 <ItemTemplate>
                     <tr>
-                        <td><asp:TextBox ID="tbEdIdModulo" Enabled="false" CssClass="form-control text-muted" Text='<%#Eval("id")%>' runat ="server" placeholder="descripción" /></td>
-                        <td><asp:TextBox ID="tbEdDescripcionModulo" Enabled="false" CssClass="form-control text-muted" Text='<%#Eval("descripcion")%>' runat ="server" placeholder="descripción" />                        </td>
-                        <td><asp:TextBox ID="tbEdUrlModulo" CssClass="form-control" Text='<%#Eval("url")%>' runat ="server" placeholder="url" /></td>
-                        <td>
+                        <td class="col-2">
+                            <asp:TextBox ID="tbEdIdModulo" Enabled="false" CssClass="form-control text-muted" Text='<%#Eval("id")%>' runat="server" placeholder="descripción" /></td>
+                        <td class="col-2">
+                            <asp:TextBox ID="tbEdDescripcionModulo" Enabled="false" CssClass="form-control text-muted" Text='<%#Eval("descripcion")%>' runat="server" placeholder="descripción" />
+                        </td>
+                        <td class="col-7">
+                            <asp:TextBox ID="tbEdUrlModulo" CssClass="form-control" Text='<%#Eval("url")%>' runat="server" placeholder="url" /></td>
+                        <td class="col-1">
                             <asp:LinkButton ID="lbtnEdModificarModulo" OnClick="lbtnEdModificarModulo_Click" runat="server"><i class="fas fa-pencil-alt"></i></asp:LinkButton>
                             <asp:LinkButton ID="lbtnEdEliminarModulo" OnClick="lbtnEdEliminarModulo_Click" runat="server"><i class="fas fa-trash"></i></asp:LinkButton>
                         </td>
@@ -88,12 +112,17 @@
 
                 <InsertItemTemplate>
                     <tr>
-                        <td><asp:TextBox ID="tbInsertIdModulo" Enabled="false" CssClass="form-control text-muted" Text="" runat="server" placeholder="Id" /></td>
-                        <td><asp:TextBox ID="tbInsertDescripcionModulo" CssClass="form-control" Text="" runat="server" placeholder="Descripcion" /></td>
-                        <td><asp:TextBox ID="tbInsertUrlModulo" CssClass="form-control" Text="" runat="server" placeholder="URL" /></td>
-                        <td><asp:LinkButton ID="lBtnAgregarNuevoModulo" OnClick="lbtnInsertNuevoModulo_Click" runat="server"><i class="fas fa-plus"></i></asp:LinkButton></td>
+                        <td class="col-2">
+                            <asp:TextBox ID="tbInsertIdModulo" Enabled="false" CssClass="form-control text-muted" Text="" runat="server" placeholder="Id" /></td>
+                        <td class="col-2">
+                            <asp:TextBox ID="tbInsertDescripcionModulo" CssClass="form-control" Text="" runat="server" placeholder="Descripcion" /></td>
+                        <td class="col-7">
+                            <asp:TextBox ID="tbInsertUrlModulo" CssClass="form-control" Text="" runat="server" placeholder="URL" /></td>
+                        <td class="col-1">
+                            <asp:LinkButton ID="lBtnAgregarNuevoModulo" OnClick="lbtnInsertNuevoModulo_Click" runat="server"><i class="fas fa-plus"></i></asp:LinkButton></td>
                     </tr>
                 </InsertItemTemplate>
+
             </asp:ListView>
         </div>
 
