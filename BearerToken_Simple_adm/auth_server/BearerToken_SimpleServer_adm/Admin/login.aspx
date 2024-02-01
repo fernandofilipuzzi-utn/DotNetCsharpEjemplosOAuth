@@ -17,28 +17,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-    <style>
-        @media (max-width: 767px) {
-            .container.row {
-                min-width: 361px; /* Ajusta este valor según tus necesidades */
-            }
-        }
-    </style>
+   
 </head>
-<body>
+<body  style="background-color: #f1f5f8; min-width: 536px;">
     <form id="form1" runat="server">
 
         <asp:ScriptManager runat="server">
             <Scripts>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <%--Framework Scripts--%>
                 <asp:ScriptReference Path="https://code.jquery.com/jquery-3.5.1.slim.min.js" />
                 <asp:ScriptReference Path="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" />
                 <asp:ScriptReference Path="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" />
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
-                <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
                 <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
@@ -68,42 +63,66 @@
 
         </script>
 
-        <div class="container">
+        <div class="container text-center">
 
             <div class="jumbotron">
-                <h3 class="display-4">Login</h3>
-                <p class="lead">Ingres su usuario y contraseña</p>
+                <h3 class="display-4">Administración de credenciales</h3>
             </div>
 
-            <div class="row text-center p-3" style="background-color: #dcdced;">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
 
-                <div class="contact-from col-2"></div>
+                    <div class="row">
 
-                <div class="contact-from col-8 p-3">
-                    <div class="form-group row p-3">
-                        <label class="col-sm-2 col-form-label" for="tbUsuario">Usuario</label>
-                        <div class="row-10">
-                            <asp:TextBox ID="tbUsuario" CssClass="form-control form-control-lg" placeholder="Ingrese su el nombre de Usuario" runat="server" />
-                            <small id="usuarioHelp" class="form-text text-muted">Usuario registrado</small>
+                        <div class="col-12 text-center">
+
+                            <div class="row p-3">
+                                <asp:Label ID="lbError" CssClass="alert alert-dark" role="alert" runat="server" Visible="false" />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 p-3" style="background-color: #dcdced;">
+
+                                    <div class="row text-center p-4">
+                                        <div class="col-12">
+                                            <h4>Ingrese su usuario y contraseña</h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="row text-center m-3">
+
+                                        <div class="col-12">
+
+                                            <div class="form-group row m-3">
+                                                <div class="col-4 text-right">
+                                                    <label class="col-form-label" for="tbUsuario">Usuario</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <asp:TextBox ID="tbUsuario" CssClass="form-control col-12" placeholder="Ingrese su el nombre de Usuario" runat="server" />
+                                                    <small id="usuarioHelp" class="form-text col-12 text-muted">Usuario registrado</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row m-3">
+                                                <div class="col-4 text-right">
+                                                    <label class="col-form-label" for="tbClave">Clave</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <asp:TextBox ID="tbClave" TextMode="Password" CssClass="form-control form-control-lg" placeholder="Ingrese su clave" runat="server" />
+                                                </div>
+                                            </div>
+
+                                            <asp:Button ID="btnAceptar" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> 
                         </div>
                     </div>
-
-                    <div class="form-group row p-3">
-                        <label class="col-sm-2 col-form-label" for="tbClave">Clave</label>
-                        <div class="row-10">
-                            <asp:TextBox ID="tbClave" TextMode="Password" CssClass="form-control form-control-lg" placeholder="Ingrese su clave" runat="server" />
-                        </div>
-                    </div>
-
-                    <asp:Button ID="btnAceptar" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
-
-                    <div class="col-4 p-3">
-                        <asp:Label CssClass="alert alert-dark" role="alert" ID="lbError" runat="server" Visible="false" />
-                    </div>
-                </div>
-
-                <div class="contact-from col-3"></div>
-            </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </form>
 </body>

@@ -20,11 +20,14 @@ namespace BearerToken_SimpleServer_adm
             }
             else
             {
-                string usuario = cookie["Usuario"];
-                DateTime expire = cookie.Expires;
-                if (DateTime.Now < expire)
+                string usuario = cookie["usuario"];
+                if (DateTime.Now < cookie.Expires)
                 {
                     Response.Redirect("/Admin/login.aspx");
+                }
+                else 
+                {
+                    lbUsuarioNombre.Text = usuario;
                 }
             }
         }
@@ -38,7 +41,7 @@ namespace BearerToken_SimpleServer_adm
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(cookie);
             }
-            Response.Redirect("Admin/login.aspx");
+            Response.Redirect("/Admin/login.aspx");
         }
 
         public void ShowMessage(string titulo, string mensaje)

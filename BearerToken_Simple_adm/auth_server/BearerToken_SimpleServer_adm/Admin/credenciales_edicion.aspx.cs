@@ -27,6 +27,7 @@ namespace JWTBearer_SimpleServer.Admin
                     tbIdCredencial.Text = credencial.Id.ToString();
                     tbGuidCredencial.Text = credencial.Guid;
                     tbClaveCredencial.Text = credencial.Clave;
+                    tbDescripcionCredencial.Text = credencial.Descripcion;
                     tbScopesCredencial.Text = credencial.Scopes;
 
                     actualizarVistaModulos(credencial.Id);
@@ -46,12 +47,14 @@ namespace JWTBearer_SimpleServer.Admin
             //
             string guidCredencial = tbGuidCredencial.Text;
             string claveCredencial = tbClaveCredencial.Text;
+            string descripcionCredencial = tbDescripcionCredencial.Text;
             string scopesCredencial = tbScopesCredencial.Text;
             //
             CredencialClienteAPI credencial = new CredencialClienteAPI
             {
                 Guid = guidCredencial,
                 Clave = claveCredencial,
+                Descripcion = descripcionCredencial,
                 Scopes = scopesCredencial
             };
             //
@@ -68,6 +71,8 @@ namespace JWTBearer_SimpleServer.Admin
 
             Response.Redirect("/Admin/credenciales.aspx");
         }
+
+        #region amb modulos
 
         protected void lvModulos_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
@@ -160,5 +165,7 @@ namespace JWTBearer_SimpleServer.Admin
             lvModulos.DataSource = oService.moduloDAO.BuscarPorIdCredencial(idCredencial).Tables[0];
             lvModulos.DataBind();
         }
+
+        #endregion
     }
 }

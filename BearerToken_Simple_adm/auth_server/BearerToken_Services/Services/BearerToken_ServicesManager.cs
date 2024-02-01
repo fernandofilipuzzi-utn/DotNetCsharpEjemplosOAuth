@@ -30,11 +30,6 @@ namespace BearerToken_Services.Services
             credencialDAO = new CredencialClienteAPISQLiteDaoImpl();
         }
 
-        public void AgregarCredencial(CredencialClienteAPI nuevaCredencia)
-        {
-            credencialDAO.Agregar(nuevaCredencia);
-        }
-
         public CredencialClienteAPI ValidarCredenciales(string guid, string frase)
         {
             DataTable dtCredenciales = credencialDAO.BuscarPorGuid(guid, frase).Tables[0];
@@ -45,6 +40,7 @@ namespace BearerToken_Services.Services
                 credencial.Id = Convert.ToInt32(dtCredenciales.Rows[0]["id"]);
                 credencial.Guid = Convert.ToString(dtCredenciales.Rows[0]["guid"]);
                 credencial.Clave = Convert.ToString(dtCredenciales.Rows[0]["clave"]);
+                credencial.Descripcion = Convert.ToString(dtCredenciales.Rows[0]["descripcion"]);
                 credencial.Habilitado = Convert.ToBoolean(dtCredenciales.Rows[0]["habilitado"]);
                 credencial.Scopes = Convert.ToString(dtCredenciales.Rows[0]["scopes"]);
             }

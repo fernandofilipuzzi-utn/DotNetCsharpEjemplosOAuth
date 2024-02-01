@@ -36,7 +36,7 @@ namespace JWTBearer_SimpleServer.Admin
             {
                 #region cookie
                 HttpCookie cookie = new HttpCookie("UsuarioSettings");
-                cookie["Usuario"]=usuario;
+                cookie["usuario"]=usuario;
                 cookie.Expires = DateTime.Now.AddMinutes(3);
                 HttpContext.Current.Response.Cookies.Add(cookie);
                 #endregion
@@ -47,6 +47,7 @@ namespace JWTBearer_SimpleServer.Admin
             else
             {
                 lbError.Text = "error";
+                lbError.Visible = true;
             }
         }
     }

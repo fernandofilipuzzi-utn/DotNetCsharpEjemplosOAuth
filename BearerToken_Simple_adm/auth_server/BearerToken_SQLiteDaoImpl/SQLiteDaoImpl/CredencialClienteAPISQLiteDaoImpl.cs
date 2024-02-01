@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS credenciales_clientes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     guid TEXT UNIQUE,
     clave TEXT NOT NULL,
+    descripcion TEXT NOT NULL,
     habilitado INTEGER CHECK (habilitado IN (0, 1)),
     scopes TEXT NOT NULL
 );";
@@ -67,19 +68,21 @@ CREATE TABLE IF NOT EXISTS credenciales_clientes (
                 conn.Open();
 
                 string sql = $@"
-INSERT INTO credenciales_clientes (guid, clave, habilitado, scopes)
-VALUES (@Guid, @Clave, @Habilitado,@Scopes)
+INSERT INTO credenciales_clientes (guid, clave, descripcion, habilitado, scopes)
+VALUES (@Guid, @Clave, @Descripcion, @Habilitado, @Scopes)
 RETURNING id;";
 
                 using (var query = new SQLiteCommand(sql, conn))
                 {
                     query.Parameters.Add(new SQLiteParameter("Guid", DbType.String));
                     query.Parameters.Add(new SQLiteParameter("Clave", DbType.String));
+                    query.Parameters.Add(new SQLiteParameter("Descripcion", DbType.String));
                     query.Parameters.Add(new SQLiteParameter("Habilitado", SqlDbType.Bit));
                     query.Parameters.Add(new SQLiteParameter("Scopes", DbType.String));
                     //
                     query.Parameters["Guid"].Value = nueva.Guid;
                     query.Parameters["Clave"].Value = nueva.Clave;
+                    query.Parameters["Descripcion"].Value = nueva.Descripcion;
                     query.Parameters["Habilitado"].Value = nueva.Habilitado ? 1 : 0;
                     query.Parameters["Scopes"].Value = nueva.Scopes;
                     //
@@ -114,12 +117,14 @@ RETURNING id;";
                 {
                     query.Parameters.Add(new SQLiteParameter("Guid", DbType.String));
                     query.Parameters.Add(new SQLiteParameter("Clave", DbType.String));
+                    query.Parameters.Add(new SQLiteParameter("Descripcion", DbType.String));
                     query.Parameters.Add(new SQLiteParameter("Habilitado", SqlDbType.Bit));
                     query.Parameters.Add(new SQLiteParameter("Scopes", DbType.String));
                     query.Parameters.Add(new SQLiteParameter("Id", DbType.Int32));
                     //
                     query.Parameters["Guid"].Value = credencial.Guid;
                     query.Parameters["Clave"].Value = credencial.Clave;
+                    query.Parameters["Descripcion"].Value = credencial.Descripcion;
                     query.Parameters["Habilitado"].Value = credencial.Habilitado ? 1 : 0;
                     query.Parameters["Scopes"].Value = credencial.Scopes;
                     query.Parameters["Id"].Value = credencial.Id;
@@ -181,7 +186,7 @@ WHERE id = @Id;";
                 conn.Open();
 
                 string sql = @"
-SELECT id, guid, clave, habilitado, scopes
+SELECT id, guid, clave, descripcion, habilitado, scopes
 FROM credenciales_clientes
 WHERE id=@Id;";
 
@@ -206,6 +211,12 @@ WHERE id=@Id;";
                             clave = Convert.ToString(dataReader["clave"]);
                         #endregion
 
+                        #region descripcion
+                        string descripcion = "";
+                        if (dataReader["descripcion"] != DBNull.Value)
+                            descripcion = Convert.ToString(dataReader["descripcion"]);
+                        #endregion
+
                         #region habilitado
                         bool habilitado = false;
                         if (dataReader["habilitado"] != DBNull.Value)
@@ -218,7 +229,15 @@ WHERE id=@Id;";
                             scopes = Convert.ToString(dataReader["scopes"]);
                         #endregion
 
-                        buscado = new CredencialClienteAPI { Id = idBuscado, Guid = guid, Clave = clave, Habilitado = habilitado, Scopes = scopes };
+                        buscado = new CredencialClienteAPI 
+                        { 
+                            Id = idBuscado, 
+                            Guid = guid, 
+                            Clave = clave, 
+                            Descripcion=descripcion,
+                            Habilitado = habilitado, 
+                            Scopes = scopes 
+                        };
                     }
                 }
             }
@@ -244,7 +263,7 @@ WHERE id=@Id;";
                 conn.Open();
 
                 string sql = @"
-SELECT id, guid, clave, habilitado, scopes
+SELECT id, guid, clave, descripcion, habilitado, scopes
 FROM credenciales_clientes;";
 
                 using (var query = new SQLiteCommand(sql, conn))
@@ -278,7 +297,7 @@ FROM credenciales_clientes;";
                 conn.Open();
 
                 string sql = @"
-SELECT id, guid, clave, habilitado, scopes
+SELECT id, guid, clave, descripcion, habilitado, scopes
 FROM credenciales_clientes
 WHERE guid=@Guid and clave=@Clave;";
 

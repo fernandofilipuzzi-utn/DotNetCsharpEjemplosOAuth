@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %> -AUTH BEARER TOKEN</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -19,8 +19,8 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
-    <style>
+    
+     <style>
         @media (max-width: 767px) {
             .container.row {
                 min-width: 361px; /* Ajusta este valor según tus necesidades */
@@ -32,12 +32,12 @@
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
+                <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Path="https://code.jquery.com/jquery-3.5.1.slim.min.js" />
                 <asp:ScriptReference Path="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" />
                 <asp:ScriptReference Path="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" />
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
-                <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
                 <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
@@ -52,7 +52,7 @@
         </asp:ScriptManager>
 
         <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark align-item-start">
             <a class="navbar-brand" href="/">App</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNavbar"
                 aria-controls="MainNavbar" aria-expanded="false" aria-label="Toggle Navigation">
@@ -74,7 +74,8 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nombre de Usuario
+                        <a class="nav-link dropdown-toggle" href="/Admin/login.aspx" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <asp:Label ID="lbUsuarioNombre" Text="Ingresar" runat="server"/>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">                     
                             <div class="dropdown-divider">
@@ -124,7 +125,8 @@
                 </div>
 
                 <script>
-                    function mostrarModal(resultado) {
+                    function mostrarModal(resultado)
+                    {
                         document.getElementById('pMensaje').innerHTML = resultado;
                         $('#exampleModal').modal('show');
                     }

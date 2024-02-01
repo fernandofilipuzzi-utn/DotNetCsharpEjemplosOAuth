@@ -11,8 +11,10 @@
 
         <div class="col-12 m-3" style="background-color: #dcdced;">
 
-            <div class="row text-center">
-                <h4>Credenciales de acceso</h4>
+            <div class="row text-center p-4">
+                <div class="col-12">
+                    <h4>Credenciales de acceso</h4>
+                </div>
             </div>
 
             <asp:ListView ID="lvCredenciales" InsertItemPosition="LastItem" OnItemCreated="lvCredenciales_ItemCreated" OnItemDataBound="lvCredenciales_ItemDataBound" runat="server">
@@ -22,7 +24,8 @@
                         <thead class="table-dark">
                             <th>Id</th>
                             <th>GUID</th>
-                            <th>Frase</th>
+                            <th>Clave</th>
+                            <th>Descripción</th>
                             <th>HABILITADO</th>
                             <th>Scopes</th>
                             <th></th>
@@ -35,7 +38,7 @@
 
                 <InsertItemTemplate>
                     <tr>
-                        <td colspan="5"></td>
+                        <td colspan="6"></td>
                         <td>
                             <asp:HyperLink ID="hlModificar" runat="server" NavigateUrl='<%# $"credenciales_edicion.aspx" %>'><i class="fas fa-plus"></i></asp:HyperLink></td>
                         <tr />
@@ -46,6 +49,9 @@
                         <td><asp:Label ID="lbIdCredencial" runat="server" Text='<%#Eval("id")%>'/></td>
                         <td><%#Eval("guid")%></td>
                         <td><%#Eval("clave")%></td>
+                        <td>
+                            <%#(Eval("descripcion") as string)?.Length>10 ? (Eval("descripcion") as string)?.Substring(0,7)+"...":Eval("descripcion") as string%>
+                        </td>
                         <td><%#Eval("habilitado")%></td>
                         <td><%#Eval("scopes")%></td>
                         <td>

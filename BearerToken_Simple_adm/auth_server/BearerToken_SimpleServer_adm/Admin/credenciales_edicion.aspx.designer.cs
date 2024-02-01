@@ -15,6 +15,15 @@ namespace JWTBearer_SimpleServer.Admin
     {
 
         /// <summary>
+        /// Control tbActivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox tbActivo;
+
+        /// <summary>
         /// Control tbIdCredencial.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace JWTBearer_SimpleServer.Admin
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbDescripcionCredencial;
+
+        /// <summary>
+        /// Control rfvDescripcionCredencial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcionCredencial;
 
         /// <summary>
         /// Control tbScopesCredencial.
