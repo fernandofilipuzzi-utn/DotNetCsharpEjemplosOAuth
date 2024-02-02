@@ -23,10 +23,12 @@ namespace BearerToken.Utilities.Jwt
         {
             Token = token;
             ClaveFirma = claveFirma;
-            //
+        }
+
+        public bool ValidarToken()
+        {
             string secretKey = ClaveFirma.Sha256();
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
@@ -36,11 +38,6 @@ namespace BearerToken.Utilities.Jwt
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.Zero // Sin desplazamiento de tiempo permitido
             };
-           
-        }
-
-        public bool ValidarToken()
-        {
             try
             {
                 tokenHandler = new JwtSecurityTokenHandler();

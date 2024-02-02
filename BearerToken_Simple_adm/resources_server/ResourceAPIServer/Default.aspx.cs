@@ -23,7 +23,7 @@ namespace ResourceAPIServer
             string token = miAutenticador.GetToken(cuitUsuario);
             //
             if (string.IsNullOrEmpty(token)==false)
-                Response.Redirect($"http:/localhost:7778/modo_autorizacion_1/FormularioPrueba.aspx?embedToken={token}");
+                Response.Redirect($"http://localhost:7778/modo_autorizacion_1/FormularioPrueba.aspx?embedToken={token}");
             else
             {
                 //ellos sabrán!
