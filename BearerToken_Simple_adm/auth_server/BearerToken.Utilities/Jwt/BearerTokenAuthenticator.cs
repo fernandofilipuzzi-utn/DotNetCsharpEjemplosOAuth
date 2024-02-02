@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BearerToken.Utilities.Jwt
 {
-    public class BearerTokenUtil
+    public class BearerTokenAuthenticator
     {
         public string Token { get; set; }
         public string ClaveFirma { get; set; }
@@ -19,7 +19,7 @@ namespace BearerToken.Utilities.Jwt
         JwtSecurityTokenHandler tokenHandler;
         TokenValidationParameters tokenValidationParameters;
 
-        public BearerTokenUtil(string token, string claveFirma)
+        public BearerTokenAuthenticator(string token, string claveFirma)
         {
             Token = token;
             ClaveFirma = claveFirma;

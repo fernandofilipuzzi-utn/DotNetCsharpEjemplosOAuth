@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ResourceAPIServer.modo_autorizacion_1
+namespace ResourceAPIServer.web_tokenizada_modo_token_url
 {
     public partial class FormularioPrueba : System.Web.UI.Page
     {

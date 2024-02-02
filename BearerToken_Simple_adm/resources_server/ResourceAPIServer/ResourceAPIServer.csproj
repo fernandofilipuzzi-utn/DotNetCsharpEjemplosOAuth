@@ -195,13 +195,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -209,23 +204,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="img\gente.jpg" />
     <Content Include="img\404.jpg" />
+    <Content Include="img\token_acceso_code.jpg" />
+    <Content Include="img\token_acceso.jpg" />
     <Content Include="img\inicio.jpg" />
-    <Content Include="modo_autorizacion_1\FormularioPrueba.aspx" />
-    <Content Include="modo_autorizacion_1\Site.Master" />
-    <Content Include="modo_autorizacion_2\FormularioPrueba.aspx" />
-    <Content Include="modo_autorizacion_2\Site.Master" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="web_cliente_consume_token\Default.aspx" />
+    <Content Include="web_cliente_consume_token\Error.aspx" />
+    <Content Include="web_cliente_consume_token\VistaPaginaEmbebida.aspx" />
+    <Content Include="web_tokenizada_modo_token_url\FormularioPrueba.aspx" />
+    <Content Include="web_tokenizada_modo_token_url\Site.Master" />
+    <Content Include="web_tokenizada_modo_2\FormularioPrueba.aspx" />
+    <Content Include="web_tokenizada_modo_2\Site.Master" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -267,44 +257,65 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Error.aspx.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Error.aspx.designer.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Filters\HttpTrafficLogger.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\TokenResponse.cs" />
-    <Compile Include="modo_autorizacion_1\FormularioPrueba.aspx.cs">
+    <Compile Include="web_cliente_consume_token\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web_cliente_consume_token\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web_cliente_consume_token\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web_cliente_consume_token\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web_cliente_consume_token\Site_cliente_consume_token.Master.cs">
+      <DependentUpon>Site_cliente_consume_token.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web_cliente_consume_token\Site_cliente_consume_token.Master.designer.cs">
+      <DependentUpon>Site_cliente_consume_token.Master</DependentUpon>
+    </Compile>
+    <Compile Include="web_cliente_consume_token\VistaPaginaEmbebida.aspx.cs">
+      <DependentUpon>VistaPaginaEmbebida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web_cliente_consume_token\VistaPaginaEmbebida.aspx.designer.cs">
+      <DependentUpon>VistaPaginaEmbebida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web_tokenizada_modo_token_url\FormularioPrueba.aspx.cs">
       <DependentUpon>FormularioPrueba.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="modo_autorizacion_1\FormularioPrueba.aspx.designer.cs">
+    <Compile Include="web_tokenizada_modo_token_url\FormularioPrueba.aspx.designer.cs">
       <DependentUpon>FormularioPrueba.aspx</DependentUpon>
     </Compile>
-    <Compile Include="modo_autorizacion_1\Site.Master.cs">
+    <Compile Include="web_tokenizada_modo_token_url\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="modo_autorizacion_1\Site.Master.designer.cs">
+    <Compile Include="web_tokenizada_modo_token_url\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="modo_autorizacion_2\FormularioPrueba.aspx.cs">
+    <Compile Include="web_tokenizada_modo_2\FormularioPrueba.aspx.cs">
       <DependentUpon>FormularioPrueba.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="modo_autorizacion_2\FormularioPrueba.aspx.designer.cs">
+    <Compile Include="web_tokenizada_modo_2\FormularioPrueba.aspx.designer.cs">
       <DependentUpon>FormularioPrueba.aspx</DependentUpon>
     </Compile>
-    <Compile Include="modo_autorizacion_2\Site.Master.cs">
+    <Compile Include="web_tokenizada_modo_2\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="modo_autorizacion_2\Site.Master.designer.cs">
+    <Compile Include="web_tokenizada_modo_2\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -323,14 +334,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="web_cliente_consume_token\Site_cliente_consume_token.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\auth_server\BearerToken.Utilities\BearerToken.Utilities.csproj">

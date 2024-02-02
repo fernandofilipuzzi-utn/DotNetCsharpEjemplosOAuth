@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/modo_autorizacion_1/Site.Master" AutoEventWireup="true" CodeBehind="FormularioPrueba.aspx.cs" Inherits="ResourceAPIServer.modo_autorizacion_1.FormularioPrueba" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/web_tokenizada_modo_token_url/Site.Master" AutoEventWireup="true" CodeBehind="FormularioPrueba.aspx.cs" Inherits="ResourceAPIServer.web_tokenizada_modo_token_url.FormularioPrueba" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 

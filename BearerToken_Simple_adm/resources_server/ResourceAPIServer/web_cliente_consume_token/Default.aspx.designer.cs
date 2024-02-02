@@ -7,20 +7,29 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ResourceAPIServer
+namespace ResourceAPIServer.web_cliente_consume_token
 {
 
 
-    public partial class _Default
+    public partial class Default
     {
 
         /// <summary>
-        /// Control hlBtnModo1.
+        /// Control btnModo1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlBtnModo1;
+        protected global::System.Web.UI.WebControls.Button btnModo1;
+
+        /// <summary>
+        /// Control btnModo2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModo2;
     }
 }

@@ -7,20 +7,20 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ResourceAPIServer
+namespace ResourceAPIServer.web_tokenizada_modo_token_url
 {
 
 
-    public partial class _Default
+    public partial class Site
     {
 
         /// <summary>
-        /// Control hlBtnModo1.
+        /// Control MainContent.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlBtnModo1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }

@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ResourceAPIServer.modo_autorizacion_1
+namespace ResourceAPIServer.web_tokenizada_modo_token_url
 {
 
 

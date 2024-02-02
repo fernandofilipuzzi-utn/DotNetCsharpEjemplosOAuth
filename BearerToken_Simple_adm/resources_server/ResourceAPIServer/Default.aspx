@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h3 class="display-4">Ejemplo de API "TOKENIZADA"</h3>
-        <p class="lead"></p>
+        <h3 class="display-4">Ejemplo de recursos tokenizados"</h3>
+        <p class="lead">APIs y web tokenizadas</p>
     </div>
 
     <div class="container row text-center m-2">
@@ -13,7 +13,7 @@
             <img src="./img/inicio.jpg" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
             <div class="card-body">
                 <div class="card-title">
-                    <h2>APIs</h2>
+                    <h2>API tokenizada</h2>
                 </div>
                 <div class="card-text" style="max-height: 60px; overflow: hidden;">
                     <p>Ver Documentación - swagger</p>
@@ -29,31 +29,15 @@
             <img src="./img/inicio.jpg" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
             <div class="card-body">
                 <div class="card-title">
-                    <h2>Modo 1</h2>
+                    <h2>Escenerios de clientes</h2>
                 </div>
                 <div class="card-text" style="max-height: 60px; overflow: hidden;">
-                    <p>Método mediante el paso del token en la url</p>
+                    <p>Ejemplos de posibles autenticaciones</p>
                 </div>
 
             </div>
             <div class="text-center">
-                <asp:Button ID="btnModo1" class="btn btn-primary" OnClick="btnModo1_Click"  Text="Ir" runat="server"/>
-            </div>
-        </div>
-
-        <div class="card col-lg-3 col-md-4 col-sm-6 m-2 p-3">
-            <img src="./img/inicio.jpg" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
-            <div class="card-body">
-                <div class="card-title">
-                    <h2>Modo 2</h2>
-                </div>
-                <div class="card-text" style="max-height: 60px; overflow: hidden;">
-                    <p>Por el webconfig</p>
-                </div>
-
-            </div>
-            <div class="text-center">
-                <asp:Button ID="btnModo2" class="btn btn-primary" OnClick="btnModo2_Click" Text="Ir" runat="server"/>
+                <asp:HyperLink ID="hlBtnModo1" class="btn btn-primary" NavigateUrl="/web_cliente_consume_token/Default.aspx" Text="Ir a escenarios" runat="server"/>
             </div>
         </div>
 

@@ -7,20 +7,20 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ResourceAPIServer.modo_autorizacion_1
+namespace ResourceAPIServer.web_cliente_consume_token
 {
 
 
-    public partial class Site
+    public partial class VistaPaginaEmbebida
     {
 
         /// <summary>
-        /// Control MainContent.
+        /// Control iframeControl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.HtmlControls.HtmlIframe iframeControl;
     }
 }
