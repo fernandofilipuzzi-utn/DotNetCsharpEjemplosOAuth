@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.IdentityModel.Abstractions, Version=7.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.IdentityModel.Abstractions.7.3.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
     </Reference>
@@ -101,11 +97,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BearerToken.Utilities\BearerToken.Utilities.csproj">
-      <Project>{82d1ea22-ea63-4c14-a8ee-87f09d6d4dd1}</Project>
+    <ProjectReference Include="..\..\auth_server\BearerToken.Utilities\BearerToken.Utilities.csproj">
+      <Project>{82D1EA22-EA63-4C14-A8EE-87F09D6D4DD1}</Project>
       <Name>BearerToken.Utilities</Name>
     </ProjectReference>
   </ItemGroup>

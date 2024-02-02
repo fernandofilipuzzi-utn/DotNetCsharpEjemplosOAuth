@@ -1,23 +1,18 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using BearerToken.Utilities.Utils;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Jwt;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
-using System.Security.Cryptography;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http;
-using ResourceAPIServer.Utils;
-using System.IdentityModel.Tokens.Jwt;
-using Newtonsoft.Json;
-using System.IO;
-using System.Web;
-using ResourceAPIServer.AuthBearerTokenUtils;
 
-[assembly: OwinStartup(typeof(AuthenticatedAPIEjService.Startup))]
-namespace AuthenticatedAPIEjService
+[assembly: OwinStartup(typeof(ResourceAPIServer.Startup))]
+
+namespace ResourceAPIServer
 {
     public partial class Startup
     {
@@ -25,7 +20,7 @@ namespace AuthenticatedAPIEjService
         {
             /*es modificar la respuesta del middleware*/
             //app.Use(typeof(ResponseMiddleware));
-            
+
             Configure(app);
         }
 
@@ -67,7 +62,7 @@ namespace AuthenticatedAPIEjService
                                 var jwtToken = (JwtSecurityToken)validatedToken;
                                 if (!jwtToken.Payload.TryGetValue("guid1", out var guid)) //|| guid.ToString() != "expectedGuid")
                                 {
-                                     return;
+                                    return;
                                 }
                                 else
                                 {

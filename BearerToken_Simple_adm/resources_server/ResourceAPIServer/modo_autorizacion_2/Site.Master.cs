@@ -18,7 +18,7 @@ namespace ResourceAPIServer.modo_autorizacion_2
             if (string.IsNullOrEmpty(token))
             {
                 //
-                Response.Redirect("Error");
+                Response.Redirect("/Error");
             }
             else
             {

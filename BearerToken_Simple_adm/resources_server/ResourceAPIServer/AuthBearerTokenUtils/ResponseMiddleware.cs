@@ -11,7 +11,7 @@ using System.Web;
 
 namespace ResourceAPIServer.AuthBearerTokenUtils
 {
-    public class ResponseMiddleware: OwinMiddleware
+    public class ResponseMiddleware : OwinMiddleware
     {
         public ResponseMiddleware(OwinMiddleware next) : base(next) { }
 
@@ -32,7 +32,7 @@ namespace ResourceAPIServer.AuthBearerTokenUtils
                 await Next.Invoke(context);
             }
             */
-                        
+
             if (context.Request.Path.StartsWithSegments(new PathString("/api")) && context.Response.StatusCode != 200)
             {
                 var newContext = new OwinContext(context.Environment);

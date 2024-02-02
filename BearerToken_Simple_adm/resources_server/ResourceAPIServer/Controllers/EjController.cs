@@ -1,4 +1,5 @@
-﻿using ResourceAPIServer.AuthBearerToken;
+﻿using NSwag.Annotations;
+using ResourceAPIServer.AuthBearerTokenUtils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +10,7 @@ using System.Web.Http;
 
 namespace ResourceAPIServer.Controllers
 {
-    
+    [SwaggerTag("Controlador")]
     [RoutePrefix("api")]
     ///[CustomAuthorizationFilter]
     public class EjController : ApiController

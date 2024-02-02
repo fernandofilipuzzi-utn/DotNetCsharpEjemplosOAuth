@@ -1,10 +1,9 @@
-﻿using System;
-using System.Web;
-using Serilog;
-using Newtonsoft.Json;
+﻿using Serilog;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Collections.Specialized;
-using System.Text;
+using System.Linq;
+using System.Web;
 
 namespace ResourceAPIServer.Filters
 {

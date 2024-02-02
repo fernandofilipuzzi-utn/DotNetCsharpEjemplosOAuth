@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Net;
 using System.Net.Http;
 
-namespace ResourceAPIServer.AuthBearerToken
+namespace ResourceAPIServer.AuthBearerTokenUtils
 {
     public class ScopeAuthorizeAttribute : System.Web.Http.AuthorizeAttribute
     {
@@ -22,11 +22,11 @@ namespace ResourceAPIServer.AuthBearerToken
         {
             if (!actionContext.RequestContext.Principal.Identity.IsAuthenticated)
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado" });               
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado" });
             }
             else
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Forbidden, new { mensaje = "No autorizado" });               
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Forbidden, new { mensaje = "No autorizado" });
             }
         }
 
@@ -34,13 +34,13 @@ namespace ResourceAPIServer.AuthBearerToken
         {
             var principal = actionContext.RequestContext.Principal as ClaimsPrincipal;
 
-            if (principal == null || principal.Identity.IsAuthenticated==false)
+            if (principal == null || principal.Identity.IsAuthenticated == false)
             {
-                 return false;
+                return false;
             }
-            
+
             var scopeClaim = principal.FindFirst("scope");
-            
+
             if (scopeClaim != null && scopeClaim.Value.Contains(_scope))
             {
                 return true;
