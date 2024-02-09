@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace ResourceAPIServer.Controllers
 {
-    [SwaggerTag("Controlador")]
+   // [SwaggerTag("Controlador")]
     [RoutePrefix("api")]
     ///[CustomAuthorizationFilter]
     public class EjController : ApiController
