@@ -261,6 +261,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RequestToken.cs" />
     <Compile Include="Models\TokenResponse.cs" />
     <Compile Include="web_cliente_consume_token\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

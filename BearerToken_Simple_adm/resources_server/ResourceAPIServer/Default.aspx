@@ -21,7 +21,7 @@
 
             </div>
             <div class="text-center">
-                <a class="btn btn-primary" href="swagger">Ir</a>
+                <a class="btn btn-primary" Target="_blank" href="swagger">Ir</a>
             </div>
         </div>
 

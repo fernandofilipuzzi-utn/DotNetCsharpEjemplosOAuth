@@ -1,10 +1,14 @@
 ﻿using BearerToken_Models.Models;
 using BearerToken_Services.Services;
+using BearerToken_SimpleServer_adm.Models;
+using BearerToken_SimpleServer_adm.ScopeAuthorizeAttribute;
 using BearerToken_SimpleServer_adm.Utils;
+using Microsoft.Ajax.Utilities;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
@@ -17,11 +21,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using BearerToken_SimpleServer_adm.ScopeAuthorizeAttribute;
 
 namespace BearerToken_SimpleServer_adm
 {
     [RoutePrefix("auth")]
-    public class JWTController : ApiController
+    public class BearerTokenController : ApiController
     {
         TokenGenerador _generador = new TokenGenerador();
         BearerToken_ServicesManager _validador;
@@ -40,23 +45,37 @@ namespace BearerToken_SimpleServer_adm
 
         [HttpPost]
         [Route("token")]
-        public IHttpActionResult GetToken()
+        public IHttpActionResult PostToken(RequestToken request)
         {
             try
             {
                 Configure();
 
+                /* acceso sin a los parametros sin formato
+                 accede a los parametros al cuerpo de la solicitud - ej: guid=sdffd&frase=sdfsdf
                 string guid = HttpContext.Current.Request.Form["guid"];
                 string frase = HttpContext.Current.Request.Form["frase"];
+                */
+                /*
+                 accede a los parametros al encabezado - ej: guid=sdffd&frase=sdfsdf
+                string guid = Request.Headers.GetValues("guid").FirstOrDefault();
+                string clave = Request.Headers.GetValues("clave").FirstOrDefault();
+                
                 if (string.IsNullOrWhiteSpace(guid) || string.IsNullOrWhiteSpace(frase))
                 {
                     return BadRequest();
                 }
-
                 CredencialClienteAPI credencial = _validador.ValidarCredenciales(guid, frase);
+                */
+                if (string.IsNullOrWhiteSpace(request.GUID) || string.IsNullOrWhiteSpace(request.Clave))
+                {
+                    return BadRequest();
+                }
+                CredencialClienteAPI credencial = _validador.ValidarCredenciales(request.GUID, request.Clave);
+
                 if (credencial != null)
                 {
-                    string token = _generador.GenerarToken(guid, credencial.Scopes);
+                    string token = _generador.GenerarToken(request.GUID, credencial.Scopes);
                     return Ok(new { access_token = token, token_type = "Bearer" });
                 }
                 else
@@ -70,7 +89,8 @@ namespace BearerToken_SimpleServer_adm
             }
         }
 
-        [HttpPost]
+        [BearerToken_SimpleServer_adm.ScopeAuthorizeAttribute.ScopeAuthorize]
+        [HttpGet]
         [Route("modulos/urls")]
         public IEnumerable<Modulo> GetModulosUrls(string guid)
         {

@@ -47,8 +47,8 @@
                 <ItemTemplate>
                     <tr>
                         <td><asp:Label ID="lbIdCredencial" runat="server" Text='<%#Eval("id")%>'/></td>
-                        <td><%#Eval("guid")%></td>
-                        <td><%#Eval("clave")%></td>
+                        <td><code class="copy-paste"><%#Eval("guid")%></code></td>
+                        <td><code class="copy-paste"><%#Eval("clave")%></code></td>
                         <td>
                             <%#(Eval("descripcion") as string)?.Length>10 ? (Eval("descripcion") as string)?.Substring(0,7)+"...":Eval("descripcion") as string%>
                         </td>
@@ -65,4 +65,30 @@
         </div>  
     </div>
 
+
+    <script>
+        var elementosACopiar = document.querySelectorAll('.copy-paste');
+
+        elementosACopiar.forEach(function (elemento) {
+            var boton = document.createElement('button');
+            boton.className = 'btn fas fa-copy ml-2';
+            boton.addEventListener('click', function () {
+                copiarAlPortapapeles(elemento);
+            });
+            elemento.parentNode.insertBefore(boton, elemento.nextSibling);
+        });
+
+        function copiarAlPortapapeles(elemento) {
+            var texto = elemento.getAttribute('data-copiar-texto') || elemento.textContent;
+            var inputTemporal = document.createElement('input');
+            inputTemporal.style.position = 'absolute';
+            inputTemporal.style.left = '-9999px';
+            document.body.appendChild(inputTemporal);
+            inputTemporal.value = texto;
+            inputTemporal.select();
+            document.execCommand('copy');
+            document.body.removeChild(inputTemporal);
+            alert('¡Texto copiado al portapapeles!');
+        }
+    </script>
 </asp:Content>
