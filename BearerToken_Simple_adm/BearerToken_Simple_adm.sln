@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{ACF12170-283B-40C3-AEA6-C9A8B8ADD2DF}"
 	ProjectSection(SolutionItems) = preProject
 		esquema_sistema.jpg = esquema_sistema.jpg
+		pantallazo_admin_credenciales.jpg = pantallazo_admin_credenciales.jpg
+		pantallazo_alta_cliente.jpg = pantallazo_alta_cliente.jpg
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
