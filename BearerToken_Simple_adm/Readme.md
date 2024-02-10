@@ -1,32 +1,59 @@
-# NUGET
+# Escenario de autentificaci贸n y autorizaci贸n utilizando bearer token
+
+
+
+<div align="center">
+        <img style="width:60%;" src="esquema_sistema.jpg"/>
+        <p>Figura 1. Escenario de prueba del sistema</p>
+</div>
+
+
+## Dependendencias NUGET
+
+```
 clientservices: Newtonsoft.Json, RestSharp, System.IdentityModel.Tokens.Jwt
 resource api:
 authorization:
+```
 
-# POSTMAN
+## POSTMAN
+
 https://www.postman.com/fernandofilipuzziutn/workspace/dotnetcsharpejemplosbdsensillos/overview
 
 
-# IMPLEMENTACI覰 PARA PRUEBAS
-APIEjService corre en el IIS como http://localhost:7778
-Auth2.0Service corre en el IIS como http://locahost:7777
+## Implementaci贸n del escenario
 
-AppDemoCliente, consume ambos servicios.
+Requiere implementar en el IIS los siguientes proyectos
 
-# RESUMEN LLAMADAS 
+```
+servicio autenticador: BearerToken_Simple_adm/auth_server/BearerToken_SimpleServer_adm como http://localhost:7777
+servicio de recursos tokenizados: BearerToken_Simple_adm/resources_server/ResourceAPIServer como http://locahost:7778
+```
 
-## SOLICITUD DE TOKEN
+Luego como aplicaciones cliente est谩n:
+
+```
+apliaci贸n cliente desktop: BearerToken_Simple_adm/clientes/AppDemoCliente
+apliaci贸n cliente web: BearerToken_Simple_adm/clientes/AppWebDemoCliente
+```
+
+## Resumen de llamadas 
+
+### 1. Solicitud del token
+```bash
 curl -X POST -d "guid=guid_generado&frase=frase" http://localhost:7777/auth/token
+```
 
-## CONSUMIENDO SERVICIO
+### 3. llamada al m茅todo tokenido en el servidor de autenticaci贸n
+```bash
 curl -H "Authorization: Bearer <token_generado>" http://localhost:7778/api/Ej/MiServicioProtegido
+```
 
+## Ejemplos CURL
 
-# SERVICIO AUTENTICADOR
-
-### con token correcto
-#dar de alta un cliente en http://localhost:7777/admin/credenciales
-
+### 1. solicitud de un token
+Requiere primero dar de alta las credenciales de un cliente en http://localhost:7777/admin/credenciales
+```bash
 $ curl -X POST --header 'Content-Type: application/json' \
           --header 'Accept: application/json' \
           -d '{ "guid": "cbf25e40-b0da-4aa2-8a51-e2d701390ba1", "clave": "pFb2MKucltUts" }' \
@@ -36,10 +63,11 @@ $ curl -X POST --header 'Content-Type: application/json' \
  "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiY2JmMjVlNDAtYjBkYS00YWEyLThhNTEtZTJkNzAxMzkwYmExIiwic2NvcGUiOiJhcGkxIiwiZXhwIjoxNzA3NjAxMzY1fQ.nOEuoKPPn9agf7_mNa16dXeQrYp6ciYWVeCwBgi5-Nc",
  "token_type":"Bearer"
 }
+```
 
+### 3. llamando a un m茅todo tokenizado en el servicio de autenticaci贸n
 
-# Probando el m閠odo tokenizado - ubicado en el servicio autenticador
-
+```bash
 $ curl -X GET --header 'Accept: application/json' \
           --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiY2JmMjVlNDAtYjBkYS00YWEyLThhNTEtZTJkNzAxMzkwYmExIiwic2NvcGUiOiJhcGkxIiwiZXhwIjoxNzA3NjA4MDAwfQ.en5n1ZL0MWse6VD7SaW4FFp7Y3ZYlNvkGikl04b-u6M' 'https://localhost:7778/auth/modulosurls/cbf25e40-b0da-4aa2-8a51-e2d701390ba1'
 
@@ -47,29 +75,30 @@ $ curl -X GET --header 'Accept: application/json' \
     {"Id":1,"Descripcion":"prueba1","Url":"http://localhost/prueba1"},
     {"Id":2,"Descripcion":"prueba2","Url":"http://localhost/prueba2"}
 ]
+```
 
-# RECURSOS TOKENIZADOS
+### 4. llamando a un m茅todo tokenizado en el servicio de recursos tokenizados
 
-### con token correcto
-http://localhost:7778
-
-# Probando el m閠odo tokenizado - ubicado en el servicio de recursos
-
+```bash
 $ curl -X GET --header 'Accept: application/json' \
           --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiY2JmMjVlNDAtYjBkYS00YWEyLThhNTEtZTJkNzAxMzkwYmExIiwic2NvcGUiOiJhcGkxIiwiZXhwIjoxNzA3NjA4MDAwfQ.en5n1ZL0MWse6VD7SaW4FFp7Y3ZYlNvkGikl04b-u6M' \
           'http://localhost:7778/api/Ejemplos/MiServicioProtegido'
-"ienvenido al servicio protegido! "
+"隆Bienvenido al servicio protegido! "
+```
 
+### 5. solicitud de una p谩gina tokenizada
 
+```bash
 $ curl  http://localhost:7778/web_tokenizada/PaginaTokenizada.aspx?embedToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnd
 WlkIjoiNzViYzM2MmQtOWZhNi00NWNhLTgyMjAtYTQ5ZmVkYTFkODgyIiwic2NvcGUiOiJnZGEgZ2RpIiwiZXhwIjoxNzA2NzUzOTEzfQ.Ey8YeRk3nQobyG
 Csvt-RW72c0-w50u0RR2BWsm2fj4w
 <html><head><title>Object moved</title></head><body>
 <h2>Object moved to <a href="/web_tokenizada/PaginaTokenizada?embedToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiNzViYzM2MmQtOWZhNi00NWNhLTgyMjAtYTQ5ZmVkYTFkODgyIiwic2NvcGUiOiJnZGEgZ2RpIiwiZXhwIjoxNzA2NzUzOTEzfQ.Ey8YeRk3nQobyGCsvt-RW72c0-w50u0RR2BWsm2fj4w">here</a>.</h2>
 </body></html>
+```
 
 
-# Consultas
+## Consultas
  https://stackoverflow.com/questions/43403941/how-to-read-asp-net-core-response-body
  https://stackoverflow.com/questions/48396746/asp-net-response-filter-on-the-entire-content-full-response
  https://weblog.west-wind.com/posts/2009/Nov/13/Capturing-and-Transforming-ASPNET-Output-with-ResponseFilter
