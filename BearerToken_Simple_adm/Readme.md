@@ -29,7 +29,7 @@ Requiere implementar en el IIS los siguientes proyectos
 
 <div align="center">
         <img style="width:60%;" src="pantallazo_admin_credenciales.jpg"/>
-        <p>Figura 2. Escenario de prueba del sistema</p>
+        <p>Figura 2. Administración de las credenciales</p>
 </div>
 
 <div align="center">
@@ -51,7 +51,6 @@ Luego como aplicaciones cliente están:
 
 <details>
         <summary></summary>
-
 ```
         apliación cliente desktop: BearerToken_Simple_adm/clientes/AppDemoCliente
         apliación cliente web: BearerToken_Simple_adm/clientes/AppWebDemoCliente
