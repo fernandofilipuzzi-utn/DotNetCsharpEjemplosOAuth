@@ -3,7 +3,7 @@
 
 
 <div align="center">
-        <img style="width:60%;" src=esquema_sistema.jpg"/>
+        <img style="width:60%;" src="esquema_sistema.jpg"/>
         <p>Figura 1. Escenario de prueba del sistema</p>
 </div>
 
