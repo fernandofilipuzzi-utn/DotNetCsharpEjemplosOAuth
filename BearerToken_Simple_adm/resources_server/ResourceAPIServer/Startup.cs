@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace ResourceAPIServer
 {
+    /*es necesario para que entre aquí*/
+    //Microsoft.Owin.Host.SystemWeb.es
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)

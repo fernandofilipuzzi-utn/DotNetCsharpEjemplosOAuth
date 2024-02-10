@@ -14,6 +14,7 @@ using RestSharp.Authenticators.OAuth2;
 using Newtonsoft.Json;
 using ResourceAPIServer.ClientServices.Models;
 using BearerToken.Utilities.Jwt;
+using System.Text.Json.Nodes;
 //using IdentityModel.Client; este no
 
 namespace ResourceAPIServer.ClientServices.services
@@ -24,7 +25,7 @@ namespace ResourceAPIServer.ClientServices.services
         private readonly string tokenUrl = "http://localhost:7777";
         private readonly string pathToken = "/auth/token";
         private readonly string guid = "cbf25e40-b0da-4aa2-8a51-e2d701390ba1";
-        private readonly string frase = "pFb2MKucltUts";
+        private readonly string clave = "pFb2MKucltUts";
         public string tokenEndpoint
         {
             get
@@ -36,7 +37,7 @@ namespace ResourceAPIServer.ClientServices.services
 
         #region al resource service
         private readonly string apiUrl = "http://localhost:7778";
-        private readonly string pathApi = "/api/Ej/MiServicioProtegido";
+        private readonly string pathApi = "/api/Ejemplos/MiServicioProtegido";
         private readonly string scope = "api1";//separados por espacio
         public string apiEndpoint
         {
@@ -73,13 +74,16 @@ namespace ResourceAPIServer.ClientServices.services
             var request = new RestRequest(resource: pathToken, method: Method.Post) ;
             var client = new RestClient(tokenUrl);
             //
-            var tokenRequest = new Dictionary<string, string>
+            var jsonObject = new 
             {
-                { "guid", guid },
-                { "frase", frase }
+                guid=guid,
+                clave= clave
             };
+            string jsonString = System.Text.Json.JsonSerializer.Serialize(jsonObject);
+            request.AddBody(jsonString);
             //
             var response = client.ExecuteAsync(request).Result;
+   
             token = TokenResponse.Parse(response.Content);
             return token;
         }

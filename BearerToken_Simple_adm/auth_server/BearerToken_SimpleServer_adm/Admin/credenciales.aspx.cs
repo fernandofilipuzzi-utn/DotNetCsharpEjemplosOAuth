@@ -2,6 +2,7 @@
 using BearerToken_Services.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,14 +26,22 @@ namespace JWTBearer_SimpleServer.Admin
 
         protected void lvCredenciales_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
-            /*<asp:HyperLink ID="hlModificar" runat="server">MODIFICAR</asp:HyperLink>
-            if (e.Item.ItemType == ListViewItemType.DataItem)
+           
+            var dataItem = e.Item as ListViewDataItem;
+            
+            var imgHabilitado = dataItem?.FindControl("imgHabilitado") as Image;
+            imgHabilitado.ImageUrl = "/img/false.png";
+
+            var drView = dataItem?.DataItem as DataRowView;
+                        
+            if (drView != null)
             {
-                HyperLink hlModificar= e.Item.FindControl("hlModificar") as HyperLink;
-                int? Id = DataBinder.Eval(e.Item.DataItem, "id") as int?;
-                hlModificar.NavigateUrl = $"credenciales_edicion.aspx?Id={Id}";
+                bool? habilitado = drView["habilitado"] as bool?;
+                if (habilitado != null && habilitado == true)
+                {
+                    imgHabilitado.ImageUrl = "/img/true.png";
+                }
             }
-            */
         }
 
         protected void lbtnEliminarCredencial_Click(object sender, EventArgs e)

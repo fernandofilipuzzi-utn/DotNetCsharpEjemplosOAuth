@@ -4,7 +4,7 @@ resource api:
 authorization:
 
 # POSTMAN
-https://www.postman.com/fernandofilipuzziutn/workspace/jwtbearer-simple
+https://www.postman.com/fernandofilipuzziutn/workspace/dotnetcsharpejemplosbdsensillos/overview
 
 
 # IMPLEMENTACIÓN PARA PRUEBAS
@@ -22,16 +22,52 @@ curl -X POST -d "guid=guid_generado&frase=frase" http://localhost:7777/auth/toke
 curl -H "Authorization: Bearer <token_generado>" http://localhost:7778/api/Ej/MiServicioProtegido
 
 
-# EJEMPLO DE LLAMADAS AL SERVER AUTORIZATION
+# SERVICIO AUTENTICADOR
 
 ### con token correcto
 #dar de alta un cliente en http://localhost:7777/admin/credenciales
 
-$ curl -X POST -d "guid=1853f26d-716d-4db8-b815-03b3847c00a7&frase=clave123" http://localhost:7777/auth/token
-{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiMTg1M2YyNmQtNzE2ZC00ZGI4LWI4MTUtMDNiMzg0N2MwMGE3Iiwic2NvcGUiOiJhcGkxIiwiZXhwIjoxNzA2Nzg4MzI2fQ.mgdab2cH1JkJydIEVnyqID2d7Kz9tOrViszaKx3p9I0","token_type":"Bearer"}
+$ curl -X POST --header 'Content-Type: application/json' \
+          --header 'Accept: application/json' \
+          -d '{ "guid": "cbf25e40-b0da-4aa2-8a51-e2d701390ba1", "clave": "pFb2MKucltUts" }' \
+          'http://localhost:7777/auth/token'
 
-$ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiMTg1M2YyNmQtNzE2ZC00ZGI4LWI4MTUtMDNiMzg0N2MwMGE3Iiwic2NvcGUiOiJhcGkxIiwiZXhwIjoxNzA2Nzg4MzI2fQ.mgdab2cH1JkJydIEVnyqID2d7Kz9tOrViszaKx3p9I0" http://localhost:7778/api/Ejemplos/MiServicioProtegido
-{"mensaje":"No autorizado"}{mensaje:'probando!'}
+{
+ "access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiY2JmMjVlNDAtYjBkYS00YWEyLThhNTEtZTJkNzAxMzkwYmExIiwic2NvcGUiOiJhcGkxIiwiZXhwIjoxNzA3NjAxMzY1fQ.nOEuoKPPn9agf7_mNa16dXeQrYp6ciYWVeCwBgi5-Nc",
+ "token_type":"Bearer"
+}
+
+
+# Probando el método tokenizado - ubicado en el servicio autenticador
+
+$ curl -X GET --header 'Accept: application/json' \
+          --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiY2JmMjVlNDAtYjBkYS00YWEyLThhNTEtZTJkNzAxMzkwYmExIiwic2NvcGUiOiJhcGkxIiwiZXhwIjoxNzA3NjA4MDAwfQ.en5n1ZL0MWse6VD7SaW4FFp7Y3ZYlNvkGikl04b-u6M' 'https://localhost:7778/auth/modulosurls/cbf25e40-b0da-4aa2-8a51-e2d701390ba1'
+
+[
+    {"Id":1,"Descripcion":"prueba1","Url":"http://localhost/prueba1"},
+    {"Id":2,"Descripcion":"prueba2","Url":"http://localhost/prueba2"}
+]
+
+# RECURSOS TOKENIZADOS
+
+### con token correcto
+http://localhost:7778
+
+# Probando el método tokenizado - ubicado en el servicio de recursos
+
+$ curl -X GET --header 'Accept: application/json' \
+          --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiY2JmMjVlNDAtYjBkYS00YWEyLThhNTEtZTJkNzAxMzkwYmExIiwic2NvcGUiOiJhcGkxIiwiZXhwIjoxNzA3NjA4MDAwfQ.en5n1ZL0MWse6VD7SaW4FFp7Y3ZYlNvkGikl04b-u6M' \
+          'http://localhost:7778/api/Ejemplos/MiServicioProtegido'
+"¡Bienvenido al servicio protegido! "
+
+
+$ curl  http://localhost:7778/web_tokenizada/PaginaTokenizada.aspx?embedToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnd
+WlkIjoiNzViYzM2MmQtOWZhNi00NWNhLTgyMjAtYTQ5ZmVkYTFkODgyIiwic2NvcGUiOiJnZGEgZ2RpIiwiZXhwIjoxNzA2NzUzOTEzfQ.Ey8YeRk3nQobyG
+Csvt-RW72c0-w50u0RR2BWsm2fj4w
+<html><head><title>Object moved</title></head><body>
+<h2>Object moved to <a href="/web_tokenizada/PaginaTokenizada?embedToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiNzViYzM2MmQtOWZhNi00NWNhLTgyMjAtYTQ5ZmVkYTFkODgyIiwic2NvcGUiOiJnZGEgZ2RpIiwiZXhwIjoxNzA2NzUzOTEzfQ.Ey8YeRk3nQobyGCsvt-RW72c0-w50u0RR2BWsm2fj4w">here</a>.</h2>
+</body></html>
+
 
 # Consultas
  https://stackoverflow.com/questions/43403941/how-to-read-asp-net-core-response-body

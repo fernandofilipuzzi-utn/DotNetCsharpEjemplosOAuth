@@ -45,7 +45,7 @@ namespace BearerToken_SimpleServer_adm
 
         [HttpPost]
         [Route("token")]
-        public IHttpActionResult PostToken(RequestToken request)
+        public IHttpActionResult PostToken([FromBody] RequestToken request)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace BearerToken_SimpleServer_adm
                 }
                 CredencialClienteAPI credencial = _validador.ValidarCredenciales(guid, frase);
                 */
-                if (string.IsNullOrWhiteSpace(request.GUID) || string.IsNullOrWhiteSpace(request.Clave))
+                if (request==null || string.IsNullOrWhiteSpace(request.GUID) || string.IsNullOrWhiteSpace(request.Clave))
                 {
                     return BadRequest();
                 }
@@ -91,7 +91,7 @@ namespace BearerToken_SimpleServer_adm
 
         [BearerToken_SimpleServer_adm.ScopeAuthorizeAttribute.ScopeAuthorize]
         [HttpGet]
-        [Route("modulos/urls")]
+        [Route("modulosurls/{guid}")]
         public IEnumerable<Modulo> GetModulosUrls(string guid)
         {
             List<Modulo> modulos = new List<Modulo>();

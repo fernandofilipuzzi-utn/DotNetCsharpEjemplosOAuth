@@ -52,7 +52,9 @@
                         <td>
                             <%#(Eval("descripcion") as string)?.Length>10 ? (Eval("descripcion") as string)?.Substring(0,7)+"...":Eval("descripcion") as string%>
                         </td>
-                        <td><%#Eval("habilitado")%></td>
+                        <td> 
+                            <asp:Image ID="imgHabilitado" style="width:24px;" runat="server"/>
+                        </td>
                         <td><%#Eval("scopes")%></td>
                         <td>
                             <asp:HyperLink ID="hlModificar" runat="server" NavigateUrl='<%# $"credenciales_edicion.aspx?Id={Eval("Id")}" %>'><i class="fas fa-pencil-alt"></i></asp:HyperLink>
@@ -88,7 +90,7 @@
             inputTemporal.select();
             document.execCommand('copy');
             document.body.removeChild(inputTemporal);
-            alert('¡Texto copiado al portapapeles!');
+            //alert('¡Texto copiado al portapapeles!');
         }
     </script>
 </asp:Content>

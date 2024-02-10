@@ -18,15 +18,21 @@ namespace ResourceAPIServer.AuthBearerTokenUtils
             _scope = scope;
         }
 
+        public ScopeAuthorizeAttribute()
+        {
+            _scope = "";
+        }
+
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {
+
             if (!actionContext.RequestContext.Principal.Identity.IsAuthenticated)
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensaje = "No autenticado" });
+                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "No autenticado");
             }
             else
             {
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Forbidden, new { mensaje = "No autorizado" });
+                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Forbidden, "No autorizado");
             }
         }
 
@@ -34,17 +40,22 @@ namespace ResourceAPIServer.AuthBearerTokenUtils
         {
             var principal = actionContext.RequestContext.Principal as ClaimsPrincipal;
 
-            if (principal == null || principal.Identity.IsAuthenticated == false)
+            if (principal == null || !principal.Identity.IsAuthenticated)
             {
                 return false;
             }
 
             var scopeClaim = principal.FindFirst("scope");
 
-            if (scopeClaim != null && scopeClaim.Value.Contains(_scope))
+            if (string.IsNullOrWhiteSpace(_scope) == false && scopeClaim != null && scopeClaim.Value.Contains(_scope))
             {
                 return true;
             }
+            else if (string.IsNullOrWhiteSpace(_scope) == true)
+            {
+                return true;
+            }
+
             return false;
         }
     }

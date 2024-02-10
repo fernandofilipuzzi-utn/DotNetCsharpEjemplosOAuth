@@ -13,7 +13,7 @@
             <img src="./img/inicio.jpg" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
             <div class="card-body">
                 <div class="card-title">
-                    <h2>API tokenizada</h2>
+                    <h2>API Web tokenizada</h2>
                 </div>
                 <div class="card-text" style="max-height: 60px; overflow: hidden;">
                     <p>Ver Documentación - swagger</p>
@@ -29,17 +29,17 @@
             <img src="./img/inicio.jpg" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
             <div class="card-body">
                 <div class="card-title">
-                    <h2>Escenerios de clientes</h2>
+                    <h2>Web tokenizada</h2>
                 </div>
                 <div class="card-text" style="max-height: 60px; overflow: hidden;">
-                    <p>Ejemplos de posibles autenticaciones</p>
+                    <p>Ver página tokenizada</p>
                 </div>
 
             </div>
             <div class="text-center">
-                <asp:HyperLink ID="hlBtnModo1" class="btn btn-primary" NavigateUrl="/web_cliente_consume_token/Default.aspx" Text="Ir a escenarios" runat="server"/>
-            </div>
+                <a class="btn btn-primary" Target="_blank" href="/web_tokenizada/PaginaTokenizada.aspx?embedToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiNzViYzM2MmQtOWZhNi00NWNhLTgyMjAtYTQ5ZmVkYTFkODgyIiwic2NvcGUiOiJnZGEgZ2RpIiwiZXhwIjoxNzA2NzUzOTEzfQ.Ey8YeRk3nQobyGCsvt-RW72c0-w50u0RR2BWsm2fj4w">Ir</a>
         </div>
+    </div>
 
     </div>
 

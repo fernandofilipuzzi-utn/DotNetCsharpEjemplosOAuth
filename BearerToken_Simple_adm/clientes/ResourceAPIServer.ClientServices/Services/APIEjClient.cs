@@ -9,6 +9,9 @@ using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
 using ResourceAPIServer.ClientServices.Models;
 using BearerToken.Utilities.Jwt;
+using Newtonsoft.Json;
+using System.IO;
+using System.Text.Json;
 
 namespace ResourceAPIServer.ClientServices.services
 {
@@ -18,7 +21,7 @@ namespace ResourceAPIServer.ClientServices.services
         private readonly string tokenUrl = "http://localhost:7777";
         private readonly string pathToken = "/auth/token";
         private readonly string guid = "cbf25e40-b0da-4aa2-8a51-e2d701390ba1";
-        private readonly string frase = "pFb2MKucltUts";
+        private readonly string clave = "pFb2MKucltUts";
 
         public string tokenEndpoint
         {
@@ -31,7 +34,7 @@ namespace ResourceAPIServer.ClientServices.services
 
         #region al resource service
         private readonly string apiUrl = "http://localhost:7778";
-        private readonly string pathApi = "/api/MiServicioProtegido";
+        private readonly string pathApi = "/api/Ejemplos/MiServicioProtegido";
 
         public string apiEndpoint
         {
@@ -65,13 +68,25 @@ namespace ResourceAPIServer.ClientServices.services
             TokenResponse token=null;
             using (var client = new HttpClient())
             {
+                /*
+                 en el caso de parametros en el head
                 var tokenRequest = new Dictionary<string, string>
                 {
                     { "guid", guid },
-                    { "frase", frase }
+                    { "clave", clave }
+                };
+                */
+
+                var jsonObject = new
+                {
+                    guid = guid,
+                    clave = clave
                 };
 
-                var response =  client.PostAsync(tokenEndpoint, new FormUrlEncodedContent(tokenRequest)).Result;
+                string jsonString = System.Text.Json.JsonSerializer.Serialize(jsonObject);
+                var content = new StringContent(jsonString, System.Text.Encoding.UTF8, "application/json");
+
+                var response =  client.PostAsync(tokenEndpoint, content).Result;
                 token = TokenResponse.Parse(response?.Content?.ReadAsStringAsync()?.Result);
             }
             return token;

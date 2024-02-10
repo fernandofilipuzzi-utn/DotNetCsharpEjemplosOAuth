@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,7 @@ namespace BearerToken_SimpleServer_adm
 {
     public partial class SiteMaster : MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
             HttpCookie cookie = HttpContext.Current.Request.Cookies["UsuarioSettings"];
 
@@ -25,11 +26,16 @@ namespace BearerToken_SimpleServer_adm
                 {
                     Response.Redirect("/Admin/login.aspx");
                 }
-                else 
+                else
                 {
                     lbUsuarioNombre.Text = usuario;
                 }
             }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
         }
 
         protected void lbtnCerrar_Click(object sender, EventArgs e)

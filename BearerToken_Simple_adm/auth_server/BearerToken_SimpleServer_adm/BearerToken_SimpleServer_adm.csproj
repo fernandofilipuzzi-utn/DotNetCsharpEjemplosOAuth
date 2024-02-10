@@ -258,8 +258,13 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="img\false.jpg" />
+    <Content Include="img\false.png" />
     <Content Include="img\inicio.jpg" />
     <Content Include="Content\Utils\Utils.css" />
+    <Content Include="img\postman.jpg" />
+    <Content Include="img\true.jpg" />
+    <Content Include="img\true.png" />
     <Content Include="Scripts\Utils\Utils.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -285,6 +290,7 @@
     <Content Include="Site.Master" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
+    <Content Include="WebServices\EjemploSoap.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\credenciales.aspx.cs">
@@ -338,6 +344,10 @@
     <Compile Include="Utils\StringExtensions.cs" />
     <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="Utils\TokenGenerador.cs" />
+    <Compile Include="WebServices\EjemploSoap.asmx.cs">
+      <DependentUpon>EjemploSoap.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

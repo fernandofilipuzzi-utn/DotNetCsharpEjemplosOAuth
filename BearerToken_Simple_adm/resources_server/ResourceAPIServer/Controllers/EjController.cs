@@ -10,15 +10,13 @@ using System.Web.Http;
 
 namespace ResourceAPIServer.Controllers
 {
-   // [SwaggerTag("Controlador")]
     [RoutePrefix("api")]
-    ///[CustomAuthorizationFilter]
     public class EjController : ApiController
     {
         [Route("MiServicioNoProtegido")]
         [HttpGet]
         [AllowAnonymous]
-        public IHttpActionResult MiServicioNoProtegido()
+        public IHttpActionResult GetMiServicioNoProtegido()
         {
             var userName = this.RequestContext.Principal.Identity.Name;
 
@@ -30,7 +28,7 @@ namespace ResourceAPIServer.Controllers
         //[CustomAuthorize]
         [ScopeAuthorize("api1")]
         [Route("Ejemplos/MiServicioProtegido")]
-        public IHttpActionResult MiServicioProtegido()
+        public IHttpActionResult GetMiServicioProtegido()
         {
             var user = User.Identity.Name;
             Debug.WriteLine($"Usuario actual: {user}");
@@ -44,7 +42,7 @@ namespace ResourceAPIServer.Controllers
         //[CustomAuthorize]
         [ScopeAuthorize("api2")]
         [Route("Ejemplos/MiServicioProtegido2")]
-        public IHttpActionResult MiServicioProtegido2()
+        public IHttpActionResult GetMiServicioProtegido2()
         {
             var user = User.Identity.Name;
             Debug.WriteLine($"Usuario actual: {user}");
