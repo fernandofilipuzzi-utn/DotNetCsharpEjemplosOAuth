@@ -1,12 +1,9 @@
 # Escenario de autentificación y autorización utilizando bearer token
 
-
-
 <div align="center">
         <img style="width:60%;" src="esquema_sistema.jpg"/>
         <p>Figura 1. Escenario de prueba del sistema</p>
 </div>
-
 
 ## Dependendencias NUGET
 
@@ -25,17 +22,41 @@ https://www.postman.com/fernandofilipuzziutn/workspace/dotnetcsharpejemplosbdsen
 
 Requiere implementar en el IIS los siguientes proyectos
 
-```
-servicio autenticador: BearerToken_Simple_adm/auth_server/BearerToken_SimpleServer_adm como http://localhost:7777
-servicio de recursos tokenizados: BearerToken_Simple_adm/resources_server/ResourceAPIServer como http://locahost:7778
-```
+### Servicio autenticador
+
+<details>
+        <summary>servicio autenticador: BearerToken_Simple_adm/auth_server/BearerToken_SimpleServer_adm como http://localhost:7777</summary>
+
+<div align="center">
+        <img style="width:60%;" src="pantallazo_admin_credenciales.jpg"/>
+        <p>Figura 2. Escenario de prueba del sistema</p>
+</div>
+
+<div align="center">
+        <img style="width:60%;" src="pantallazo_alta_cliente.jpg"/>
+        <p>Figura 3. Alta de credenciales</p>
+</div>
+        
+</details>
+
+### Servicio de recursos tokenizados
+
+<details>
+        <summary>servicio de recursos tokenizados: BearerToken_Simple_adm/resources_server/ResourceAPIServer como http://locahost:7778</summary>
+</details>
 
 Luego como aplicaciones cliente están:
 
+### Clientes
+
+<details>
+        <summary></summary>
+
 ```
-apliación cliente desktop: BearerToken_Simple_adm/clientes/AppDemoCliente
-apliación cliente web: BearerToken_Simple_adm/clientes/AppWebDemoCliente
+        apliación cliente desktop: BearerToken_Simple_adm/clientes/AppDemoCliente
+        apliación cliente web: BearerToken_Simple_adm/clientes/AppWebDemoCliente
 ```
+</details>
 
 ## Resumen de llamadas 
 
@@ -51,7 +72,7 @@ curl -H "Authorization: Bearer <token_generado>" http://localhost:7778/api/Ej/Mi
 
 ## Ejemplos CURL
 
-### 1. solicitud de un token
+### 1-2. solicitud de un token
 Requiere primero dar de alta las credenciales de un cliente en http://localhost:7777/admin/credenciales
 ```bash
 $ curl -X POST --header 'Content-Type: application/json' \
@@ -65,7 +86,7 @@ $ curl -X POST --header 'Content-Type: application/json' \
 }
 ```
 
-### 3. llamando a un método tokenizado en el servicio de autenticación
+### 3-4. llamando a un método tokenizado en el servicio de autenticación
 
 ```bash
 $ curl -X GET --header 'Accept: application/json' \
@@ -77,7 +98,7 @@ $ curl -X GET --header 'Accept: application/json' \
 ]
 ```
 
-### 4. llamando a un método tokenizado en el servicio de recursos tokenizados
+### 5-6. llamando a un método tokenizado en el servicio de recursos tokenizados
 
 ```bash
 $ curl -X GET --header 'Accept: application/json' \
@@ -86,7 +107,7 @@ $ curl -X GET --header 'Accept: application/json' \
 "¡Bienvenido al servicio protegido! "
 ```
 
-### 5. solicitud de una página tokenizada
+### 7-8. solicitud de una página tokenizada
 
 ```bash
 $ curl  http://localhost:7778/web_tokenizada/PaginaTokenizada.aspx?embedToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnd
@@ -104,4 +125,5 @@ Csvt-RW72c0-w50u0RR2BWsm2fj4w
  https://weblog.west-wind.com/posts/2009/Nov/13/Capturing-and-Transforming-ASPNET-Output-with-ResponseFilter
 
  ## modificando respuestas del middleware
+ 
  https://copyprogramming.com/howto/changing-the-response-object-from-owin-middleware
