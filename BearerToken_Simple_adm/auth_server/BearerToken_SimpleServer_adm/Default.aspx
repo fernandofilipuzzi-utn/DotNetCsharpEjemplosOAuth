@@ -43,7 +43,7 @@
 
         
         <div class="card col-lg-3 col-md-4 col-sm-6 m-2 p-3">
-            <img src="./img/inicio.jpg" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
+            <img src="./img/token_acceso_code.jpg" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
             <div class="card-body">
                 <div class="card-title">
                     <h2>Credenciales</h2>
