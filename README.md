@@ -14,7 +14,7 @@ Escenario de autentificación y autorización utilizando
 <details open>
         <summary></summary>
 
-div align="center">
+<div align="center">
         <img style="width:60%;" src="BearerToken_Simple_adm/esquema_sistema.jpg"/>
         <p>Figura 1. Escenario de prueba del sistema</p>
 </div>
