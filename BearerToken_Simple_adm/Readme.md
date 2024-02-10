@@ -120,9 +120,13 @@ Csvt-RW72c0-w50u0RR2BWsm2fj4w
 
 
 ## Consultas
+
  https://stackoverflow.com/questions/43403941/how-to-read-asp-net-core-response-body
+ 
  https://stackoverflow.com/questions/48396746/asp-net-response-filter-on-the-entire-content-full-response
+ 
  https://weblog.west-wind.com/posts/2009/Nov/13/Capturing-and-Transforming-ASPNET-Output-with-ResponseFilter
+ 
 
  ## modificando respuestas del middleware
  
