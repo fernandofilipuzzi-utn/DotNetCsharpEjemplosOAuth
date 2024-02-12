@@ -22,7 +22,7 @@
     <style>
         @media (max-width: 767px) {
             .container.row {
-                min-width: 361px; /* Ajusta este valor según tus necesidades */
+                min-width: 361px; 
             }
         }
     </style>
