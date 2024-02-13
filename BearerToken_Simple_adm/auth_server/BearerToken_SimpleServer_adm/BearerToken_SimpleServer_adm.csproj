@@ -253,6 +253,7 @@
     <Content Include="Admin\credenciales.aspx" />
     <Content Include="Admin\credenciales_edicion.aspx" />
     <Content Include="Admin\login.aspx" />
+    <Content Include="Content\checkbox-switch.css" />
     <Content Include="Content\Site.css" />
     <Content Include="db\info.txt" />
     <Content Include="Default.aspx" />
@@ -262,13 +263,13 @@
     <Content Include="img\false.png" />
     <Content Include="img\contrasenia.jpg" />
     <Content Include="img\inicio.jpg" />
-    <Content Include="Content\Utils\Utils.css" />
+    <Content Include="Content\copy-paste.css" />
     <Content Include="img\postman.jpg" />
     <Content Include="img\token_acceso.jpg" />
     <Content Include="img\token_acceso_code.jpg" />
     <Content Include="img\true.jpg" />
     <Content Include="img\true.png" />
-    <Content Include="Scripts\Utils\Utils.js" />
+    <Content Include="Scripts\copy-paste.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />

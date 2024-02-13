@@ -20,7 +20,8 @@ namespace BearerToken_SimpleServer_adm
                             "~/Scripts/WebForms/GridView.js",
                             "~/Scripts/WebForms/DetailsView.js",
                             "~/Scripts/WebForms/TreeView.js",
-                            "~/Scripts/WebForms/WebParts.js"
+                            "~/Scripts/WebForms/WebParts.js",
+                            "~/Scripts/WebForms/copy-paste.js"
                             ));
 
             // El orden es muy importante para el funcionamiento de estos archivos ya que tienen dependencias explícitas
@@ -33,6 +34,8 @@ namespace BearerToken_SimpleServer_adm
             // Use la versión de desarrollo de Modernizr para desarrollar y aprender. Luego, cuando esté listo
             // para la producción, use la herramienta de compilación disponible en https://modernizr.com para seleccionar solo las pruebas que necesite
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include( "~/Scripts/modernizr-*"));
+
+            //bundles.Add(new ScriptBundle("~/Scripts/copy-paste.js"));
         }
     }
 }

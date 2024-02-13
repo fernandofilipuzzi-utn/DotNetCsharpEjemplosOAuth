@@ -1,4 +1,5 @@
 ﻿using BearerToken_DAO.DAO;
+using BearerToken_DAO.Utils;
 using BearerToken_Models.Models;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace BearerToken_SQLiteDaoImpl.SQLiteDaoImpl
 CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     nombre TEXT NOT NULL,
-    contraseña TEXT NOT NULL
+    clave TEXT NOT NULL
 )";
                 using (var query = new SQLiteCommand(sql, conn))
                 {
@@ -100,6 +101,8 @@ where id=@id";
 
         public Usuario Agregar(Usuario nuevo)
         {
+            PasswordHelper passwordHelper = new PasswordHelper();
+
             SQLiteConnection conn = null;
             try
             {
@@ -117,7 +120,7 @@ RETURNING id";
                     query.Parameters.Add(new SQLiteParameter("clave", DbType.String));
                     //
                     query.Parameters["nombre"].Value = nuevo.Nombre;
-                    query.Parameters["clave"].Value = nuevo.Clave;
+                    query.Parameters["clave"].Value = passwordHelper.HashPassword(nuevo.Clave);
                     //
                     //rowsaffected += query.ExecuteNonQuery();
                     object id = query.ExecuteScalar();
@@ -169,6 +172,7 @@ where id=@Id";
                             nombre = dataReader["nombre"] as string;
                         #endregion
 
+                        
                         #region clave
                         string clave = "";
                         if (dataReader["clave"] != DBNull.Value)

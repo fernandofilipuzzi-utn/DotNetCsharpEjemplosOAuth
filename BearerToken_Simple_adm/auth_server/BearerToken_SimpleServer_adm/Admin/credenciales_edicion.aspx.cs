@@ -33,6 +33,8 @@ namespace JWTBearer_SimpleServer.Admin
 
                     actualizarVistaModulos(credencial.Id);
 
+                    chkHabilitadoCredencial.Checked = credencial.Habilitado;
+
                     btnConfirmarOPCredencial.Text = "Modificar Credencial";
                 }
                 else
@@ -52,13 +54,15 @@ namespace JWTBearer_SimpleServer.Admin
             string claveCredencial = tbClaveCredencial.Text.Trim();
             string descripcionCredencial = tbDescripcionCredencial.Text.Trim().ToLower();
             string scopesCredencial = tbScopesCredencial.Text.Trim().ToLower();
+            bool habilitadoCredencial = chkHabilitadoCredencial.Checked;
             //
             CredencialClienteAPI credencial = new CredencialClienteAPI
             {
                 Guid = guidCredencial,
                 Clave = claveCredencial,
                 Descripcion = descripcionCredencial,
-                Scopes = scopesCredencial
+                Scopes = scopesCredencial,
+                Habilitado=habilitadoCredencial
             };
             //
             if (string.IsNullOrEmpty(tbIdCredencial.Text) == false)
@@ -172,5 +176,8 @@ namespace JWTBearer_SimpleServer.Admin
         }
 
         #endregion
+
+
+        
     }
 }

@@ -80,7 +80,7 @@
                                 <asp:Label ID="lbError" CssClass="alert alert-dark" role="alert" runat="server" Visible="false" />
                             </div>
 
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <div class="col-sm-12 col-md-6 p-3" style="background-color: #dcdced;">
 
                                     <div class="row text-center p-4">
