@@ -270,6 +270,7 @@
     <Content Include="img\token_acceso_code.jpg" />
     <Content Include="img\true.jpg" />
     <Content Include="img\true.png" />
+    <Content Include="logs\info.txt" />
     <Content Include="Scripts\copy-paste.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -345,6 +346,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Filters\HttpTrafficLogger.cs" />
+    <Compile Include="Filters\HttpTrafficLogger1.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
