@@ -252,6 +252,7 @@
   <ItemGroup>
     <Content Include="Admin\credenciales.aspx" />
     <Content Include="Admin\credenciales_edicion.aspx" />
+    <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\login.aspx" />
     <Content Include="Content\checkbox-switch.css" />
     <Content Include="Content\Site.css" />
@@ -311,12 +312,26 @@
     <Compile Include="Admin\credenciales_edicion.aspx.designer.cs">
       <DependentUpon>credenciales_edicion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -357,6 +372,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Site.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

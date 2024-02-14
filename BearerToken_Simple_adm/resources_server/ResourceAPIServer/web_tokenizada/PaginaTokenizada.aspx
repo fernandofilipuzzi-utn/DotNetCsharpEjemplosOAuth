@@ -2,10 +2,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="container">
+    <div class="container" style="background-color: #dcdced;">
 
         <div class="row m-3">
             <div class="col-8 m-3 text-center">
+
+                <h3>Formulario embebido</h3>
+
                 <div class="form-group row m-3">
                     <div class="col-4">
                         <label class="form-label" for="btnNombre" >Nombre y apellido</label>

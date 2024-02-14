@@ -115,6 +115,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\checkbox-switch.css" />
+    <Content Include="Content\copy-paste.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Error.aspx" />
@@ -125,6 +127,7 @@
     <Content Include="img\inicio.jpg" />
     <Content Include="img\token_acceso.jpg" />
     <Content Include="img\token_acceso_code.jpg" />
+    <Content Include="Scripts\copy-paste.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />

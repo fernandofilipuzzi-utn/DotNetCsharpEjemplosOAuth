@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="credenciales_edicion.aspx.cs" Inherits="JWTBearer_SimpleServer.Admin.credenciales_edicion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="credenciales_edicion.aspx.cs" Inherits="JWTBearer_SimpleServer.Admin.credenciales_edicion" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron" style="background-color: #dcdced; min-width: 786px;">
-        <h3 class="display-4">Alta/Modificación de credenciales</h3>
-        <p class="lead">Alta de credenciales.</p>
-    </div>
+       <div class="container" style="min-width: 786px;">
 
-    <div class="container m-0 p-0" style="min-width: 786px;"
+        <div class="jumbotron" style="background-color: #dcdced; min-width: 786px;">
+            <h3 class="display-4">Alta/Modificación de credenciales</h3>
+            <p class="lead">Alta de credenciales.</p>
+        </div>
 
         <div class="row m-0 p-0">
 

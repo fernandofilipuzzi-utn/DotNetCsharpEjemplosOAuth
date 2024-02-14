@@ -1,27 +1,15 @@
-﻿using Microsoft.Ajax.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BearerToken_SimpleServer_adm
+namespace BearerToken_SimpleServer_adm.Admin
 {
-    public partial class SiteMaster : MasterPage
+    public partial class Site : System.Web.UI.MasterPage
     {
         protected void Page_Init(object sender, EventArgs e)
-        {
-            
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        protected void lbtnLogin_Click(object sender, EventArgs e)
         {
             HttpCookie cookie = HttpContext.Current.Request.Cookies["UsuarioSettings"];
 
@@ -38,10 +26,14 @@ namespace BearerToken_SimpleServer_adm
                 }
                 else
                 {
-                    Response.Redirect("/Admin/Default.aspx");
                     lbUsuarioNombre.Text = usuario;
                 }
             }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
         }
 
         protected void lbtnCerrar_Click(object sender, EventArgs e)
@@ -58,7 +50,7 @@ namespace BearerToken_SimpleServer_adm
 
         public void ShowMessage(string titulo, string mensaje)
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "showModal", $"mostrarModal('{ mensaje}');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "showModal", $"mostrarModal('{mensaje}');", true);
         }
     }
 }

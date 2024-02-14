@@ -7,12 +7,21 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace BearerToken_SimpleServer_adm
+namespace BearerToken_SimpleServer_adm.Admin
 {
 
 
-    public partial class SiteMaster
+    public partial class Site
     {
+
+        /// <summary>
+        /// Control form1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
         /// Control lbUsuarioNombre.
@@ -22,15 +31,6 @@ namespace BearerToken_SimpleServer_adm
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbUsuarioNombre;
-
-        /// <summary>
-        /// Control lbtnLogin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnLogin;
 
         /// <summary>
         /// Control lbtnCerrar.
@@ -51,12 +51,12 @@ namespace BearerToken_SimpleServer_adm
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
 
         /// <summary>
-        /// Control UpdatePanelModal.
+        /// Control ContentPlaceHolder1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelModal;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
     }
 }

@@ -198,6 +198,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\checkbox-switch.css" />
+    <Content Include="Content\copy-paste.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -214,6 +216,7 @@
     <Content Include="img\token_acceso.jpg" />
     <Content Include="img\inicio.jpg" />
     <Content Include="Error.aspx" />
+    <Content Include="Scripts\copy-paste.js" />
     <Content Include="web_tokenizada\PaginaTokenizada.aspx" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
