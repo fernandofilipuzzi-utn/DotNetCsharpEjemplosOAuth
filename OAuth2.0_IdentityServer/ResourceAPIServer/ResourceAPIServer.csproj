@@ -606,7 +606,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52023</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44386/</IISUrl>
+          <IISUrl>https://localhost:7778</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
