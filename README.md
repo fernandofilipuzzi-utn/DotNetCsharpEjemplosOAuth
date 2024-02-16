@@ -1,4 +1,4 @@
-# Distintos escenerarios y mecanismos de autenticación  y autorización
+# Distintos escenarios y mecanismos de autenticación  y autorización
 
 
 <div align="center">
