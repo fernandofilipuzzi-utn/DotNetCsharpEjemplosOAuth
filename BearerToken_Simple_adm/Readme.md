@@ -1,9 +1,29 @@
 # Escenario de autentificación y autorización utilizando bearer token
 
+La solución consta de los proyectos que implementan el esceneraio de autentificación completo, como se muestra en la Figura 2
+
 <div align="center">
         <img style="width:60%;" src="esquema_sistema.jpg"/>
         <p>Figura 1. Escenario de prueba del sistema</p>
 </div>
+
+<div align="center">
+        <img style="width:60%;" src="proyecto.jpg"/>
+        <p>Figura 2. Anatomía de la solución respecto al esquema del sistema.</p>                  
+</div>
+
+Este escenario, el servicio de autentificación tiene las páginas para la administración de las credenciales, Figura 3 y 4
+
+<div align="center">
+        <img style="width:60%;" src="pantallazo_alta_cliente.jpg"/>
+        <p>Figura 3. ABM de credenciales administración de credenciales </p>                  
+</div>
+
+<div align="center">
+        <img style="width:60%;" src="pantallazo_admin_credenciales.jpg"/>
+        <p>Figura 4. Edición de credencial </p>                  
+</div>
+
 
 ## Dependendencias NUGET
 
