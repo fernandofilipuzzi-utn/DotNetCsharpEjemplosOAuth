@@ -18,13 +18,29 @@ namespace JWTBearer_SimpleServer.Admin
                 cookie.Expires = DateTime.Now.AddMinutes(3);
                 HttpContext.Current.Response.Cookies.Add(cookie);
 
-                Response.Redirect("../Default.aspx");
+                Response.Redirect("/Admin/Default.aspx");
             }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
+            if (IsPostBack == false)
+            {
+                HttpCookie cookie = HttpContext.Current.Request.Cookies["UsuarioSettings"];
+                if (cookie != null)
+                {
+                    cookie.Expires = DateTime.Now.AddMinutes(3);
+                    HttpContext.Current.Response.Cookies.Add(cookie);
 
+                    Response.Redirect("/Admin/Default.aspx");
+                }
+                else
+                {
+                    Response.Redirect("/Admin/login.aspx");
+                }
+            }
+            */
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -41,12 +57,12 @@ namespace JWTBearer_SimpleServer.Admin
                 HttpContext.Current.Response.Cookies.Add(cookie);
                 #endregion
 
-                Response.Redirect("/Default", false);
+                Response.Redirect("/Admin/Default", false);
                 Context.ApplicationInstance.CompleteRequest();
             }
             else
             {
-                lbError.Text = "error";
+                lbError.Text = "Error. Usuario o contraseña incorrecta";
                 lbError.Visible = true;
             }
         }

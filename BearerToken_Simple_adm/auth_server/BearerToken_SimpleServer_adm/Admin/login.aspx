@@ -76,8 +76,8 @@
 
                         <div class="col-12 text-center">
 
-                            <div class="row p-3">
-                                <asp:Label ID="lbError" CssClass="alert alert-dark" role="alert" runat="server" Visible="false" />
+                            <div class="col-12 p-3 text-left" >
+                                <asp:Label ID="lbError" CssClass="alert alert-dark col-12" role="alert" runat="server" Visible="false" />
                             </div>
 
                             <div class="row justify-content-center">
@@ -85,7 +85,7 @@
 
                                     <div class="row text-center p-4">
                                         <div class="col-12">
-                                            <h4>Ingrese su usuario y contraseña</h4>
+                                            <h4>Ingrese su usuario y contraseña (admin admin)</h4>
                                         </div>
                                     </div>
 

@@ -254,8 +254,12 @@
     <Content Include="Admin\credenciales_edicion.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\login.aspx" />
-    <Content Include="Content\checkbox-switch.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\checkbox-switch.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Site.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="db\info.txt" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -264,7 +268,9 @@
     <Content Include="img\false.png" />
     <Content Include="img\contrasenia.jpg" />
     <Content Include="img\inicio.jpg" />
-    <Content Include="Content\copy-paste.css" />
+    <Content Include="Content\copy-paste.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="img\postman.jpg" />
     <Content Include="img\token_acceso.jpg" />
     <Content Include="img\token_acceso_code.jpg" />
