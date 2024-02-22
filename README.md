@@ -39,8 +39,25 @@ Los distintos Escenarios implementados de autentificación y autorización son:
 
 ## Bearer token (página de administración)
 <details open>
-        <summary></summary>
+        <summary>La solución consta de los proyectos que implementan el esceneraio de autentificación completo, como se muestra en la Figura 2</summary>
         
 * [Ver subcarpeta de la solución: BearerToken_Simple_adm](BearerToken_Simple_adm)
+
+<div align="center">
+        <img style="width:60%;" src="BearerToken_Simple_adm/proyecto.jpg"/>
+        <p>Figura 2. Anatomía de la solución </p>                  
+</div>
+
+Este escenario, el servicio de autentificación tiene las páginas para la administración de las credenciales, Figura 3 y 4
+
+<div align="center">
+        <img style="width:60%;" src="BearerToken_Simple_adm/pantallazo_alta_cliente.jpg"/>
+        <p>Figura 3. ABM de credenciales administración de credenciales </p>                  
+</div>
+
+<div align="center">
+        <img style="width:60%;" src="BearerToken_Simple_adm/pantallazo_admin_credenciales.jpg"/>
+        <p>Figura 4. Edición de credencial </p>                  
+</div>
 
 </details>
