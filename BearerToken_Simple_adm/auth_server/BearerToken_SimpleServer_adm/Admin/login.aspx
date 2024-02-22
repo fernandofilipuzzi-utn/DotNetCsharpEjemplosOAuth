@@ -19,10 +19,9 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
    
 </head>
-<body  style="background-color: #f1f5f8; min-width: 536px;">
+<body  style="background-color: #f1f5f8;">
     <form id="form1" runat="server">
 
         <asp:ScriptManager runat="server">

@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h3 class="display-4">Servicio OAuth</h3>
-        <p class="lead">APIs.</p>
+        <h3 class="display-4">Servicio autenticador</h3>
+        <p class="lead">Este servicio administra las credenciales y provee las autenticaciones y autorizaciones correspondientes.</p>
     </div>
 
     <div class="container row text-center m-2">

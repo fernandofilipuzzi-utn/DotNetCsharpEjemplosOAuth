@@ -4,10 +4,7 @@
 
     <div class="container">
 
-        <div class="jumbotron">
-            <h3 class="display-4">Servicio OAuth</h3>
-            <p class="lead">APIs.</p>
-        </div>
+        
 
         <div class="row">
 

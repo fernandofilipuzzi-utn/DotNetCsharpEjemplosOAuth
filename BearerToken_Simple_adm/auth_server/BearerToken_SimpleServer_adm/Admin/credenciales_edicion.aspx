@@ -5,10 +5,7 @@
 
        <div class="container" style="min-width: 786px;">
 
-        <div class="jumbotron" style="background-color: #dcdced; min-width: 786px;">
-            <h3 class="display-4">Alta/Modificación de credenciales</h3>
-            <p class="lead">Alta de credenciales.</p>
-        </div>
+      
 
         <div class="row m-0 p-0">
 

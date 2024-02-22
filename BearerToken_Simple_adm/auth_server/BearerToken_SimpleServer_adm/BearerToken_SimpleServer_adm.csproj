@@ -257,6 +257,7 @@
     <Content Include="Content\checkbox-switch.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\navarlateral.css" />
     <Content Include="Content\Site.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

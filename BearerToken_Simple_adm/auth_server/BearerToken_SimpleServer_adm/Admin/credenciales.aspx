@@ -6,11 +6,7 @@
 
     <div class="container" style="min-width: 786px;">
 
-        <div class="jumbotron" style="background-color: #dcdced; min-width: 786px;">
-            <h3 class="display-4">Credenciales</h3>
-            <p class="lead">Administración de credenciales.</p>
-        </div>
-
+        
         <div class="col-12  mb-3 mt-3" style="background-color: #dcdced;">
 
             <div class="row text-center p-4">
