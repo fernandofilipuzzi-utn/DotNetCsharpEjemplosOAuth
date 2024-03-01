@@ -51,6 +51,8 @@ namespace BearerToken_SimpleServer_adm
                         //        vc.Version("v1", "Swashbuckle Dummy API V1");
                         //    });
 
+
+
                         // You can use "BasicAuth", "ApiKey" or "OAuth2" options to describe security schemes for the API.
                         // See https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md for more details.
                         // NOTE: These only define the schemes and need to be coupled with a corresponding "security" property
@@ -61,7 +63,21 @@ namespace BearerToken_SimpleServer_adm
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        //c.ApiKey("apiKey")
+                        //    .Description("API Key Authentication")
+                        //    .Name("apiKey")
+                        //    .In("header");
+                        //
+
+                        c.ApiKey("Authorization")
+                          .Description("API Key Authentication")
+                          .Name("Authorization")
+                          .In("header");
+
+
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
@@ -249,6 +265,8 @@ namespace BearerToken_SimpleServer_adm
                         // "apiKeyIn" can either be "query" or "header"
                         //
                         //c.EnableApiKeySupport("apiKey", "header");
+
+                        c.EnableApiKeySupport("Authorization", "header");
                     });
         }
     }
