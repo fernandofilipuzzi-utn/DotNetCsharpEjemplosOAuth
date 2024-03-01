@@ -61,18 +61,12 @@ namespace BearerToken_SimpleServer_adm
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
                         //    .In("header");
                         //
-
-                        c.ApiKey("Authorization")
-                           .Description("API Key Authentication")
-                           .Name("Authorization")
-                           .In("header");
-
                         //c.OAuth2("oauth2")
                         //    .Description("OAuth2 Implicit Grant")
                         //    .Flow("implicit")
@@ -255,9 +249,6 @@ namespace BearerToken_SimpleServer_adm
                         // "apiKeyIn" can either be "query" or "header"
                         //
                         //c.EnableApiKeySupport("apiKey", "header");
-
-                        c.EnableApiKeySupport("Authorization", "header");
-
                     });
         }
     }
