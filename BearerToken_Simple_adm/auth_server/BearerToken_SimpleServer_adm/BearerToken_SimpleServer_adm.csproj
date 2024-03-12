@@ -230,10 +230,10 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\checkbox-switch.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\navarlateral.css" />
+    <Content Include="Content\libs\checkbox-switch.css" />
+    <Content Include="Content\libs\copy-paste.css" />
+    <Content Include="Content\libs\input-file.css" />
+    <Content Include="Content\libs\navarlateral.css" />
     <Content Include="Content\Site.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -245,9 +245,6 @@
     <Content Include="img\false.png" />
     <Content Include="img\contrasenia.jpg" />
     <Content Include="img\inicio.jpg" />
-    <Content Include="Content\copy-paste.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="img\postman.jpg" />
     <Content Include="img\token_acceso.jpg" />
     <Content Include="img\token_acceso_code.jpg" />

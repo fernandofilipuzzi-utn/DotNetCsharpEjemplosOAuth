@@ -13,7 +13,25 @@ namespace BearerToken_SimpleServer_adm
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["UsuarioSettings"];
+
+            if (cookie == null)
+            {
+               // Response.Redirect("/Default.aspx");
+            }
+            else
+            {
+                string usuario = cookie["usuario"];
+                if (DateTime.Now < cookie.Expires)
+                {
+                    Response.Redirect("/Admin/login.aspx");
+                }
+                else
+                {
+                    Response.Redirect("/Admin/Default.aspx");
+                    lbUsuarioNombre.Text = usuario;
+                }
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -34,7 +52,7 @@ namespace BearerToken_SimpleServer_adm
                 string usuario = cookie["usuario"];
                 if (DateTime.Now < cookie.Expires)
                 {
-                    Response.Redirect("/Admin/login.aspx");
+                    Response.Redirect("/Default.aspx");
                 }
                 else
                 {

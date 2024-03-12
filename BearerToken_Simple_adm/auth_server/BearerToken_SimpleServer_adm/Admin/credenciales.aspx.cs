@@ -58,7 +58,7 @@ namespace JWTBearer_SimpleServer.Admin
                 hfConfirmar.Value = idString;
             }
 
-            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", $"mostrarConfirmarEliminarModal();", true);
+           // ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", $"mostrarConfirmarEliminarModal();", true);
         }
 
         private void actualizarListadoCredenciales()
@@ -75,7 +75,6 @@ namespace JWTBearer_SimpleServer.Admin
         protected void btnConfirmarEliminar_Click(object sender, EventArgs e)
         {
             int idCredencial = Convert.ToInt32(hfConfirmar.Value);
-
             string pathDb = Server.MapPath("~/db/db_auth_jwt_bearer.db");
             BearerToken_ServicesManager oservice = new BearerToken_ServicesManager(pathDb);
             oservice.credencialDAO.Eliminar(idCredencial);

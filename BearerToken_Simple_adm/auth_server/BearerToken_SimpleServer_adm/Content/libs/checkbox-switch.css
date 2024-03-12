@@ -1,17 +1,18 @@
-﻿
-.switch {
+﻿.switch {
     position: relative;
     display: inline-block;
     cursor: pointer;
-    height: 54px;
+    height: 20px;
+    width: 30px;
+    padding-top: 10px;
 }
 
 .switch::before {
     display: flex;
     background-color: #fff; /*gris*/
-    width: 100px;
-    height: 50px;
-    border-radius: 100px;
+    width: 35px;
+    height: 16px;
+    border-radius: 8px;
     cursor: pointer;
     display: flex;
 }
@@ -20,7 +21,7 @@
     background-color: #d2d2d2;
     width: 0;
     height: 0;
-    border-radius: 100px;
+    border-radius: 30px;
     cursor: pointer;
     position: relative;
 }
@@ -31,22 +32,22 @@
     left: -5px;
     position: absolute;
     background-color: #d2d2d2;
-    width: 100px;
-    height: 50px;
-    border-radius: 100px;
+    width: 35px;
+    height: 16px;
+    border-radius: 30px;
 }
 
-.switch input[type="checkbox"]::after { /*boton izq - off*/
-    content: '';
-    top: -15px;
-    left: -5px;
-    position: absolute;
-    background-color: #fff;
-    width: 45px;
-    height: 45px;
-    border-radius: 100px;
-    margin: 2px;
-}
+    .switch input[type="checkbox"]::after { /*boton izq - off*/
+        content: '';
+        top: -16px;
+        left: -5px;
+        position: absolute;
+        background-color: #fff;
+        width: 13px;
+        height: 13px;
+        border-radius: 30px;
+        margin: 2px;
+    }
 
 .switch input[type="checkbox"]:checked::before /*fondo gris - on*/ {
     content: '';
@@ -54,21 +55,21 @@
     left: -5px;
     position: absolute;
     background-color: #20096d;
-    width: 100px;
-    height: 50px;
-    border-radius: 100px;
+    width: 35px;
+    height: 16px;
+    border-radius: 30px;
     transform: translateX(0px);
 }
 
 .switch input[type="checkbox"]:checked::after /*boton der - off*/ {
     content: '';
-    top: -15px;
-    left: -5px;
+    top: -16px;
+    left: -8px;
     position: absolute;
     background-color: #fff;
-    width: 45px;
-    height: 45px;
-    border-radius: 100px;
-    transform: translateX(50px);
+    width: 13px;
+    height: 13px;
+    border-radius: 30px;
+    transform: translateX(22px);
     margin: 2px;
 }

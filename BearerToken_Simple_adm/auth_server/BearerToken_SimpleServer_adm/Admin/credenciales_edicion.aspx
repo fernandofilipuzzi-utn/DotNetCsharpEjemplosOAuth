@@ -4,16 +4,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
        <div class="container" style="min-width: 786px;">
-
-      
+                 
 
         <div class="row m-0 p-0">
 
             <div class="col-12 m-0 p-0">
 
-                <div class="row justify-content-end" >
-			        <div class="col-4">
+                <div class="row justify-content-end p-t-3" >
+			        <div class="form-group col-4">
                         <asp:CheckBox ID="chkHabilitadoCredencial" CssClass="switch" runat="server"/>                    
+                        <label for="<%=chkHabilitadoCredencial.ClientID%>" class="form-label" >Habilitar</label>
                     </div>
                 </div>
 

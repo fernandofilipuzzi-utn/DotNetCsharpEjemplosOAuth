@@ -42,35 +42,17 @@
         <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark align-item-start">
             <a class="navbar-brand" href="/">App</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNavbar"
-                aria-controls="MainNavbar" aria-expanded="false" aria-label="Toggle Navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNavbar" aria-controls="MainNavbar" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="MainNavbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/Default">Home<span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ver</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="/Admin/credenciales.aspx">Credenciales</a>
-                        </div>
+                        <a class="nav-link" href="/Default">Inicio<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/Admin/login.aspx" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <asp:Label ID="lbUsuarioNombre" Text="Sesión" runat="server" />
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-
-                            <asp:LinkButton ID="lbtnLogin" OnClick="lbtnLogin_Click" CssClass="dropdown-item" runat="server">Iniciar</asp:LinkButton>
-                            <div class="dropdown-divider"></div>
-                            <asp:LinkButton ID="lbtnCerrar" OnClick="lbtnCerrar_Click" CssClass="dropdown-item" runat="server">Cerrar</asp:LinkButton>
-                        </div>
+                    <li class="nav-item active">
+                         <a class="nav-link" href="/Admin/login.aspx">Inicio<span class="sr-only"><asp:Label ID="lbUsuarioNombre" Text="Ingresar" runat="server"/> </a>                        
                     </li>
                 </ul>
             </div>

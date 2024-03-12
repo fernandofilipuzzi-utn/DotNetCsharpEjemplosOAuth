@@ -2,7 +2,7 @@
 body {
     padding-top: 50px;
     padding-left: 250px;
-    background-color: #f1f5f8; 
+    background-color: #f1f5f8;
     min-width: 795px;
 }
 
@@ -18,16 +18,19 @@ body {
     color: #fff;
 }
 
-#sidebar a {
+#sidebar a 
+{
     padding: 10px 20px;
     color: #fff;
 }
 
-#sidebar a:hover {
+#sidebar a:hover 
+{
     background-color: #555;
 }
 
-#content {
+#content 
+{
     margin-left: 250px;
     padding: 20px;
 }

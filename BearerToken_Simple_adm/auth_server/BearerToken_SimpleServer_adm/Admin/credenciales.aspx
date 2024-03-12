@@ -1,12 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Site.Master" AutoEventWireup="true" CodeBehind="credenciales.aspx.cs" Inherits="JWTBearer_SimpleServer.Admin.credenciales" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Site.Master" AutoEventWireup="true"   MaintainScrollPositionOnPostback="true" CodeBehind="credenciales.aspx.cs" Inherits="JWTBearer_SimpleServer.Admin.credenciales" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
 
-    <div class="container" style="min-width: 786px;">
-
-        
+    <div class="container" style="min-width: 786px;">    
         <div class="col-12  mb-3 mt-3" style="background-color: #dcdced;">
 
             <div class="row text-center p-4">
@@ -46,7 +44,8 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <asp:Label ID="lbIdCredencial" runat="server" Text='<%#Eval("id")%>' /></td>
+                                <asp:Label ID="lbIdCredencial" runat="server" Text='<%#Eval("id")%>' />
+                            </td>
                             <td><code class="copy-paste"><%#Eval("guid")%></code></td>
                             <td><code class="copy-paste"><%#Eval("clave")%></code></td>
                             <td>
@@ -57,8 +56,10 @@
                             </td>
                             <td><%#Eval("scopes")%></td>
                             <td>
-                                <asp:HyperLink ID="hlModificar" runat="server" NavigateUrl='<%# $"credenciales_edicion.aspx?Id={Eval("Id")}" %>'><i class="fas fa-pencil-alt"></i></asp:HyperLink>
-                                <asp:LinkButton ID="lbtnEliminar" OnClick="lbtnEliminarCredencial_Click" CommandArgument='<%#Eval("Id")%>' runat="server"><i class="fas fa-trash" CommandArgument="<%#$"{Eval("id")}"%>"></i></asp:LinkButton>
+                                <asp:HyperLink ID="hlModificar" runat="server" NavigateUrl='<%# $"credenciales_edicion.aspx?Id={Eval("id")}" %>'><i class="fas fa-pencil-alt"></i></asp:HyperLink>
+                                <asp:LinkButton ID="lbtnEliminar" OnClientClick='<%# $"return handleEliminarCredencialClick({Eval("id")});" %>'  runat="server">
+                                        <i class="fas fa-trash"></i>
+                                </asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -82,8 +83,7 @@
                 <asp:HiddenField ID="hfConfirmar" runat="server" />
 
                 <div class="modal-footer">
-                    <asp:Button ID="btnConfirmarEliminar" OnClick="btnConfirmarEliminar_Click"
-                        class="btn btn-secondary" runat="server" Text="Eliminar" />
+                    <asp:Button ID="btnConfirmarEliminar" OnClick="btnConfirmarEliminar_Click" CssClass="btn btn-secondary" runat="server" Text="Eliminar" />
                     <button id="btnCancelarEliminar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -92,22 +92,38 @@
 
     <script>
 
-        function mostrarConfirmarEliminarModal() {
+        function handleEliminarCredencialClick(idCredencial)
+        {
+            console.log(idCredencial);
+
+            var hfConfirmar = document.getElementById("<%= hfConfirmar.ClientID %>");
+            hfConfirmar.value = idCredencial;
+            console.log(hfConfirmar.value);
+
+            mostrarConfirmarEliminarModal();
+            return false;
+        }
+
+        function mostrarConfirmarEliminarModal()
+        {
             $('#ConfirmarEliminarModal').modal('show');
         }
 
         var elementosACopiar = document.querySelectorAll('.copy-paste');
 
-        elementosACopiar.forEach(function (elemento) {
+        elementosACopiar.forEach(function (elemento)
+        {
             var boton = document.createElement('button');
             boton.className = 'btn fas fa-copy ml-2';
-            boton.addEventListener('click', function () {
+            boton.addEventListener('click', function ()
+            {
                 copiarAlPortapapeles(elemento);
             });
             elemento.parentNode.insertBefore(boton, elemento.nextSibling);
         });
 
-        function copiarAlPortapapeles(elemento) {
+        function copiarAlPortapapeles(elemento)
+        {
             var texto = elemento.getAttribute('data-copiar-texto') || elemento.textContent;
             var inputTemporal = document.createElement('input');
             inputTemporal.style.position = 'absolute';
