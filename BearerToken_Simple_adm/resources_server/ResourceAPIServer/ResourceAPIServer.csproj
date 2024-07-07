@@ -251,6 +251,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthBearerTokenUtils\ResponseMiddleware.cs" />
     <Compile Include="AuthBearerTokenUtils\ScopeAuthorizeAttribute.cs" />
+    <Compile Include="AuthBearerTokenUtils\StringExtensions.cs" />
     <Compile Include="Controllers\EjController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -263,6 +264,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO_Respuesta.cs" />
     <Compile Include="Models\RequestToken.cs" />
     <Compile Include="Models\TokenResponse.cs" />
     <Compile Include="Error.aspx.cs">
