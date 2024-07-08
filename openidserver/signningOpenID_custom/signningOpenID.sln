@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "signning.client", "signning.client\signning.client.csproj", "{B5176555-E3CC-45C0-AC21-1D294C6800E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "signning.openid", "signning.openid\signning.openid.csproj", "{303611BF-C037-4E05-80CB-1C79AF20C856}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{43B788F6-F153-4944-AFB0-AF0DD2CC3F8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{D5B499B4-31DE-40D2-BBE2-B86686E295E7}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\set_google_oauth_env.bat = scripts\set_google_oauth_env.bat
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5176555-E3CC-45C0-AC21-1D294C6800E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5176555-E3CC-45C0-AC21-1D294C6800E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5176555-E3CC-45C0-AC21-1D294C6800E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5176555-E3CC-45C0-AC21-1D294C6800E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303611BF-C037-4E05-80CB-1C79AF20C856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303611BF-C037-4E05-80CB-1C79AF20C856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303611BF-C037-4E05-80CB-1C79AF20C856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303611BF-C037-4E05-80CB-1C79AF20C856}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40BD38A1-3203-4556-90B6-C434B287BE86}
+	EndGlobalSection
+EndGlobal
