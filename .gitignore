@@ -401,5 +401,3 @@ bin
 obj
 *.~ml
 *package
-set_google_oauth_env.bat
-*_env*.bat
