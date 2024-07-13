@@ -36,22 +36,6 @@ namespace signning.client
                 Scope = "openid email", // Scopes solicitados
                 SignInAsAuthenticationType = CookieAuthenticationDefaults.AuthenticationType,
 
-
-                //Notifications = new OpenIdConnectAuthenticationNotifications
-                //{
-                //    AuthorizationCodeReceived = async n =>
-                //    {
-                //        var idToken = n.ProtocolMessage.IdToken;
-                //        var accessToken = n.ProtocolMessage.AccessToken;
-                //        HttpContext.Current.Response.Redirect("/"); // Redirigir a la página principal
-                //    },
-
-                //    AuthenticationFailed = n =>
-                //    {
-                //        HttpContext.Current.Response.Redirect("/Error?message=" + n.Exception.Message);
-                //        return Task.FromResult(0);
-                //    }
-                //}
             });
         }
     }

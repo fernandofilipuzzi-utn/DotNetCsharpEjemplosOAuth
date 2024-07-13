@@ -139,14 +139,17 @@ namespace signning.openid
 
         private void ConfigureIdentityProviders(IAppBuilder app, string signInAsType)
         {
+            string ClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID");
+            string ClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET");
+
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
             {
                 AuthenticationType = "Google",
                 Caption = "Sign-in with Google",
                 SignInAsAuthenticationType = signInAsType,
                 CallbackPath = new PathString("/"),
-                ClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID"),
-                ClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET")
+                ClientId = ClientId,
+                ClientSecret = ClientSecret
             });
         }
     }

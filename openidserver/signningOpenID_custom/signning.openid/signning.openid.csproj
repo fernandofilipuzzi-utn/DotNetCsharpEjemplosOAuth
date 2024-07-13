@@ -186,6 +186,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\app\app.js" />
+    <Content Include="Content\app\app.css" />
+    <Content Include="Content\app\logout.html" />
+    <Content Include="Content\app\permissions.html" />
+    <Content Include="Content\app\error.html" />
+    <Content Include="Content\app\login.html" />
+    <Content Include="Content\app\loggedOut.html" />
+    <Content Include="Content\app\consent.html" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -270,6 +278,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CustomViewService.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

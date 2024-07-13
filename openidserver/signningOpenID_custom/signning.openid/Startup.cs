@@ -2,6 +2,7 @@
 using IdentityServer3.Core;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Models;
+using IdentityServer3.Core.Services;
 using IdentityServer3.Core.Services.InMemory;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.Owin;
@@ -29,12 +30,18 @@ namespace signning.openid
         {
             app.Map("/identity", idsrvApp =>
             {
+                var factory = new IdentityServerServiceFactory()
+                                                   .UseInMemoryUsers(Users.Get())
+                                                   .UseInMemoryClients(Clients.Get())
+                                                   .UseInMemoryScopes(Scopes.Get());
+
+                factory.ViewService = new Registration<IViewService, CustomViewService>();
+
                 idsrvApp.UseIdentityServer(new IdentityServerOptions
                 {
-                    Factory = new IdentityServerServiceFactory()
-                                                    .UseInMemoryUsers(Users.Get())
-                                                    .UseInMemoryClients(Clients.Get())
-                                                    .UseInMemoryScopes(Scopes.Get()),
+
+                    Factory =factory,
+
 
                     RequireSsl = true, // Cambiar a true en producción
                     SigningCertificate = LoadCertificate(),
@@ -44,7 +51,7 @@ namespace signning.openid
                         EnableSignOutPrompt = false,
                         IdentityProviders = ConfigureIdentityProviders
                     }
-                   
+
                 });
             });
 
@@ -52,8 +59,6 @@ namespace signning.openid
             {
                 AuthenticationType = "Cookies"
             });
-
-            
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
@@ -66,60 +71,6 @@ namespace signning.openid
 
                 SignInAsAuthenticationType = CookieAuthenticationDefaults.AuthenticationType,
                 UseTokenLifetime = false,
-
-                
-
-
-                //Notifications = new OpenIdConnectAuthenticationNotifications
-                //{
-                //    SecurityTokenValidated = async n =>
-                //    {
-                //        var nid = new ClaimsIdentity(
-                //            n.AuthenticationTicket.Identity.AuthenticationType,
-                //            Constants.ClaimTypes.GivenName,
-                //            Constants.ClaimTypes.Role);
-
-                //        // get userinfo data
-                //        var userInfoClient = new UserInfoClient(
-                //            new Uri(n.Options.Authority + "/connect/userinfo"),
-                //            n.ProtocolMessage.AccessToken);
-
-                //        var userInfo = await userInfoClient.GetAsync();
-                //        userInfo.Claims.ToList().ForEach(ui => nid.AddClaim(new Claim(ui.Item1, ui.Item2)));
-
-                //        // keep the id_token for logout
-                //        nid.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
-
-                //        // add access token for sample API
-                //        nid.AddClaim(new Claim("access_token", n.ProtocolMessage.AccessToken));
-
-                //        // keep track of access token expiration
-                //        nid.AddClaim(new Claim("expires_at", DateTimeOffset.Now.AddSeconds(int.Parse(n.ProtocolMessage.ExpiresIn)).ToString()));
-
-                //        // add some other app specific claim
-                //        //nid.AddClaim(new Claim("app_specific", "some data"));
-
-                //        n.AuthenticationTicket = new AuthenticationTicket(
-                //            nid,
-                //            n.AuthenticationTicket.Properties);
-                //    },
-                  
-                    //RedirectToIdentityProvider = n =>
-                    //{
-                    //    if (n.ProtocolMessage.RequestType == OpenIdConnectRequestType.Logout)
-                    //    {
-                    //        var idTokenHint = n.OwinContext.Authentication.User.FindFirst("id_token");
-
-                    //        if (idTokenHint != null)
-                    //        {
-                    //            n.ProtocolMessage.IdTokenHint = idTokenHint.Value;
-                    //        }
-                    //    }
-
-                    //    return Task.FromResult(0);
-                    //}
-               
-                //}
             });
 
         }
@@ -139,14 +90,17 @@ namespace signning.openid
 
         private void ConfigureIdentityProviders(IAppBuilder app, string signInAsType)
         {
+            string ClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID");
+            string ClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET");
+
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
             {
                 AuthenticationType = "Google",
                 Caption = "Sign-in with Google",
                 SignInAsAuthenticationType = signInAsType,
                 CallbackPath = new PathString("/"),
-                ClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID"),
-                ClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET")
+                ClientId = ClientId,
+                ClientSecret = ClientSecret
             });
         }
     }
