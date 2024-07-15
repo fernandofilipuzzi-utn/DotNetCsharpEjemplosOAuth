@@ -18,16 +18,10 @@ namespace signningSimple
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-               name: "Authorize",
-               url: "Authorize",
-               defaults: new { controller = "Authorize", action = "Index" }
-           );
-
-            routes.MapRoute(
-                   name: "Default",
-                   url: "{controller}/{action}/{id}",
-                   defaults: new { action = "Index", id = UrlParameter.Optional }
-               );
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

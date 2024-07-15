@@ -12,14 +12,14 @@ using System.Web.Mvc;
 
 namespace signningSimple.Controllers
 {
-  //  [RoutePrefix("Authorize")]
+    [RoutePrefix("Authorize")]
     public class AuthorizeController : Controller
     {
-       
-        public async Task<ActionResult> Index()
+        [Route("Authorize")]
+        public async Task<ActionResult> Authorize()
         {
-            if (Request.IsAuthenticated)
-            {
+          ////  if (Request.IsAuthenticated)
+          //  {
                 var claimsIdentity = User.Identity as ClaimsIdentity;
 
                 if (claimsIdentity != null)
@@ -32,7 +32,7 @@ namespace signningSimple.Controllers
                     {
                         dynamic jsonObject = JsonConvert.DeserializeObject(cookie.Value);
 
-                        string urlRegister = jsonObject.urlRedirectRegistre;
+                        string urlRegister = jsonObject.urlRedirectRegister;
 
                         DTO_Ciudadano datos = new DTO_Ciudadano
                         {
@@ -45,11 +45,11 @@ namespace signningSimple.Controllers
                         return Redirect(url);
                     }
                 }
-            }
-            string urlRedirect = "https://localhost:44344/";
-            return Redirect(urlRedirect);
+            ////}
+            return  View("~/Views/Authorize/Authorize.cshtml");
+            //string urlRedirect = "https://localhost:44301/";
+            //return Redirect(urlRedirect);
         }
-
 
         private async Task<string> GetTokenAsync(string urlRegister, DTO_Ciudadano datos)
         {
@@ -67,7 +67,6 @@ namespace signningSimple.Controllers
             }
             return token;
         }
-
 
     }
 }

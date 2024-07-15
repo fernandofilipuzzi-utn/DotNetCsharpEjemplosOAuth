@@ -9,7 +9,7 @@
 
         <div class="row">
             <p>página principal</p>
-            <a href="Siguiente"/>Ir a Pagina siguiente</a>
+            <a href="Siguiente">Ir a Pagina siguiente</a>
         </div>
     </main>
 

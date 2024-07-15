@@ -50,7 +50,7 @@ namespace signningSimple.Cliente
             string idModulo = ConfigurationManager.AppSettings["Id_Modulo"]; 
             string idMunicipio = ConfigurationManager.AppSettings["Id_Municipio"];
            
-            Response.Redirect($"https://localhost:44344/AuthorizeClient?Id_Sistema={idSistema}&Id_Modulo={idModulo}$Id_Municipio={idMunicipio}");
+            Response.Redirect($"https://localhost:44344/AuthorizeClient?Id_Sistema={idSistema}&Id_Modulo={idModulo}&Id_Municipio={idMunicipio}");
         }
 
     }

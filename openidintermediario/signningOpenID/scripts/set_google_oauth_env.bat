@@ -1,6 +1,6 @@
 @echo off
 :: Establecer las variables de entorno permanentemente
-setx GOOGLE_CLIENT_ID "xx
+setx GOOGLE_CLIENT_ID "xx"
 setx GOOGLE_CLIENT_SECRET "xx"
 
 :: Establecer las variables de entorno para la sesión actual
